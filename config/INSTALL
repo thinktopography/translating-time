@@ -1,0 +1,128 @@
+ami-3fe42456
+
+yum -y install readline-devel openssl-devel curl-devel mysql50-devel httpd-devel mod_ssl mysql50 mysql50-server httpd s3cmd
+cd /tmp
+wget http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
+tar xzvf yaml-0.1.4.tar.gz
+cd yaml-0.1.4
+./configure --prefix=
+make
+make install
+cd /tmp
+wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz
+tar xzvf ruby-1.9.3-p194.tar.gz
+cd ruby-1.9.3-p194
+./configure --prefix=
+make
+make install
+gem source -a http://rubygems.org
+gem update --system
+gem update
+gem install passenger --no-rdoc --no-ri
+passenger-install-apache2-module --auto
+
+vi /etc/httpd/conf.d/passenger.conf
+vi /etc/httpd/conf.d/virtual.conf
+vi /etc/httpd/conf.d/website.conf
+service httpd restart
+
+service mysql restart
+echo "GRANT USAGE ON *.* TO 'root'@'%' IDENTIFIED BY 'tr@nsl@tion';" | mysql -u root
+echo "CREATE DATABASE production;" | mysql -u root
+echo "GRANT ALL ON production.* TO 'translation'@'%' IDENTIFIED BY 'tr@nsl@tion';" | mysql -u root
+echo "GRANT ALL ON production.* TO 'translation'@'localhost' IDENTIFIED BY 'tr@nsl@tion';" | mysql -u root
+echo "CREATE DATABASE staging;" | mysql -u root
+echo "GRANT ALL ON staging.* TO 'translation'@'%' IDENTIFIED BY 'tr@nsl@tion';" | mysql -u root
+echo "GRANT ALL ON staging.* TO 'translation'@'localhost' IDENTIFIED BY 'tr@nsl@tion';" | mysql -u root
+
+vi ~/.ssh/config
+vi ~/.ssh/deploy.key
+chmod 600 ~/.ssh/deploy.key
+
+========== /etc/httpd/conf.d/passenger.conf ==========
+
+LoadModule passenger_module /lib/ruby/gems/1.9.1/gems/passenger-3.0.13/ext/apache2/mod_passenger.so
+PassengerRoot /lib/ruby/gems/1.9.1/gems/passenger-3.0.13
+PassengerRuby /bin/ruby
+
+========== /etc/httpd/conf.d/virtual.conf ========== 
+
+NameVirtualHost *:80
+
+<Directory "/var/www/translatingtime">
+  AllowOverride All
+</Directory>
+
+========== /etc/httpd/conf.d/website.conf ========== 
+
+<VirtualHost *:80>
+  DocumentRoot /var/www/translatingtime/production/current/public
+  ServerName translatingtime.net
+  PassengerAppRoot /var/www/translatingtime/production/current
+  RailsSpawnMethod smart
+  PassengerPoolIdleTime 1000
+  RailsAppSpawnerIdleTime 0
+  RailsEnv production
+  <Location />
+    SetOutputFilter DEFLATE
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+    Header append Vary User-Agent env=!dont-vary
+  </Location>
+</VirtualHost>
+
+<VirtualHost *:80>
+  DocumentRoot /var/www/translatingtime/staging/current/public
+  ServerName staging.translatingtime.net
+  PassengerAppRoot /var/www/translatingtime/staging/current
+  RailsSpawnMethod smart
+  PassengerPoolIdleTime 1000
+  RailsAppSpawnerIdleTime 0
+  RailsEnv production
+  <Location />
+    SetOutputFilter DEFLATE
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+    Header append Vary User-Agent env=!dont-vary
+  </Location>
+</VirtualHost>
+
+========== ~/.ssh/config ========== 
+
+Host github.com
+  IdentityFile ~/.ssh/deploy.key
+  User thinktopography-deploy
+
+========== ~/.ssh/deploy.key ========== 
+
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEA0QrHGfptawozMv9vmd8jHDCStbaS5HRdYHf860RBncGUUaQO
+Da9FJQyw+M5M23ngbw7Nw1rtUpelgIZGl+uaq5CuZVN+c33DLbCqMQTMkcim9mgH
+4EWkktIaHVs04qtAfyB3YAKP+PtLe0WriMCgo6b8JXc9twraTgrxKIGJ6dhFzPEx
+IiH2ldXNUbBd2pqyWCXdSnTtL+lZS39cI8uJpgkeDSu4QOoDekRQep8dgek0V/aJ
+NBbkE8qNaGHM+S0kRZOtf7AL/eZ8pG6ZHCHXyBnESvB0NQKgQdv5dhHKRvyYNnPM
+KU5IRqRRVjihgtl976+lFf9L2uSXezwvDoj8FQIDAQABAoIBAQCINXycWcgYGhJY
+ZYaDfZi0EpZV3vwB7iy14hkj91rF/0+0jrA1jIICbS2XQV1lGRn7Y2sBourGiVdm
+0peHABbNOb3Y+jmH6WdXCykqPZVKXLMmFY0kPlzI6ivn+vkPxUSGUVJXdfP36U46
+qZ/mwJUrbXAYvYSyE1lBxvFyUk3Z10vHfWR59grw3nhE78gSW7URbIa6HQrq/sQa
+mJ4uYZ7Lj781k5KeTFH5713JAL+tqT187tui6yu27BfStLKME2cSuVSF9Ao3gXCb
+ccMJgOXtNJg/MR9mOPLEVa93McRiqzI1QWsbJPwDaZjL07OO8GPs3lg21txVldeV
+gBhzLk1hAoGBAOtzOBhNESJmq80Sjl656j8JoEect6mCDpbnSwn1bheE/NPn6NIX
+DVfCDdIqKeXK+Pez+w/4t/km6gLI4NlrJHPiZP7g+JcpAr4RfAnxzcBk19P/DZOP
+QDiUmQy/7Mj/GZ6ZfqC2tx7VQqHI71xLgxsLdePynEI6d/IPnV4+uZEZAoGBAONJ
+gwXzxkPSWsld7aMa73vzWQ9IAeAxkHO33uzRxmpVqv5tl05X9QU4yhC/1v8MY+Ck
+UOKqXIWca7hzAakHE8EzzWIr4ALE+zIezNk06nVvXTf9m9KOs3EZXVnx+OKVlsZR
+biT/7nuKZQYOQeTzyYsFEGOg9iOo6YA2yg6hJDZdAoGBAM79QRBkGC8lEd48dPsj
++KIohUbPqMsVclwJxHdh08JLgLWOiKjB6VIAYIQl2yWQtiWVjZ8x6hLYuhtum/Wn
+8qkKG/3Sq9jADhAocOKROG/ud6uA61+RLUVQpeiGhdUCJ3S9vovtdblehLCUZJHA
+NOc+wQp/jA3RNweP4Kos/JhpAoGBANXoRo6gidUksVrYsqER5ZfjQ8s0+sbz/r5Z
+q014dGN5Ms/3djI+Z5Q9iTbQRdiN4aX3H0TkDuWUfHEAk+xvg7EOPtqI7m/M0Ziv
+Eh3ORma1o6bhYPh+YvUraQcQyyr8nAUTeDUMRXcxnbhgTLXclq7m2jDZuS2AeBm5
+9tpj3//lAoGADiLaHr183T6W8Vb+Ll9r+Bj7UtB48/HvHtyJvz2Lns6Z3mO+t9nU
+gkHfR8oOy0bQMeN9hPD5K2N6s8NzPhkcAJP/pogLtNPTaQlRMgs0fOkEDfUWqbMk
+QJgEs23SaWIvC50iIhGhVVZqYj9zjxTgdJjCNHy2NeLepMhJy6C5qfY=
+-----END RSA PRIVATE KEY-----
