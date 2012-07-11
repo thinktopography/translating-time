@@ -1,0 +1,32 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <%= link_to 'Locations', admin_locations_path %> &raquo;
+  <strong>New Location</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <%= form_for @location, { :url => admin_locations_path } do |f| -%>
+    <div class="form" id="new_location">
+      <div class="form-header">
+        <h2>Location Details</h2>
+      </div>
+      <div class="form-body">
+        <dl>
+          <dt><%= f.label :name %></dt>
+          <dd><%= f.text_field :name %></dd>
+          <dt><%= f.label :code %></dt>
+          <dd><%= f.text_field :code %></dd>
+          <dt><%= f.label :value %></dt>
+          <dd><%= f.text_field :value %></dd>
+          <dt><%= f.label :description %></dt>
+          <dd><%= f.text_area :description %></dd>
+        </dl>
+      </div>
+      <div class="form-footer">
+        <%= link_to 'Cancel', admin_locations_path, :class => 'cancel' %>
+        <%= f.submit 'Save and Finish', :class => 'button' %>
+        <%= f.submit 'Save and Continue', :class => 'button' %>
+      </div>
+    </div>
+  <% end -%>
+<% end -%>

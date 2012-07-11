@@ -1,0 +1,27 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Events</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <div class="grid">
+    <div class="grid-header">
+    </div>
+    <div class="grid-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @event.title %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-footer">
+    </div>
+  </div>
+<% end -%>

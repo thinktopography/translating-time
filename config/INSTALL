@@ -1,4 +1,4 @@
-ami-3fe42456
+AMI: ami-3fe42456
 
 yum -y install readline-devel openssl-devel curl-devel mysql50-devel httpd-devel mod_ssl mysql50 mysql50-server httpd s3cmd
 cd /tmp

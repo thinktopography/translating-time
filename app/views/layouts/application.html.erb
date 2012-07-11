@@ -8,7 +8,45 @@
 </head>
 <body>
 
-<%= yield %>
+<presence>
+  <% if user_signed_in? -%>
+    <strong><%= current_user.full_name -%></strong>
+    <%= link_to 'Sign Out', destroy_user_session_path %>
+  <% else -%>
+    <%= link_to 'Sign In', new_user_session_path %>
+  <% end -%>
+</presence>
+
+<div class="inside <%= yield :insideclass %>">
+  <% unless yield(:breadcrumbs).blank? %>
+    <div class="breadcrumbs">
+      <%= yield :breadcrumbs %>
+    </div>
+  <% end %>
+  <%= render '/layouts/flash' %>
+  <div class="main">
+    <div class="inner">
+      <div class="panel" style="display: none;"></div>
+      <%= yield :main %>
+    </div>
+  </div>
+  <% unless yield(:sidebar).blank? %>
+    <div class="sidebar">
+      <div class="inner">
+        <div class="container">
+          <%= yield :sidebar %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% unless yield(:content).blank? %>
+    <div class="content">
+      <div class="inner">
+        <%= yield(:content) %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 </body>
 </html>

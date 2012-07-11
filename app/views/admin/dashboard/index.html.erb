@@ -1,0 +1,12 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+<% end -%>
+
+<% content_for :main do %>
+  <ul>
+    <li><%= link_to 'Events', admin_events_path %></li>
+    <li><%= link_to 'Locations', admin_locations_path %></li>
+    <li><%= link_to 'Observations', admin_observations_path %></li>
+    <li><%= link_to 'Processes', admin_processes_path %></li>
+  </ul>
+<% end -%>
