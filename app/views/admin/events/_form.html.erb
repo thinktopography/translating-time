@@ -1,0 +1,6 @@
+<%= f.text_field_control @event, :name %>
+<%= f.text_field_control @event, :code %>
+<%= f.text_field_control @event, :scale %>
+<%= f.text_area_control @event, :description, {}, { :rows => 5 } %>
+<% options = options_from_collection_for_select(Location.order("name ASC").find(:all), :id, :name, @event.location_id) %>
+<%= f.select_control @event, :location_id, { :class => 'required' }, { :include_blank => '', :options => options } %>

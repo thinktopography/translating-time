@@ -1,11 +1,11 @@
 <% content_for :breadcrumbs do -%>
   <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
   <%= link_to 'Locations', admin_locations_path %> &raquo;
-  <strong>New Location</strong>
+  <strong>Edit Location</strong>
 <% end -%>
 
 <% content_for :main do %>
-  <%= form_for @location, { :url => admin_locations_path } do |f| -%>
+  <%= form_for @location, { :url => admin_location_path(@location) } do |f| -%>
     <div class="form" id="new_location">
       <div class="form-header">
         <h2>Location Details</h2>
@@ -18,8 +18,7 @@
       <div class="form-footer">
         <ul>
           <li><%= link_to 'Cancel', admin_locations_path, :class => 'cancel' %></li>
-          <li><%= f.submit 'Save and Finish', :class => 'button' %></li>
-          <li><%= f.submit 'Save and Continue', :class => 'button' %></li>
+          <li><%= f.submit 'Save', :class => 'button' %></li>
         </ul>
       </div>
     </div>

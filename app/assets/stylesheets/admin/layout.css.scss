@@ -1,0 +1,11 @@
+header {
+  display: block; background: #CCC; padding: 20px; overflow: hidden;
+  h1 { float: left; }
+  presence { float: right; }
+}
+breadcrumbs {
+  display: block; padding: 5px 20px; font-size: 11px;
+}
+application {
+  display: block; padding: 20px; width: 960px;
+}

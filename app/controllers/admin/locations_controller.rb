@@ -9,13 +9,29 @@ class Admin::LocationsController < ApplicationController
   end
   
   def create
-    @location = Location.new params[:location]
+    @location = Location.new(params[:location])
     if @location.save
-      flash[:success] = 'Your invoice was successfully created'
-      redirect_to admin_locations_path
+      flash[:success] = 'Your location was successfully created'
+      redirect_to new_admin_location_path if params[:commit] == 'Save and Continue'
+      redirect_to admin_locations_path    if params[:commit] == 'Save and Finish'
     else
       flash[:error] = 'There were problems with your input'
       render :action => 'new'
+    end
+  end
+  
+  def edit
+    @location = Location.find(params[:id])
+  end
+  
+  def update
+    @location = Location.find(params[:id])
+    if @location.update_attributes(params[:location])
+      flash[:success] = 'Your location was successfully updated'
+      redirect_to admin_locations_path
+    else
+      flash[:error] = 'There were problems with your input'
+      render :action => 'edit'
     end
   end
 

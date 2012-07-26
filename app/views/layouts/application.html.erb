@@ -8,21 +8,23 @@
 </head>
 <body>
 
-<presence>
+<header>
+  <h1>Translating Time</h1>
   <% if user_signed_in? -%>
-    <strong><%= current_user.full_name -%></strong>
-    <%= link_to 'Sign Out', destroy_user_session_path %>
-  <% else -%>
-    <%= link_to 'Sign In', new_user_session_path %>
+    <presence>
+      <strong><%= current_user.full_name -%></strong>
+      <%= link_to 'Sign Out', destroy_user_session_path %>
+    </presence>
   <% end -%>
-</presence>
+</header>
 
-<div class="inside <%= yield :insideclass %>">
-  <% unless yield(:breadcrumbs).blank? %>
-    <div class="breadcrumbs">
-      <%= yield :breadcrumbs %>
-    </div>
-  <% end %>
+<% unless yield(:breadcrumbs).blank? %>
+  <breadcrumbs>
+    <%= yield :breadcrumbs %>
+  </breadcrumbs>
+<% end %>
+
+<application>
   <%= render '/layouts/flash' %>
   <div class="main">
     <div class="inner">
@@ -46,7 +48,7 @@
       </div>
     </div>
   <% end %>
-</div>
+</application>
 
 </body>
 </html>

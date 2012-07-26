@@ -1,0 +1,9 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <%= link_to 'Events', admin_events_path %> &raquo;
+  <strong>Event</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <%= @event.name %>
+<% end -%>

@@ -18,8 +18,8 @@
         <tbody>
           <% unless @locations.empty? %>
             <% @locations.each do |location| %>
-              <tr>
-                <th><%= location.name %></th>
+              <tr class="<%= cycle('odd', 'even') %>">
+                <th><%= link_to location.name, edit_admin_location_path(location) %></th>
                 <td><%= location.code %></td>
               </tr>
             <% end -%>

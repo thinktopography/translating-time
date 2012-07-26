@@ -1,0 +1,16 @@
+div.grid {
+  div.grid-header {}
+  div.grid-body {
+    table { border-collapse: collapse; width: 100%; }
+    td, th { padding: 5px; }
+    th { text-align: left; }
+    tr.odd {
+      td, th { background-color: #EEEEEE; }
+    }
+    tr.even {
+      td, th { background-color: #FFFFFF; }
+    }
+    thead th { background-color: #BBBBBB; }
+  }
+  div.grid-footer {}
+}

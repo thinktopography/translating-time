@@ -15,13 +15,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><%= @event.title %></td>
-          </tr>
+          <% unless @events.empty? %>
+            <% @events.each do |event| -%>
+              <tr>
+                <td><%= link_to event.name, edit_admin_event_path(event) %></td>
+              </tr>
+            <% end -%>
+          <% else -%>
+            <tr>
+              <td>There are no events</td>
+            </tr>
+          <% end -%>
         </tbody>
       </table>
     </div>
     <div class="grid-footer">
     </div>
   </div>
+  <%= link_to "Create New Event", new_admin_event_path %>
 <% end -%>
