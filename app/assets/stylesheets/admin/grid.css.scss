@@ -1,8 +1,14 @@
 div.grid {
-  div.grid-header {}
+  div.grid-header {
+    background-color: #333; padding: 5px 10px; overflow: hidden;
+    h2 { float: left; color: #FFF; font-size: 12px; line-height: 22px; }
+    ul { float: right; overflow: hidden; }
+    li { float: left; margin: 0 0 0 10px; }
+    a { color: #FFF; }
+  }
   div.grid-body {
-    table { border-collapse: collapse; width: 100%; }
-    td, th { padding: 5px; }
+    table { border-collapse: collapse; width: 100%; border-top: 1px solid #CCC; border-left: 1px solid #CCC; }
+    td, th { padding: 5px; border-bottom: 1px solid #CCC; border-right: 1px solid #CCC; }
     th { text-align: left; }
     tr.odd {
       td, th { background-color: #EEEEEE; }
@@ -10,7 +16,7 @@ div.grid {
     tr.even {
       td, th { background-color: #FFFFFF; }
     }
-    thead th { background-color: #BBBBBB; }
+    thead th { background-color: #DDDDDD; }
   }
   div.grid-footer {}
 }

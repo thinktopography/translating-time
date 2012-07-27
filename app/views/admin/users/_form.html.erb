@@ -1,0 +1,9 @@
+<%= f.text_field_control @user, :first_name, { :required => true, :text => "First Name" } %>
+
+<%= f.text_field_control @user, :last_name, { :required => true, :text => "Last Name" } %>
+
+<%= f.text_field_control @user, :email, { :required => true } %>
+
+<%= f.password_field_control @user, :password %>
+
+<%= f.password_field_control @user, :password_confirmation %>

@@ -12,6 +12,7 @@ Translatingtime::Application.routes.draw do
     resources :observations
     resources :processes
     resources :species
+    resources :users
   end
 
   root :to => "admin/dashboard#index"

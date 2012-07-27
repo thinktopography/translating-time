@@ -1,3 +1,2 @@
-
-class Admin::CitationsController < ApplicationController
+class Admin::CitationsController < Admin::ApplicationController
 end

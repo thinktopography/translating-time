@@ -6,6 +6,10 @@
 <% content_for :main do %>
   <div class="grid" id="locations">
     <div class="grid-header">
+      <h2>Locations</h2>
+      <ul>
+        <li><%= link_to "+ Add New", new_admin_location_path %></li>
+      </ul>
     </div>
     <div class="grid-body">
       <table>
@@ -34,5 +38,4 @@
     <div class="grid-footer">
     </div>
   </div>
-  <%= link_to "Create New Location", new_admin_location_path %>
 <% end -%>

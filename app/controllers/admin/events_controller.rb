@@ -1,4 +1,4 @@
-class Admin::EventsController < ApplicationController
+class Admin::EventsController < Admin::ApplicationController
 
   def index
     @events = Event.all
@@ -16,7 +16,8 @@ class Admin::EventsController < ApplicationController
     @event = Event.new(params[:event])
     if @event.save
       flash[:success] = 'The event was successfully created'
-      redirect_to admin_events_path
+      redirect_to new_admin_event_path if params[:commit] == 'Save and Continue'
+      redirect_to admin_events_path    if params[:commit] == 'Save and Finish'
     else
       flash[:error] = 'There were problems with your input'
       render :action => 'new'
@@ -34,7 +35,7 @@ class Admin::EventsController < ApplicationController
       redirect_to admin_events_path
     else
       flash[:error] = 'There were problems with your input'
-      render :action => 'new'
+      render :action => 'edit'
     end
   end
 

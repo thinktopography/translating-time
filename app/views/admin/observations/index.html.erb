@@ -1,35 +1,33 @@
 <% content_for :breadcrumbs do -%>
   <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
-  <strong>Events</strong>
+  <strong>Observations</strong>
 <% end -%>
 
 <% content_for :main do %>
-  <div class="grid">
+  <div class="grid" id="locations">
     <div class="grid-header">
-      <h2>Events</h2>
-      <ul>
-        <li><%= link_to "+ Add New", new_admin_event_path %></li>
-      </ul>
     </div>
     <div class="grid-body">
       <table>
         <thead>
           <tr>
+            <th>Species</th>
             <th>Event</th>
-            <th>Code</th>
+            <th>Value</th>
           </tr>
         </thead>
         <tbody>
-          <% unless @events.empty? %>
-            <% @events.each do |event| -%>
+          <% unless @observations.empty? %>
+            <% @observations.each do |observation| %>
               <tr class="<%= cycle('odd', 'even') %>">
-                <td><%= link_to event.name, edit_admin_event_path(event) %></td>
-                <td><%= event.code %></td>
+                <td><%= observation.species.name %></td>
+                <td><%= observation.event.name %></td>
+                <td><%= observation.value %></td>
               </tr>
             <% end -%>
           <% else -%>
             <tr>
-              <td colspan="2">There are no events</td>
+              <td colspan="3">There are no observations</td>
             </tr>
           <% end -%>
         </tbody>
@@ -38,4 +36,5 @@
     <div class="grid-footer">
     </div>
   </div>
+  <%= link_to "Create New Observation", new_admin_observation_path %>
 <% end -%>

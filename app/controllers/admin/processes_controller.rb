@@ -1,4 +1,4 @@
-class Admin::ProcessesController < ApplicationController
+class Admin::ProcessesController < Admin::ApplicationController
 
   def index
   end

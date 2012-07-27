@@ -1,11 +1,25 @@
 header {
-  display: block; background: #CCC; padding: 20px; overflow: hidden;
-  h1 { float: left; }
-  presence { float: right; }
+  display: block; background: #CCC; padding: 20px; height: 22px;
+  h1 { float: left; clear: both; height: 22px; }
+  presence {
+    float: right; position: relative;
+    strong { display: block; background: url(/assets/dropdown.png) no-repeat 80px 13px; padding: 5px 20px 5px 10px; height: 30px; cursor: pointer; }
+    ul { position: absolute; top: 30px; right: 0; display: none; }
+    a { display: block; width: 120px; background-color: #EEEEEE; padding: 5px 10px; }
+    a:hover { background-color: #DDDDDD; }
+    &.active {
+      strong { background-color: #EEEEEE; }
+      ul { display: block; }
+    }
+  }
 }
+
 breadcrumbs {
-  display: block; padding: 5px 20px; font-size: 11px;
+  display: block; padding: 5px 0; font-size: 11px;
 }
 application {
-  display: block; padding: 20px; width: 960px;
+  display: block; padding: 0 20px 20px; width: 960px;
+}
+section {
+  margin: 0 0 10px;
 }
