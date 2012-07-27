@@ -1,0 +1,41 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Processes</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <div class="grid">
+    <div class="grid-header">
+      <h2>Processs</h2>
+      <ul>
+        <li><%= link_to "+ Add New", new_admin_process_path %></li>
+      </ul>
+    </div>
+    <div class="grid-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Process</th>
+            <th>Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% unless @processes.empty? %>
+            <% @processes.each do |process| -%>
+              <tr class="<%= cycle('odd', 'even') %>">
+                <td><%= link_to process.name, edit_admin_process_path(process) %></td>
+                <td><%= process.code %></td>
+              </tr>
+            <% end -%>
+          <% else -%>
+            <tr>
+              <td colspan="2">There are no processs</td>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-footer">
+    </div>
+  </div>
+<% end -%>

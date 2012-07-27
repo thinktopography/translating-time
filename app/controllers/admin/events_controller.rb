@@ -4,10 +4,6 @@ class Admin::EventsController < Admin::ApplicationController
     @events = Event.all
   end
 
-  def show
-    @event = Event.find params[:id]
-  end
-
   def new
     @event = Event.new
   end
