@@ -1,0 +1,39 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Citations</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <div class="grid">
+    <div class="grid-header">
+      <h2>Citations</h2>
+      <ul>
+        <li><%= link_to "+ Add New", new_admin_citation_path %></li>
+      </ul>
+    </div>
+    <div class="grid-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Citation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% unless @citations.empty? %>
+            <% @citations.each do |citation| -%>
+              <tr class="<%= cycle('odd', 'even') %>">
+                <td><%= link_to citation.description, edit_admin_citation_path(citation) %></td>
+              </tr>
+            <% end -%>
+          <% else -%>
+            <tr>
+              <td>There are no citations</td>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-footer">
+    </div>
+  </div>
+<% end -%>

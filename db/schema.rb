@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120711200731) do
+ActiveRecord::Schema.define(:version => 20120730170205) do
+
+  create_table "citations", :force => true do |t|
+    t.text     "body"
+    t.integer  "pubmed_id"
+    t.string   "authors"
+    t.string   "title"
+    t.string   "journal"
+    t.string   "pagination"
+    t.string   "volume"
+    t.date     "date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -34,9 +47,29 @@ ActiveRecord::Schema.define(:version => 20120711200731) do
     t.datetime "updated_at",                                :null => false
   end
 
-  create_table "observations", :force => true do |t|
+  create_table "methods", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "observations", :force => true do |t|
+    t.integer  "citation_id"
+    t.integer  "event_id"
+    t.integer  "species_id"
+    t.integer  "method_id"
+    t.decimal  "value",       :precision => 4, :scale => 1
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  create_table "processes", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.string   "value"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "species", :force => true do |t|

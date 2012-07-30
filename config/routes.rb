@@ -9,6 +9,7 @@ Translatingtime::Application.routes.draw do
     resources :citations
     resources :events
     resources :locations
+    resources :methods
     resources :observations
     resources :processes
     resources :species

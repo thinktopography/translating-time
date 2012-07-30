@@ -22,12 +22,13 @@
   <% end -%>
 </header>
 
+<% unless yield(:breadcrumbs).blank? %>
+  <breadcrumbs>
+    <%= yield :breadcrumbs %>
+  </breadcrumbs>
+<% end %>
+
 <application>
-  <% unless yield(:breadcrumbs).blank? %>
-    <breadcrumbs>
-      <%= yield :breadcrumbs %>
-    </breadcrumbs>
-  <% end %>
   <%= render '/layouts/flash' %>
   <div class="main">
     <div class="inner">

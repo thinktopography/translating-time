@@ -1,0 +1,266 @@
+---
+event_001:
+  id: 1
+  name: adultlike cortical innervation of dLGN
+  in_model: 1
+event_002:
+  id: 2
+  name: amygdala - peak of neurogenesis
+  in_model: 1
+event_003:
+  id: 3
+  name: anterior commisure appears
+  in_model: 1
+event_004:
+  id: 4
+  name: anterior olfactory nucleus - peak of neurogenesis
+  in_model: 1
+event_005:
+  id: 5
+  name: AV, AM, AD  nuclei - peak of neurogenesis
+  in_model: 1
+event_006:
+  id: 6
+  name: axons in optic stalk
+  in_model: 1
+event_007:
+  id: 7
+  name: CA 1, CA 2 - peak of neurogenesis
+  in_model: 1
+event_008:
+  id: 8
+  name: caudoputamen - peak of neurogenesis
+  in_model: 1
+event_009:
+  id: 9
+  name: claustrum - peak of neurogenesis
+  in_model: 1
+event_010:
+  id: 10
+  name: cochlear nuclei - peak of neurogenesis
+  in_model: 1
+event_011:
+  id: 11
+  name: complete separation of layer V (S1)
+  in_model: 1
+event_012:
+  id: 12
+  name: cones - peak of neurogenesis
+  in_model: 1
+event_013:
+  id: 13
+  name: corpus callosum appears
+  in_model: 1
+event_014:
+  id: 14
+  name: cortical axons innervate dLGN
+  in_model: 1
+event_015:
+  id: 15
+  name: cortical axons reach dLGN
+  in_model: 1
+event_016:
+  id: 16
+  name: cranial motor nuclei - peak of neurogenesis
+  in_model: 1
+event_017:
+  id: 17
+  name: cranial sensory nuclei - peak of neurogenesis
+  in_model: 1
+event_018:
+  id: 18
+  name: deep cerebellar nuclei - peak of neurogenesis
+  in_model: 1
+event_019:
+  id: 19
+  name: dentate gyrus - peak of neurogenesis
+  in_model: 1
+event_020:
+  id: 20
+  name: dLGN - end of neurogenesis
+  in_model: 1
+event_021:
+  id: 21
+  name: dLGN - peak of neurogenesis
+  in_model: 1
+event_022:
+  id: 22
+  name: dLGN - start of neurogenesis
+  in_model: 1
+event_023:
+  id: 23
+  name: entorhinal cortex - peak of neurogenesis
+  in_model: 1
+event_024:
+  id: 24
+  name: external capsule appears
+  in_model: 1
+event_025:
+  id: 25
+  name: eye opening
+  in_model: 1
+event_026:
+  id: 26
+  name: fasciculus retroflexus appears
+  in_model: 1
+event_027:
+  id: 27
+  name: fornix appears
+  in_model: 1
+event_028:
+  id: 28
+  name: globus pallidus - peak of neurogenesis
+  in_model: 1
+event_029:
+  id: 29
+  name: hippocampal commisure appears
+  in_model: 1
+event_030:
+  id: 30
+  name: inferior colliculus - peak of neurogenesis
+  in_model: 1
+event_031:
+  id: 31
+  name: inferior olivary nucleus - peak of neurogenesis
+  in_model: 1
+event_032:
+  id: 32
+  name: initial differentiation of layer V (S1)
+  in_model: 1
+event_033:
+  id: 33
+  name: internal capsule appears
+  in_model: 1
+event_034:
+  id: 34
+  name: ipsi/contra segregation in LGN and SC
+  in_model: 1
+event_035:
+  id: 35
+  name: isles of Calleja - peak of neurogenesis
+  in_model: 1
+event_036:
+  id: 36
+  name: LGN axons in cortical layer IV
+  in_model: 1
+event_037:
+  id: 37
+  name: LGN axons in subplate
+  in_model: 1
+event_038:
+  id: 38
+  name: locus coeruleus - peak of neurogenesis
+  in_model: 1
+event_039:
+  id: 39
+  name: magnocellular basal forebrain - peak of neurogenesis
+  in_model: 1
+event_040:
+  id: 40
+  name: mammillo-thalamic tract appears
+  in_model: 1
+event_041:
+  id: 41
+  name: medial forebrain bundle appears
+  in_model: 1
+event_042:
+  id: 42
+  name: medial geniculate nucleus - peak of neurogenesis
+  in_model: 1
+event_043:
+  id: 43
+  name: mitral cells - peak of neurogenesis
+  in_model: 1
+event_044:
+  id: 44
+  name: neurogenesis cortical lamina IV - start of neurogenesis (VC)
+  in_model: 1
+event_045:
+  id: 45
+  name: neurogenesis cortical lamina VI - end of neurogenesis (VC)
+  in_model: 1
+event_046:
+  id: 46
+  name: neurogenesis cortical layer II/III - end of neurogenesis (VC)
+  in_model: 1
+event_047:
+  id: 47
+  name: neurogenesis cortical layer II/III - peak of neurogenesis (VC)
+  in_model: 1
+event_048:
+  id: 48
+  name: neurogenesis cortical layer II/III - start of neurogenesis (VC)
+  in_model: 1
+event_049:
+  id: 49
+  name: neurogenesis cortical layer IV - end of neurogenesis (VC)
+  in_model: 1
+event_050:
+  id: 50
+  name: neurogenesis cortical layer IV - peak of neurogenesis (VC)
+  in_model: 1
+event_051:
+  id: 51
+  name: neurogenesis cortical layer V - end of neurogenesis (VC)
+  in_model: 1
+event_052:
+  id: 52
+  name: neurogenesis cortical layer V - peak of neurogenesis (VC)
+  in_model: 1
+event_053:
+  id: 53
+  name: neurogenesis cortical layer V - start of neurogenesis (VC)
+  in_model: 1
+event_054:
+  id: 54
+  name: neurogenesis cortical layer VI - peak of neurogenesis (VC)
+  in_model: 1
+
+75  name: neurogenesis cortical layer VI - start of neurogenesis (VC)
+  name: nucleus accumbens - peak of neurogenesis
+49  name: nucleus of lateral olfactory tract - peak of neurogenesis
+103  name: onset of barrel field septa (S1)
+100  name: onset of barrels (S1)
+110  name: onset of retinal waves
+101  name: onset of sublayers in layer V (S1)
+102  name: onset of trilaminar plate (S1)
+52  name: optic axons at chiasm of optic tract
+97  name: optic axons invade visual centers
+63  name: optic axons reach dLGN and SC
+98  name: optic nerve axon number - peak of neurogenesis
+58  name: parasubiculum - peak of neurogenesis
+57  name: pontine nuclei - peak of neurogenesis
+84  name: posterior commisure appears
+47  name: preoptic nucleus - peak of neurogenesis
+59  name: presubiculum - peak of neurogenesis
+36  name: Purkinje cells - peak of neurogenesis
+55  name: raphe complex - peak of neurogenesis
+20  name: rapid axon generation in optic nerve - start of neurogenesis
+106  name: rapid axon loss in optic nerve ends
+14  name: red nucleus - peak of neurogenesis
+38  name: reticular nuclei - peak of neurogenesis
+89  name: retinal amacrine cells - peak of neurogenesis
+11  name: retinal bipolar cells - peak of neurogenesis
+91  name: retinal ganglion cell generation - end of neurogenesis
+80  name: retinal ganglion cell generation - peak of neurogenesis
+70  name: retinal ganglion cell generation - start of neurogenesis
+10  name: retinal horizontal cells - peak of neurogenesis
+69  name: rods - peak of neurogenesis
+50  name: septal nuclei - peak of neurogenesis
+19  name: stria medullaris thalami appears
+92  name: stria terminalis appears
+53  name: subiculum - peak of neurogenesis
+44  name: subplate - end of neurogenesis
+111  name: subplate - peak of neurogenesis
+112  name: subplate - start of neurogenesis
+21  name: substantia nigra - peak of neurogenesis
+30  name: superficial SC - start of lamination
+81  name: superficial SC laminae - end of neurogenesis
+72  name: superficial SC laminae - start of neurogenesis
+79  name: superior colliculus - peak of neurogenesis
+77  name: suprachisamatic nucleus - peak of neurogenesis
+67  name: tufted cells - peak of neurogenesis
+15  name: vestibular nuclei - peak of neurogenesis
+33  name: visual cortical axons in SC
+73  name: vLGN - peak of neurogenesis
+48  name: VP and VB nuclei - peak of neurogenesis

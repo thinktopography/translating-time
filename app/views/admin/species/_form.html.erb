@@ -1,0 +1,10 @@
+<%= f.text_field_control @species, :name, { :required => true } %>
+
+<%= f.text_field_control @species, :code %>
+
+<%= f.text_field_control @species, :constant, {}, { :maxlength => 8 } %>
+
+<%= f.text_field_control @species, :slope, {}, { :maxlength => 8 } %>
+
+<dt><%= f.label :in_model, "In Model?" %></dt>
+<dd><%= f.check_box :in_model %></dd>

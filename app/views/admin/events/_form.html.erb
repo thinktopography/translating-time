@@ -4,10 +4,10 @@
 
 <%= f.text_field_control @event, :scale %>
 
+<% options = options_from_collection_for_select(Location.order("name ASC").all, :id, :name, @event.location_id) %>
+<%= f.select_control @event, :location_id, {}, { :include_blank => '', :options => options } %>
+
 <%= f.text_area_control @event, :description, {}, { :rows => 5 } %>
 
 <dt><%= f.label :in_model, "In Model?" %></dt>
 <dd><%= f.check_box :in_model %></dd>
-
-<% options = options_from_collection_for_select(Location.order("name ASC").all, :id, :name, @event.location_id) %>
-<%= f.select_control @event, :location_id, {}, { :include_blank => '', :options => options } %>

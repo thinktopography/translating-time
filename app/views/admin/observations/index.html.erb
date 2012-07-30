@@ -6,14 +6,18 @@
 <% content_for :main do %>
   <div class="grid" id="locations">
     <div class="grid-header">
+      <h2>Observations</h2>
+      <ul>
+        <li><%= link_to "+ Add New", new_admin_observation_path %></li>
+      </ul>
     </div>
     <div class="grid-body">
       <table>
         <thead>
           <tr>
-            <th>Species</th>
-            <th>Event</th>
-            <th>Value</th>
+            <th width="45%">Species</th>
+            <th width="45%">Event</th>
+            <th width="10%">Value</th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +26,7 @@
               <tr class="<%= cycle('odd', 'even') %>">
                 <td><%= observation.species.name %></td>
                 <td><%= observation.event.name %></td>
-                <td><%= observation.value %></td>
+                <td><%= link_to observation.value, edit_admin_observation_path(observation) %></td>
               </tr>
             <% end -%>
           <% else -%>
@@ -36,5 +40,4 @@
     <div class="grid-footer">
     </div>
   </div>
-  <%= link_to "Create New Observation", new_admin_observation_path %>
 <% end -%>

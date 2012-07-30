@@ -17,6 +17,8 @@ div.grid {
       td, th { background-color: #FFFFFF; }
     }
     thead th { background-color: #DDDDDD; }
+    td span.yes { background: url(/assets/check.png) no-repeat center; display: block; text-indent: -9999px; }
+    td span.no { display: block; text-indent: -9999px; }
   }
   div.grid-footer {}
 }
