@@ -1,4 +1,6 @@
 class Admin::CitationsController < Admin::ApplicationController
+  
+  before_filter :is_editor?
 
   def index
     @citations = Citation.all
@@ -12,7 +14,7 @@ class Admin::CitationsController < Admin::ApplicationController
     @citation = Citation.new(params[:citation])
     if @citation.save
       flash[:success] = 'Your citation was successfully created'
-      redirect_to new_admin_citation_path
+      redirect_to admin_citations_path
     else
       flash[:error] = 'There were problems with your input'
       render :action => 'new'

@@ -4,6 +4,5 @@
 
 <%= f.text_field_control @user, :email, { :required => true } %>
 
-<%= f.password_field_control @user, :password %>
-
-<%= f.password_field_control @user, :password_confirmation %>
+<% options = options_from_collection_for_select(Role.order("id ASC").all, :id, :name, @user.role_id) %>
+<%= f.select_control @user, :role_id, { :required => true }, { :include_blank => '', :options => options } %>

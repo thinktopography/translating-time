@@ -1,6 +1,7 @@
 Application = { }
 
 Application.Init = function() {
+  Application.Form.Init();
   Application.Menu.Init();
 }
 

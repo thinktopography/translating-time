@@ -1,14 +1,14 @@
 <% content_for :breadcrumbs do -%>
   <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
-  <%= link_to 'Users', admin_users_path %> &raquo;
-  <strong>Edit User</strong>
+  <%= link_to 'Methods', admin_methods_path %> &raquo;
+  <strong>Edit Method</strong>
 <% end -%>
 
 <% content_for :main do %>
-  <%= form_for @user, { :url => admin_user_path(@user) } do |f| -%>
-    <div class="form" id="new_user">
+  <%= form_for @method, { :url => admin_method_path(@method) } do |f| -%>
+    <div class="form" id="new_method">
       <div class="form-header">
-        <h2>User Details</h2>
+        <h2>Method Details</h2>
       </div>
       <div class="form-body">
         <dl>
@@ -17,7 +17,7 @@
       </div>
       <div class="form-footer">
         <ul>
-          <li><%= link_to 'Cancel', admin_users_path, :class => 'cancel' %></li>
+          <li><%= link_to 'Cancel', admin_methods_path, :class => 'cancel' %></li>
           <li><%= f.submit 'Save', :class => 'button' %></li>
         </ul>
       </div>

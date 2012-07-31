@@ -4,6 +4,8 @@ users_001:
   first_name: Greg
   last_name: Kops
   email: greg@thinktopography.com
+  role_id: 1
+  change_password: 0
   encrypted_password: $2a$10$ehxWW8i.MXwGtpm2lZMgs.HQM4xhfjLZILtaHmaXYHkQs0EbRYjJK
   reset_password_token: 
   reset_password_sent_at: 

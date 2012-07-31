@@ -1,37 +1,33 @@
 <% content_for :breadcrumbs do -%>
   <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
-  <strong>Users</strong>
+  <strong>Method</strong>
 <% end -%>
 
 <% content_for :main do %>
   <div class="grid">
     <div class="grid-header">
-      <h2>Users</h2>
+      <h2>mMthods</h2>
       <ul>
-        <li><%= link_to "+ Add New", new_admin_user_path %></li>
+        <li><%= link_to "+ Add New", new_admin_method_path %></li>
       </ul>
     </div>
     <div class="grid-body">
       <table>
         <thead>
           <tr>
-            <th width="65%">User</th>
-            <th width="20%">Role</th>
-            <th width="15%">Action</th>
+            <th>Method</th>
           </tr>
         </thead>
         <tbody>
-          <% unless @users.empty? %>
-            <% @users.each do |user| -%>
+          <% unless @methods.empty? %>
+            <% @methods.each do |method| -%>
               <tr class="<%= cycle('odd', 'even') %>">
-                <td><%= link_to user.full_name, edit_admin_user_path(user) %> (<%= user.email %>)</td>
-                <td><%= user.role.name %></td>
-                <td><%= link_to "reset password", reset_admin_user_path(user) %></td>
+                <td><%= link_to method.name, edit_admin_method_path(method) %></td>
               </tr>
             <% end -%>
           <% else -%>
             <tr>
-              <td>There are no users</td>
+              <td>There are no methods</td>
             </tr>
           <% end -%>
         </tbody>

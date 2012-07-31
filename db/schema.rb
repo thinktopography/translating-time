@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120730170205) do
+ActiveRecord::Schema.define(:version => 20120730183204) do
 
   create_table "citations", :force => true do |t|
     t.text     "body"
@@ -72,6 +72,12 @@ ActiveRecord::Schema.define(:version => 20120730170205) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "species", :force => true do |t|
     t.string   "name"
     t.string   "code"
@@ -85,8 +91,10 @@ ActiveRecord::Schema.define(:version => 20120730170205) do
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.integer  "role_id"
+    t.boolean  "change_password",        :default => false, :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -95,8 +103,8 @@ ActiveRecord::Schema.define(:version => 20120730170205) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

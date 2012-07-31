@@ -1,0 +1,10 @@
+---
+role_001:
+  id: 1
+  name: Administrator
+role_002:
+  id: 2
+  name: Publisher
+role_003:
+  id: 3
+  name: Editor

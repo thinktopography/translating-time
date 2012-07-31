@@ -1,5 +1,7 @@
 class Admin::UsersController < Admin::ApplicationController
 
+  before_filter :is_admin?
+
   def index
     @users = User.all
   end
@@ -32,6 +34,13 @@ class Admin::UsersController < Admin::ApplicationController
       flash[:error] = 'There were problems with your input'
       render :action => 'edit'
     end
+  end
+  
+  def reset
+    @user = User.find(params[:id])
+    @user.reset_password
+    flash[:success] = "This user's password was successfully reset"
+    redirect_to admin_users_path
   end
 
 end

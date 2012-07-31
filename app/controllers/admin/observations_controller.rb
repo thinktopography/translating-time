@@ -1,5 +1,7 @@
 class Admin::ObservationsController < Admin::ApplicationController
 
+  before_filter :is_editor?
+
   def index
     @observations = Observation.all
   end

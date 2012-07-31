@@ -215,52 +215,203 @@ event_054:
   id: 54
   name: neurogenesis cortical layer VI - peak of neurogenesis (VC)
   in_model: 1
-
-75  name: neurogenesis cortical layer VI - start of neurogenesis (VC)
+event_055:
+  id: 55
+  name: neurogenesis cortical layer VI - start of neurogenesis (VC)
+  in_model: 1
+event_056:
+  id: 56
   name: nucleus accumbens - peak of neurogenesis
-49  name: nucleus of lateral olfactory tract - peak of neurogenesis
-103  name: onset of barrel field septa (S1)
-100  name: onset of barrels (S1)
-110  name: onset of retinal waves
-101  name: onset of sublayers in layer V (S1)
-102  name: onset of trilaminar plate (S1)
-52  name: optic axons at chiasm of optic tract
-97  name: optic axons invade visual centers
-63  name: optic axons reach dLGN and SC
-98  name: optic nerve axon number - peak of neurogenesis
-58  name: parasubiculum - peak of neurogenesis
-57  name: pontine nuclei - peak of neurogenesis
-84  name: posterior commisure appears
-47  name: preoptic nucleus - peak of neurogenesis
-59  name: presubiculum - peak of neurogenesis
-36  name: Purkinje cells - peak of neurogenesis
-55  name: raphe complex - peak of neurogenesis
-20  name: rapid axon generation in optic nerve - start of neurogenesis
-106  name: rapid axon loss in optic nerve ends
-14  name: red nucleus - peak of neurogenesis
-38  name: reticular nuclei - peak of neurogenesis
-89  name: retinal amacrine cells - peak of neurogenesis
-11  name: retinal bipolar cells - peak of neurogenesis
-91  name: retinal ganglion cell generation - end of neurogenesis
-80  name: retinal ganglion cell generation - peak of neurogenesis
-70  name: retinal ganglion cell generation - start of neurogenesis
-10  name: retinal horizontal cells - peak of neurogenesis
-69  name: rods - peak of neurogenesis
-50  name: septal nuclei - peak of neurogenesis
-19  name: stria medullaris thalami appears
-92  name: stria terminalis appears
-53  name: subiculum - peak of neurogenesis
-44  name: subplate - end of neurogenesis
-111  name: subplate - peak of neurogenesis
-112  name: subplate - start of neurogenesis
-21  name: substantia nigra - peak of neurogenesis
-30  name: superficial SC - start of lamination
-81  name: superficial SC laminae - end of neurogenesis
-72  name: superficial SC laminae - start of neurogenesis
-79  name: superior colliculus - peak of neurogenesis
-77  name: suprachisamatic nucleus - peak of neurogenesis
-67  name: tufted cells - peak of neurogenesis
-15  name: vestibular nuclei - peak of neurogenesis
-33  name: visual cortical axons in SC
-73  name: vLGN - peak of neurogenesis
-48  name: VP and VB nuclei - peak of neurogenesis
+  in_model: 1
+event_057:
+  id: 57
+  name: nucleus of lateral olfactory tract - peak of neurogenesis
+  in_model: 1
+event_058:
+  id: 58
+  name: onset of barrel field septa (S1)
+  in_model: 1
+event_059:
+  id: 59
+  name: onset of barrels (S1)
+  in_model: 1
+event_060:
+  id: 60
+  name: onset of retinal waves
+  in_model: 1
+event_061:
+  id: 61
+  name: onset of sublayers in layer V (S1)
+  in_model: 1
+event_062:
+  id: 62
+  name: onset of trilaminar plate (S1)
+  in_model: 1
+event_063:
+  id: 63
+  name: optic axons at chiasm of optic tract
+  in_model: 1
+event_064:
+  id: 64
+  name: optic axons invade visual centers
+  in_model: 1
+event_065:
+  id: 65
+  name: optic axons reach dLGN and SC
+  in_model: 1
+event_066:
+  id: 66
+  name: optic nerve axon number - peak of neurogenesis
+  in_model: 1
+event_067:
+  id: 67
+  name: parasubiculum - peak of neurogenesis
+  in_model: 1
+event_068:
+  id: 68
+  name: pontine nuclei - peak of neurogenesis
+  in_model: 1
+event_069:
+  id: 69
+  name: posterior commisure appears
+  in_model: 1
+event_070:
+  id: 70
+  name: preoptic nucleus - peak of neurogenesis
+  in_model: 1
+event_071:
+  id: 71
+  name: presubiculum - peak of neurogenesis
+  in_model: 1
+event_072:
+  id: 72
+  name: Purkinje cells - peak of neurogenesis
+  in_model: 1
+event_073:
+  id: 73
+  name: raphe complex - peak of neurogenesis
+  in_model: 1
+event_074:
+  id: 74
+  name: rapid axon generation in optic nerve - start of neurogenesis
+  in_model: 1
+event_075:
+  id: 75
+  name: rapid axon loss in optic nerve ends
+  in_model: 1
+event_076:
+  id: 76
+  name: red nucleus - peak of neurogenesis
+  in_model: 1
+event_077:
+  id: 77
+  name: reticular nuclei - peak of neurogenesis
+  in_model: 1
+event_078:
+  id: 78
+  name: retinal amacrine cells - peak of neurogenesis
+  in_model: 1
+event_079:
+  id: 79
+  name: retinal bipolar cells - peak of neurogenesis
+  in_model: 1
+event_080:
+  id: 80
+  name: retinal bipolar cells - peak of neurogenesis
+  in_model: 1
+event_081:
+  id: 81
+  name: retinal ganglion cell generation - end of neurogenesis
+  in_model: 1
+event_082:
+  id: 82
+  name: retinal ganglion cell generation - peak of neurogenesis
+  in_model: 1
+event_083:
+  id: 83
+  name: retinal ganglion cell generation - start of neurogenesis
+  in_model: 1
+event_084:
+  id: 84
+  name: retinal ganglion cell generation - start of neurogenesis
+  in_model: 1
+event_085:
+  id: 85
+  name: retinal horizontal cells - peak of neurogenesis
+  in_model: 1
+event_086:
+  id: 86
+  name: rods - peak of neurogenesis
+  in_model: 1
+event_087:
+  id: 87
+  name: septal nuclei - peak of neurogenesis
+  in_model: 1
+event_088:
+  id: 88
+  name: stria medullaris thalami appears
+  in_model: 1
+event_089:
+  id: 89
+  name: stria terminalis appears
+  in_model: 1
+event_090:
+  id: 90
+  name: subiculum - peak of neurogenesis
+  in_model: 1
+event_091:
+  id: 91
+  name: subplate - end of neurogenesis
+  in_model: 1
+event_092:
+  id: 92
+  name: subplate - peak of neurogenesis
+  in_model: 1
+event_093:
+  id: 93
+  name: subplate - start of neurogenesis
+  in_model: 1
+event_094:
+  id: 94
+  name: substantia nigra - peak of neurogenesis
+  in_model: 1
+event_095:
+  id: 95
+  name: superficial SC - start of lamination
+  in_model: 1
+event_096:
+  id: 96
+  name: superficial SC laminae - end of neurogenesis
+  in_model: 1
+event_097:
+  id: 97
+  name: superficial SC laminae - start of neurogenesis
+  in_model: 1
+event_098:
+  id: 98
+  name: superior colliculus - peak of neurogenesis
+  in_model: 1
+event_099:
+  id: 99
+  name: suprachisamatic nucleus - peak of neurogenesis
+  in_model: 1
+event_100:
+  id: 100
+  name: tufted cells - peak of neurogenesis
+  in_model: 1
+event_101:
+  id: 101
+  name: vestibular nuclei - peak of neurogenesis
+  in_model: 1
+event_102:
+  id: 102
+  name: visual cortical axons in SC
+  in_model: 1
+event_103:
+  id: 103
+  name: vLGN - peak of neurogenesis
+  in_model: 1
+event_104:
+  id: 104
+  name: VP and VB nuclei - peak of neurogenesis
+  in_model: 1

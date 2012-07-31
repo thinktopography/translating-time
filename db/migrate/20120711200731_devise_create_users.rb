@@ -3,6 +3,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       t.string :first_name, :last_name
       t.string :email,              :null => false, :default => ""
+      t.references :role
+      t.boolean :change_password, :null => false, :default => 0
       t.string :encrypted_password, :null => false, :default => ""
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
