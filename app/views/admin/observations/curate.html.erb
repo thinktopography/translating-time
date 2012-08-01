@@ -1,0 +1,54 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Curate Observations</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <div class="grid" id="locations_grid">
+    <div class="grid-prefix">
+      <label>Species:</label>
+      <select>
+        <% @specieses.each do |species| %>
+          <option value="<%= species.id %>"><%= species.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="grid-header">
+      <h2>Observation Curation</h2>
+    </div>
+    <div class="grid-body">
+      <table>
+        <thead>
+          <tr>
+            <th width="30%">Event</th>
+            <% width = 70 / @users.count %>
+            <% @users.each do |user| %>
+              <th width="<%= width %>%"><%= user.full_name %></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <th><%= event.name %></th>
+              <% @users.each do |user| %>
+                <% if @grid.has_key?(event.id) && @grid[event.id].has_key?(user.id) %>
+                  <% observation = @grid[event.id][user.id] %>
+                  <td>
+                    <label>
+                      <%= radio_button_tag "observations[#{observation.species_id}][#{observation.user_id}]", observation.id, observation.is_active %><br />
+                      <%= observation.value %></td>
+                    </label>
+                <% else %>
+                  <td>&nbsp;</td>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>          
+      </table>
+    </div>
+    <div class="grid-footer">
+    </div>
+  </div>
+<% end -%>

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :role_id, :password, :password_confirmation, :remember_me
   
   belongs_to :role
+  has_many :observations
   
   validates_presence_of :first_name, :last_name, :email, :role_id
   validates_uniqueness_of :email

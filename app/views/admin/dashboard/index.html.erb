@@ -13,20 +13,24 @@
         <li><%= link_to 'Manage Methods', admin_methods_path %></li>
         <li><%= link_to 'Manage Processes', admin_processes_path %></li>
         <li><%= link_to 'Manage Species', admin_species_index_path %></li>
+        <li><%= link_to 'Manage Taxonomies', admin_taxonomies_path %></li>
       </ul>
     </section>
   <% end %>
   
-  <% if current_user.is_editor? %>
-    <section>
-      <h2>Observations</h2>
-      <ul>
+  <section>
+    <h2>Observations</h2>
+    <ul>
+      <% if current_user.is_editor? %>
         <li><%= link_to 'Manage Citations', admin_citations_path %></li>
         <li><%= link_to 'Manage Observations', admin_observations_path %></li>
-      </ul>
-    </section>
-  <% end %>
-  
+      <% end %>
+      <% if current_user.is_publisher? %>
+        <li><%= link_to 'Curate Observations', curate_admin_observations_path %></li>
+      <% end %>
+    </ul>
+  </section>
+
   <% if current_user.is_admin? %>
     <section>
       <h2>Administration</h2>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120730183204) do
+ActiveRecord::Schema.define(:version => 20120801125046) do
 
   create_table "citations", :force => true do |t|
     t.text     "body"
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(:version => 20120730183204) do
     t.date     "date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "classifications", :id => false, :force => true do |t|
+    t.integer "taxonomy_id"
+    t.integer "species_id"
   end
 
   create_table "events", :force => true do |t|
@@ -58,9 +63,11 @@ ActiveRecord::Schema.define(:version => 20120730183204) do
     t.integer  "event_id"
     t.integer  "species_id"
     t.integer  "method_id"
+    t.integer  "user_id"
     t.decimal  "value",       :precision => 4, :scale => 1
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.boolean  "is_active",                                 :default => false, :null => false
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
   end
 
   create_table "processes", :force => true do |t|
@@ -86,6 +93,13 @@ ActiveRecord::Schema.define(:version => 20120730183204) do
     t.boolean  "in_model"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
+  end
+
+  create_table "taxonomies", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

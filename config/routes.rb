@@ -10,9 +10,12 @@ Translatingtime::Application.routes.draw do
     resources :events
     resources :locations
     resources :methods
-    resources :observations
+    resources :observations do
+      get :curate, :on => :collection
+    end
     resources :processes
     resources :species
+    resources :taxonomies
     resources :users do
       get :reset, :on => :member
     end
