@@ -3,7 +3,7 @@ class Admin::EventsController < Admin::ApplicationController
   before_filter :is_admin?
 
   def index
-    @events = Event.all
+    @events = Event.order('name ASC').all
   end
 
   def new
