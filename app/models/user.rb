@@ -35,13 +35,13 @@ class User < ActiveRecord::Base
   def welcome
     set_temp_password
     self.save
-    #Notification.welcome(self).deliver!
+    Notification.welcome(self).deliver!
   end
 
   def reset_password
     set_temp_password
     self.save
-    #Notification.reset(self).deliver!
+    Notification.reset(self).deliver!
   end
   
   private

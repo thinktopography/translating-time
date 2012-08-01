@@ -1,16 +1,20 @@
 <% content_for :main do %>
-
-  <h2>Forgot your password?</h2>
-  
-  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-    <%= devise_error_messages! %>
-  
-    <div><%= f.label :email %><br />
-    <%= f.email_field :email %></div>
-  
-    <div><%= f.submit "Send me reset password instructions" %></div>
-  <% end %>
-  
+  <div class="form">
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+      <div class="form-header">
+        <h2>Forgot your password?</h2>
+      </div>
+      <div class="form-body">
+        <dl>
+          <%= f.email_field_control resource, :email %>
+        </dl>
+      </div>
+      <div class="form-footer">
+        <ul>
+          <li><%= f.submit "Send me reset password instructions" %></li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
   <%= render :partial => "devise/shared/links" %>
-
 <% end -%>

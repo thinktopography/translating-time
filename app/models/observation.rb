@@ -8,7 +8,7 @@ class Observation < ActiveRecord::Base
   belongs_to :species
   belongs_to :user
 
-  validates_presence_of :event_id, :species_id, :value #:citation_id, :method_id, 
+  validates_presence_of :event_id, :species_id, :citation_id, :method_id, :value
   validates_uniqueness_of :species_id, :scope => [:event_id, :user_id], :message => 'You have already created an observation for this species and event'
   validates_uniqueness_of :event_id, :scope => [:species_id, :user_id], :message => 'You have already created an observation for this species and event'
   

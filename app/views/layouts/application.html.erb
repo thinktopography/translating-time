@@ -9,7 +9,7 @@
 <body>
 
 <header>
-  <h1>Translating Time</h1>
+  <h1><%= link_to "Translating Time", admin_dashboard_path %></h1>
   <% if user_signed_in? -%>
     <presence>
       <strong><%= current_user.full_name -%></strong>

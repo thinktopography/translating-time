@@ -32,13 +32,13 @@ ActiveRecord::Schema.define(:version => 20120801125046) do
   end
 
   create_table "events", :force => true do |t|
+    t.integer  "location_id"
+    t.integer  "process_id"
     t.string   "name"
     t.string   "code"
     t.text     "description"
     t.decimal  "scale",       :precision => 8, :scale => 6
     t.boolean  "in_model"
-    t.integer  "location_id"
-    t.integer  "pro_id"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
   end

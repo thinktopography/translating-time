@@ -13,6 +13,7 @@ class Admin::UsersController < Admin::ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      sign_in(@user, :bypass => true) if(@user.id == current_user.id)
       flash[:success] = 'The user was successfully created'
       redirect_to admin_users_path
     else

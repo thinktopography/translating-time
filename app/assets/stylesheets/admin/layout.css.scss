@@ -1,6 +1,7 @@
 header {
   display: block; background: #CCC; padding: 20px; height: 22px;
   h1 { float: left; clear: both; height: 22px; }
+  h1 a { color: #000 !important; }
   presence {
     float: right; position: relative;
     strong { display: block; background: url(/assets/dropdown.png) no-repeat 80px 13px; padding: 5px 20px 5px 10px; height: 30px; cursor: pointer; }

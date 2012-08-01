@@ -15,7 +15,7 @@ class Admin::ProcessesController < Admin::ApplicationController
     if @process.save
       flash[:success] = 'The process was successfully created'
       redirect_to new_admin_process_path if params[:commit] == 'Save and Continue'
-      redirect_to admin_processs_path    if params[:commit] == 'Save and Finish'
+      redirect_to admin_processes_path    if params[:commit] == 'Save and Finish'
     else
       flash[:error] = 'There were problems with your input'
       render :action => 'new'

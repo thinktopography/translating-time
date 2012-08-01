@@ -11,11 +11,15 @@
 
 </dl>
 
-<h2>Classifications</h2>
+<% if Taxonomy.roots.count > 0 %>
 
-<dl>
-  <% Taxonomy.roots.each do |taxonomy| %>
-    <dt><label><%= taxonomy.name %></label></dt>
-    <dd><%= select_tag "species[taxonomy_ids][]", options_from_collection_for_select(taxonomy.children, :id, :name, @species.taxonomy_ids.include?(:id)), :include_blank => true %></dd>
-  <% end %>
-</dl>
+  <h2>Classifications</h2>
+  
+  <dl>
+    <% Taxonomy.roots.each do |taxonomy| %>
+      <dt><label><%= taxonomy.name %></label></dt>
+      <dd><%= select_tag "species[taxonomy_ids][]", options_from_collection_for_select(taxonomy.children, :id, :name, @species.taxonomy_ids.include?(:id)), :include_blank => true %></dd>
+    <% end %>
+  </dl>
+
+<% end %>

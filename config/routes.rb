@@ -16,6 +16,7 @@ Translatingtime::Application.routes.draw do
     resources :processes
     resources :species
     resources :taxonomies
+    resources :passwords
     resources :users do
       get :reset, :on => :member
     end
