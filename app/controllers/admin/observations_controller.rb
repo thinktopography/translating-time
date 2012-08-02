@@ -5,8 +5,8 @@ class Admin::ObservationsController < Admin::ApplicationController
   def index
     params[:type] ||= 'list'
     @observations = current_user.observations
-    @species = Species.all
-    @events = Event.all
+    @species = Species.order("name ASC").all
+    @events = Event.order("name ASC").all
     @grid = {}
     @observations.each do |observation|
       @grid[observation.species_id] = {} if @grid[observation.species_id].blank?

@@ -19,7 +19,7 @@ vi /etc/httpd/conf.d/virtual.conf
 vi /etc/httpd/conf.d/website.conf
 service httpd restart
 
-service mysql restart
+service mysqld restart
 echo "GRANT USAGE ON *.* TO 'root'@'%' IDENTIFIED BY 'tr@nsl@tion';" | mysql -u root
 echo "CREATE DATABASE production;" | mysql -u root
 echo "GRANT ALL ON production.* TO 'translation'@'%' IDENTIFIED BY 'tr@nsl@tion';" | mysql -u root

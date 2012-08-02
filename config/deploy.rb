@@ -19,6 +19,8 @@ namespace :deploy do
     ["smtp","aws","database"].each do |config|
       command += "ln -s #{shared_path}/#{config}.yml #{latest_release}/config/#{config}.yml;"
     end
+    command += "cd #{latest_release};"
+    command += "rake assets:precompile;"
     run(command)
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
