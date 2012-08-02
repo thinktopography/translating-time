@@ -18,7 +18,7 @@
   <dl>
     <% Taxonomy.roots.each do |taxonomy| %>
       <dt><label><%= taxonomy.name %></label></dt>
-      <dd><%= select_tag "species[taxonomy_ids][]", options_from_collection_for_select(taxonomy.children, :id, :name, @species.taxonomy_ids.include?(:id)), :include_blank => true %></dd>
+      <dd><%= select_tag "species[taxonomy_ids][]", options_from_collection_for_select(taxonomy.children.order("name ASC"), :id, :name, @species.taxonomy_ids), :include_blank => true %></dd>
     <% end %>
   </dl>
 

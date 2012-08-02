@@ -6,9 +6,9 @@ class Admin::ApplicationController < ApplicationController
   private
     
     def change_password
-      if user_signed_in? && current_user.change_password && !['password'].include?(self.controller_name)
+      if user_signed_in? && current_user.change_password && !['passwords'].include?(self.controller_name)
         session["user_return_to"] = request.env["REQUEST_PATH"]
-        redirect_to new_admin_password_path
+        redirect_to edit_admin_password_path
       end
     end
     

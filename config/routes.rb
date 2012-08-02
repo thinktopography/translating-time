@@ -6,6 +6,7 @@ Translatingtime::Application.routes.draw do
 
   match 'admin' => "admin/dashboard#index", :as => :admin_dashboard
   namespace :admin do 
+    resource :account
     resources :citations
     resources :events
     resources :locations
@@ -16,7 +17,7 @@ Translatingtime::Application.routes.draw do
     resources :processes
     resources :species
     resources :taxonomies
-    resources :passwords
+    resource :password
     resources :users do
       get :reset, :on => :member
     end

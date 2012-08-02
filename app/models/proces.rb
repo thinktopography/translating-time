@@ -4,6 +4,5 @@ class Proces < ActiveRecord::Base
   
   attr_accessible :name, :code, :value, :description
 
-  validates_presence_of :name, :code, :value
-
+  validates_presence_of :name
 end

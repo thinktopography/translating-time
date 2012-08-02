@@ -1,5 +1,5 @@
-class Admin::PasswordsController < Admin::ApplicationController
-
+class Admin::AccountsController < Admin::ApplicationController
+  
   def edit
     @user = current_user
   end
