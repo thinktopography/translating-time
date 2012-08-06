@@ -4,46 +4,55 @@
 <% end -%>
 
 <% content_for :main do %>
-  <div class="grid">
-    <div class="grid-header">
-      <h2>Events</h2>
-      <ul>
-        <li><%= link_to "+ Add New", new_admin_event_path %></li>
-      </ul>
-    </div>
-    <div class="grid-body">
-      <table>
-        <thead>
-          <tr>
-            <th width="70%">Event</th>
-            <th width="20%">Code</th>
-            <th width="10%">In Model</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% unless @events.empty? %>
-            <% @events.each do |event| -%>
-              <tr class="<%= cycle('odd', 'even') %>">
-                <td><%= link_to event.name, edit_admin_event_path(event) %></td>
-                <td><%= event.code %></td>
-                <td>
-                  <% if event.in_model %>
-                    <span class="yes">YES</span>
-                  <% else %>
-                    <span class="no">NO</span>
-                  <% end %>
-                </td>
+  <% form_tag batch_admin_events_path do |f| %>
+    <div class="grid">
+      <div class="grid-header">
+        <div class="actions">
+          <select name="type">
+            <option>Choose an Action</option>
+            <option value="destroy">Delete</option>
+          </select>
+        </div>
+        <ul>
+          <li><%= link_to "+ Add New", new_admin_event_path %></li>
+        </ul>
+      </div>
+      <div class="grid-body">
+        <table>
+          <thead>
+            <tr>
+              <th width="3%"><%= check_box_tag 'checkall' %></th>
+              <th width="67%">Event</th>
+              <th width="20%">Code</th>
+              <th width="10%">In Model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% unless @events.empty? %>
+              <% @events.each do |event| -%>
+                <tr class="<%= cycle('odd', 'even') %>">
+                  <td><%= check_box_tag 'item[]', event.id %></td>
+                  <td><%= link_to event.name, edit_admin_event_path(event) %></td>
+                  <td><%= event.code %></td>
+                  <td>
+                    <% if event.in_model %>
+                      <span class="yes">YES</span>
+                    <% else %>
+                      <span class="no">NO</span>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end -%>
+            <% else -%>
+              <tr>
+                <td colspan="4">There are no events</td>
               </tr>
             <% end -%>
-          <% else -%>
-            <tr>
-              <td colspan="3">There are no events</td>
-            </tr>
-          <% end -%>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid-footer">
+      </div>
     </div>
-    <div class="grid-footer">
-    </div>
-  </div>
+  <% end -%>
 <% end -%>

@@ -5,6 +5,19 @@ class Admin::EventsController < Admin::ApplicationController
   def index
     @events = Event.order('name ASC').all
   end
+  
+  def batch
+    unless params[:item].nil?
+      if ['destroy'].include?(params[:type])
+        params[:item].each do |id|
+          event = Event.find(id)
+          event.send(params[:type])
+        end
+      end
+      flash[:success] = "This batch operation was successfully performed."
+    end
+    redirect_to admin_events_path
+  end
 
   def new
     @event = Event.new

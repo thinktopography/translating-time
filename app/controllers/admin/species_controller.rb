@@ -5,6 +5,19 @@ class Admin::SpeciesController < Admin::ApplicationController
   def index
     @species = Species.all
   end
+
+  def batch
+    unless params[:item].nil?
+      if ['destroy'].include?(params[:type])
+        params[:item].each do |id|
+          species = Species.find(id)
+          species.send(params[:type])
+        end
+      end
+      flash[:success] = "This batch operation was successfully performed."
+    end
+    redirect_to admin_species_index_path
+  end
   
   def new
     @species = Species.new

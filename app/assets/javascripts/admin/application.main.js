@@ -2,6 +2,7 @@ Application = { }
 
 Application.Init = function() {
   Application.Form.Init();
+  Application.Grid.Init();
   Application.Menu.Init();
 }
 

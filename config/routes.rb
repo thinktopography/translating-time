@@ -8,14 +8,18 @@ Translatingtime::Application.routes.draw do
   namespace :admin do 
     resource :account
     resources :citations
-    resources :events
+    resources :events do
+      post :batch, :on => :collection
+    end
     resources :locations
     resources :methods
     resources :observations do
       get :curate, :on => :collection
     end
     resources :processes
-    resources :species
+    resources :species do
+      post :batch, :on => :collection
+    end
     resources :taxonomies
     resource :password
     resources :users do
