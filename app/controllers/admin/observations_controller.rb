@@ -50,12 +50,34 @@ class Admin::ObservationsController < Admin::ApplicationController
     @observations = @species.observations
     @specieses = Species.all
     @events = Event.all
-    @users = User.all
+    @users = User.observers.all
     @grid = {}
     @observations.each do |observation|
       @grid[observation.event_id] = {} if @grid[observation.event_id].blank?
       @grid[observation.event_id][observation.user_id] = observation
     end
+  end
+  
+  def adjust
+    @observation = Observation.find(params[:id])
+    Observation.update_all({ :is_active => 0 }, { :event_id => @observation.event_id, :species_id => @observation.species_id })
+    @observation.is_active = 1
+    @observation.save
+    render :text => ''
+  end
+  
+  def export
+    params[:type] ||= 'list'
+    @observations = current_user.observations
+    @species = Species.order("name ASC").all
+    @events = Event.order("name ASC").all
+    @grid = {}
+    Observation.active.each do |observation|
+      @grid[observation.species_id] = {} if @grid[observation.species_id].blank?
+      @grid[observation.species_id][observation.event_id] = observation.value
+    end
+    send_data(render_to_string('export'), :filename => "export-#{Time.now.strftime("%y-%m-%d")}.txt", :type => "application/text", :disposition => "inline")
+
   end
 
 end

@@ -14,7 +14,9 @@ Translatingtime::Application.routes.draw do
     resources :locations
     resources :methods
     resources :observations do
+      get :export, :on => :collection
       get :curate, :on => :collection
+      get :adjust, :on => :member
     end
     resources :processes
     resources :species do

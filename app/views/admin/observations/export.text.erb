@@ -1,0 +1,4 @@
+        <% @species.each do |species| %><%= species.code.pad(6, '0') %>  <% end %>
+<% @events.each do |event| %><%= event.code.pad(6, '0') %>  <% @species.each do |species| %><%= (@grid[species.id][event.id].nil?) ? '    . ' : number_with_precision(@grid[species.id][event.id], :precision => 1).pad(6, ' ') %>  <% end %>
+<% end %>
+

@@ -4,13 +4,11 @@
 <% end -%>
 
 <% content_for :main do %>
-  <div class="grid" id="locations_grid">
+  <div class="grid" id="curation_grid">
     <div class="grid-prefix">
       <label>Species:</label>
       <select>
-        <% @specieses.each do |species| %>
-          <option value="<%= species.id %>"><%= species.name %></option>
-        <% end %>
+        <%= options_from_collection_for_select(@specieses, :id, :name, params[:species_id]) %>
       </select>
     </div>
     <div class="grid-header">
@@ -20,23 +18,23 @@
       <table>
         <thead>
           <tr>
-            <th width="30%">Event</th>
-            <% width = 70 / @users.count %>
+            <th>Event</th>
             <% @users.each do |user| %>
-              <th width="<%= width %>%"><%= user.full_name %></th>
+              <th width="50"><%= user.full_name %></th>
             <% end %>
           </tr>
         </thead>
         <tbody>
           <% @events.each do |event| %>
+            <% curated = event.observations.where(:species_id => params[:species_id]).active.first %>
             <tr>
               <th><%= event.name %></th>
               <% @users.each do |user| %>
                 <% if @grid.has_key?(event.id) && @grid[event.id].has_key?(user.id) %>
                   <% observation = @grid[event.id][user.id] %>
                   <td>
-                    <label>
-                      <%= radio_button_tag "observations[#{observation.species_id}][#{observation.user_id}]", observation.id, observation.is_active %><br />
+                    <label class="<%= (observation.is_active) ? "active" : "" %>">
+                      <%= radio_button_tag "observations[#{observation.event_id}][#{observation.species_id}]", observation.id, observation.is_active %>
                       <%= observation.value %></td>
                     </label>
                 <% else %>

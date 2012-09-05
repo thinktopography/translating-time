@@ -28,6 +28,9 @@
       <% if current_user.is_publisher? %>
         <li><%= link_to 'Curate Observations', curate_admin_observations_path %></li>
       <% end %>
+      <% if current_user.is_admin? %>
+        <li><%= link_to 'Export Observations', export_admin_observations_path(:format => 'txt') %></li>
+      <% end %>
     </ul>
   </section>
 

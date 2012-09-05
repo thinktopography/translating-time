@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   
   after_create :welcome
   
+  scope :observers, joins("INNER JOIN observations ON (observations.user_id = users.id)").group('users.id')
+  
   def full_name
     "#{first_name} #{last_name}"
   end

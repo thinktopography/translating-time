@@ -14,6 +14,8 @@ class Observation < ActiveRecord::Base
   
   before_create :set_activity
   
+  scope :active, where(:is_active => 1)
+  
   private
   
     def set_activity

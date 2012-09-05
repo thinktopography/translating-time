@@ -41,9 +41,26 @@ div.grid {
     thead th { background-color: #DDDDDD;  }
     td span.yes { background: url(/assets/check.png) no-repeat center; display: block; text-indent: -9999px; }
     td span.no { display: block; text-indent: -9999px; }
+    th.curated {
+      background-color: #FFC;
+      h2 { text-align: right; color: #666; }
+    }
     tbody td.subitem { padding: 5px 5px 5px 20px; }
   }
   div.grid-footer {}
+}
+
+div#curation_grid {
+  div.grid-body {
+    thead th { vertical-align: bottom; text-align: center; }
+    tbody td { vertical-align: middle; text-align: center; }
+    input[type="radio"] { display: none; }
+    label {
+      display: block; cursor: pointer; padding: 5px;
+      &.active { background: #FFC; font-weight: bold; }
+    }
+    td { padding: 0; }
+  }
 }
 
 
