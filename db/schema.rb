@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120801125046) do
+ActiveRecord::Schema.define(:version => 20120906163950) do
 
   create_table "citations", :force => true do |t|
     t.text     "body"
@@ -29,6 +29,22 @@ ActiveRecord::Schema.define(:version => 20120801125046) do
   create_table "classifications", :id => false, :force => true do |t|
     t.integer "taxonomy_id"
     t.integer "species_id"
+  end
+
+  create_table "errors", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "species_id"
+    t.decimal  "value",      :precision => 7, :scale => 5
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
+  create_table "estimates", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "species_id"
+    t.decimal  "value",      :precision => 4, :scale => 3
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
   create_table "events", :force => true do |t|

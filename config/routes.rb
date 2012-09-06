@@ -11,6 +11,14 @@ Translatingtime::Application.routes.draw do
     resources :events do
       post :batch, :on => :collection
     end
+    resources :errors do
+      get :import, :on => :collection
+      post :import, :on => :collection
+    end
+    resources :estimates do
+      get :import, :on => :collection
+      post :import, :on => :collection
+    end
     resources :locations
     resources :methods
     resources :observations do

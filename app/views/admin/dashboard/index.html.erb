@@ -28,11 +28,19 @@
       <% if current_user.is_publisher? %>
         <li><%= link_to 'Curate Observations', curate_admin_observations_path %></li>
       <% end %>
-      <% if current_user.is_admin? %>
-        <li><%= link_to 'Export Observations', export_admin_observations_path(:format => 'txt') %></li>
-      <% end %>
     </ul>
   </section>
+
+  <% if current_user.is_admin? %>
+    <section>
+      <h2>Data Processing</h2>
+      <ul>
+        <li><%= link_to 'Export Observations', export_admin_observations_path(:format => 'txt') %></li>
+        <li><%= link_to 'Manage Estimates', admin_estimates_path %></li>
+        <li><%= link_to 'Manage Standard Errors', admin_errors_path %></li>
+      </ul>
+    </section>
+  <% end %>
 
   <% if current_user.is_admin? %>
     <section>
