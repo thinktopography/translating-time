@@ -1,0 +1,21 @@
+@mixin rounded($tl, $tr, $br, $bl) {
+  -moz-border-radius: $tl $tr $br $bl;
+  -webkit-border-radius: $tl $tr $br $bl;
+  border-radius: $tl $tr $br $bl;
+}
+
+div.site {
+  margin: 0 auto; width: 960px;
+  div.header {
+    h1 { display: block; width: 960px; height: 97px; text-indent: -9999px; background: url(/assets/header.jpg) no-repeat center 0; }
+  }
+  div.body { background: #DBDBDD url(/assets/body.png) repeat-y 0 0; @include rounded(10,10,10,10); overflow: hidden; margin: 0 0 10px; }
+  div.sidebar {
+    float: left; width: 300px;
+    ul { width: 220px; }
+    a { font-size: 16px; line-height: 36px; color: #444;background: url(/assets/divider.jpg) no-repeat 0 bottom; padding: 5px 10px 10px 20px; display:block; width: 220px; }
+  }
+  div.content { float: right; width: 660px; }
+  div.inner { padding: 20px; }
+  div.footer { clear: both; text-align: center; }
+}

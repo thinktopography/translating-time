@@ -33,6 +33,14 @@
 
   <% if current_user.is_admin? %>
     <section>
+      <h2>Website</h2>
+      <ul>
+        <li><%= link_to 'Manage Pages', admin_pages_path %></li>
+        <li><%= link_to 'Manage Menu', admin_items_path %></li>
+      </ul>
+    </section>
+
+    <section>
       <h2>Data Processing</h2>
       <ul>
         <li><%= link_to 'Export Observations', export_admin_observations_path(:format => 'txt') %></li>

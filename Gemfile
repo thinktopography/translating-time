@@ -7,6 +7,8 @@ gem 'paperclip', '2.3.16'
 gem 'devise'
 gem 'exception_notification'
 gem 'aws-s3'
+gem 'will_paginate'
+gem 'tinymce-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

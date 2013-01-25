@@ -1,0 +1,16 @@
+<%= tinymce_assets %>
+
+<dl>
+
+  <%= f.text_field_control @page, :title , { :class => 'required' } %>
+
+  <%= f.permalink_field_control @page, :permalink, { :class => 'required' }, {}, { :prefix => 'http://translatingtime.org'} %>
+  
+  <%= f.text_area_control @page, :body, {}, { :class => "tinymce" } %>
+  <%= tinymce %>
+
+  <%= f.text_field_control @page, :meta_keywords, { :text => 'Keywords' } %>
+
+  <%= f.text_field_control @page, :meta_description, { :text => 'Description' } %>
+  
+</dl>

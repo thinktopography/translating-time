@@ -1,0 +1,22 @@
+<% content_for :breadcrumbs do %>
+  <%= link_to 'Admin', admin_url %> &raquo
+  <%= link_to 'Pages', admin_pages_url %> &raquo
+  <strong>Delete Page</strong>
+<% end %>
+
+<% content_for :main do %>
+
+  <div class="form-delete">
+  
+    <% form_for @page, :url => admin_page_url(@page.id), :html => { :method => 'delete' } do |f| %>
+    
+      <p><strong>Are you sure you want to delete this page?</strong> There is no undo!</p>
+    
+      <%= f.submit "Delete Page", { :class => "button" } %> or
+      <%= link_to 'Cancel', admin_pages_url %>  
+    
+    <% end %>
+    
+  </div>
+
+<% end %>

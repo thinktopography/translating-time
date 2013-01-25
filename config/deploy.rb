@@ -16,7 +16,7 @@ namespace :deploy do
   task :stop do ; end
   task :config do
     command = ""
-    ["smtp","aws","database"].each do |config|
+    ["smtp","aws","database","tinymce"].each do |config|
       command += "ln -s #{shared_path}/#{config}.yml #{latest_release}/config/#{config}.yml;"
     end
     command += "cd #{latest_release};"

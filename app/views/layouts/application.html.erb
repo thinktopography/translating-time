@@ -2,57 +2,37 @@
 <html>
 <head>
   <title>Translating Time</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag  "site", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<header>
-  <h1><%= link_to "Translating Time", admin_dashboard_path %></h1>
-  <% if user_signed_in? -%>
-    <presence>
-      <strong><%= current_user.full_name -%></strong>
-      <ul>
-        <li><%= link_to 'Settings', edit_admin_account_path %></li>
-        <li><%= link_to 'Sign Out', destroy_user_session_path %></li>
-      </ul>
-      
-    </presence>
-  <% end -%>
-</header>
-
-<% unless yield(:breadcrumbs).blank? %>
-  <breadcrumbs>
-    <%= yield :breadcrumbs %>
-  </breadcrumbs>
-<% end %>
-
-<application>
-  <%= render '/layouts/flash' %>
-  <div class="main">
-    <div class="inner">
-      <div class="panel" style="display: none;"></div>
-      <%= yield :main %>
-    </div>
+<div class="site">
+  <div class="header">
+    <h1>Translating Time</h1>
   </div>
-  <% unless yield(:sidebar).blank? %>
+  <div class="body">
+    <%= render '/layouts/flash' %>
     <div class="sidebar">
       <div class="inner">
-        <div class="container">
-          <%= yield :sidebar %>
-        </div>
+        <ul>
+          <% @items.each do |item| %>
+            <li><%= link_to item.title, item.url %></li>
+          <% end  %>
+        </ul>
       </div>
     </div>
-  <% end %>
-  <% unless yield(:content).blank? %>
     <div class="content">
       <div class="inner">
         <%= yield(:content) %>
       </div>
     </div>
-  <% end %>
-</application>
+  </div>
+  <div class="footer">
+    <p>Copyright © <%= Date.today.strftime("%Y") %> Translating Time </p>
+  </div>
+</div>
 
 </body>
 </html>

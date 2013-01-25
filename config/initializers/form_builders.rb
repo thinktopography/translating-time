@@ -3,6 +3,14 @@ class ActionView::Helpers::FormBuilder
   include ActiveSupport::Configurable
   include ActionView::Helpers::UrlHelper 
   include ActionView::Helpers::AssetTagHelper
+  include ActionView::Helpers::NumberHelper 
+  
+  def money_field(attribute, field_options = {})
+    value = self.object.send(attribute)
+    field_options[:class] = 'money'
+    field_options[:value] = (value == 0) ? '' : number_with_precision(value, :precision => 2)
+    self.text_field(attribute, field_options)
+  end
   
   def date_field_control(object, attribute, label_options = {}, field_options = {}, control_options = {})
     field_options[:class] = 'datepicker'
@@ -70,33 +78,18 @@ class ActionView::Helpers::FormBuilder
 
   def file_field_control(object, attribute, label_options = {}, field_options = {}, control_options = {})
     field = self.file_field(attribute, field_options)
+    unless object.send("#{attribute}_file_name").blank?
+      control_options[:before] = object.send("#{attribute}_file_name") + ' [ '+self.check_box(:delete_asset)+' remove ]<br />'
+    end
     input_control(object, attribute, label_options, field, control_options)
   end
   
-  def contact_field_control(object, attribute, label_options = {}, field_options = {}, control_options = {})
-    contact = control_options[:contact]
-    id = (!contact.blank?) ? contact.id : ''
-    name = (!contact.blank?) ? contact.name : ''
-    image = (!contact.blank?) ? path_to_image(contact.thumbnail_path(:medium)) : ''
-    self.text_field_control object, attribute, label_options, { :class => 'combobox', 'data-id' => id, 'data-name' => name, 'data-image' => image, 'data-url' => "/autocomplete/contacts", 'data-placeholder' => 'Find a Contact...' }, control_options
-  end
-  
-  def project_field_control(object, attribute, label_options = {}, field_options = {}, control_options = {})
-    project = control_options[:project]
-    id = (!project.blank?) ? project.id : ''
-    name = (!project.blank?) ? project.name : ''
-    image = (!project.blank?) ? path_to_image(project.client.thumbnail_path(:medium)) : ''
-    self.text_field_control object, attribute, label_options, { :class => 'combobox', 'data-id' => id, 'data-name' => name, 'data-image' => image, 'data-url' => "/autocomplete/projects", 'data-placeholder' => 'Find a Project...' }, control_options
-  end
-  
-  def deal_field_control(object, attribute, label_options = {}, field_options = {}, control_options = {})
-    deal = control_options[:deal]
-    id = (!deal.blank?) ? deal.id : ''
-    name = (!deal.blank?) ? deal.name : ''
-    image = (!deal.blank?) ? path_to_image(deal.customer.thumbnail_path(:medium)) : ''
-    self.text_field_control object, attribute, label_options, { :class => 'combobox', 'data-id' => id, 'data-name' => name, 'data-image' => image, 'data-url' => "/autocomplete/deals", 'data-placeholder' => 'Find a Deal...' }, control_options
-  end
-  
+  def permalink_field_control(object, attribute, label_options = {}, field_options = {}, control_options = {})
+    control_options[:before] = '<div class="permalink '+((object.send(attribute).blank?) ? '' : ' exists')+'">'
+    field = control_options[:prefix] +'/' + self.text_field(attribute, control_options)
+    control_options[:after] = '</div>'
+    input_control(object, attribute, label_options, field, control_options)
+  end  
   
   private
   

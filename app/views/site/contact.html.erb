@@ -1,0 +1,29 @@
+<% content_for :content do %>
+
+  <%= form_for @inquiry, { :url => contact_path } do |f| -%>
+
+    <div class="form">
+      <div class="form-header">
+        <h2>Feedback</h2>
+      </div>
+      <div class="form-body">
+        <dl>
+          <%= f.text_field_control @inquiry, :name %>
+      
+          <%= f.text_field_control @inquiry, :affiliation %>
+          
+          <%= f.text_field_control @inquiry, :email %>
+          
+          <%= f.text_area_control @inquiry, :comments %>
+        </dl>
+      </div>
+      <div class="form-footer">
+        <ul>
+          <li><%= f.submit 'Send Feedback', :class => 'button' %></li>
+        </ul>
+      </div>
+    </div>
+    
+  <% end %>
+
+<% end %>

@@ -1,0 +1,25 @@
+<% content_for :content do %>
+
+  <div class="page">
+  
+    <% unless(@page.is_published) %>
+      <div class="flash warning">This page is not currently published!</div>
+    <% end %>
+    
+    <div class="page">
+      <% unless @page.title.blank? %>
+        <h3><%= @page.title %></h3>
+      <% end %>
+      <%= raw(@page.body) %>
+
+      <% if user_signed_in? -%>
+        <% if current_user.is_admin? %>
+          <%= link_to 'edit', edit_admin_page_path(@page.id, :destination => page_path(@page.permalink)) %>
+        <% end %>
+      <% end %>
+
+    </div>
+    
+  </div>
+  
+<% end %>

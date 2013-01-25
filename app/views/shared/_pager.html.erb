@@ -1,0 +1,16 @@
+<% unless collection.empty? -%>
+  <% first = [collection.per_page * (collection.current_page - 1) + 1, collection.total_entries].min %>
+  <% last  = [collection.per_page * collection.current_page, collection.total_entries].min %>
+  <p>
+  	<strong>Showing:</strong>
+		<select>
+      <option value="<%= url_for(params.merge({:records => 50})) %>"<%= (params[:records] == '50') ? ' selected="selected"' : '' %>>50</option>
+      <option value="<%= url_for(params.merge({:records => 100})) %>"<%= (params[:records] == '100') ? ' selected="selected"' : '' %>>100</option>
+      <option value="<%= url_for(params.merge({:records => 250})) %>"<%= (params[:records] == '250') ? ' selected="selected"' : '' %>>250</option>
+      <option value="<%= url_for(params.merge({:records => collection.total_entries})) %>"<%= (params[:records] == collection.total_entries.to_s) ? ' selected="selected"' : '' %>>All</option>
+		</select>
+		<%= first %> to <%= last %> of <%= collection.total_entries %></p>
+  <%= will_paginate collection %>
+<% else -%>
+  <p>&nbsp;</p>
+<% end -%>

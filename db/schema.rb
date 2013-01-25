@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120906163950) do
+ActiveRecord::Schema.define(:version => 20130125170258) do
 
   create_table "citations", :force => true do |t|
     t.text     "body"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(:version => 20120906163950) do
     t.datetime "updated_at",                                :null => false
   end
 
+  create_table "inquiries", :force => true do |t|
+    t.string   "name"
+    t.string   "affiliation"
+    t.string   "email"
+    t.text     "comments"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.string   "code"
@@ -66,6 +75,15 @@ ActiveRecord::Schema.define(:version => 20120906163950) do
     t.text     "description"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
+  end
+
+  create_table "menu_items", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "target"
+    t.integer  "delta"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "methods", :force => true do |t|
@@ -85,6 +103,19 @@ ActiveRecord::Schema.define(:version => 20120906163950) do
     t.datetime "created_at",                                                   :null => false
     t.datetime "updated_at",                                                   :null => false
   end
+
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.string   "permalink"
+    t.boolean  "is_published"
+    t.text     "body"
+    t.string   "meta_keywords"
+    t.string   "meta_description"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "pages", ["permalink"], :name => "index_pages_on_permalink", :unique => true
 
   create_table "processes", :force => true do |t|
     t.string   "name"

@@ -19,12 +19,19 @@ Translatingtime::Application.routes.draw do
       get :import, :on => :collection
       post :import, :on => :collection
     end
+    resources :items do
+      get :delete, :on => :member
+    end
     resources :locations
     resources :methods
     resources :observations do
       get :export, :on => :collection
       get :curate, :on => :collection
       get :adjust, :on => :member
+    end
+    resources :pages do
+      get :batch, :on => :collection
+      get :delete, :on => :member
     end
     resources :processes
     resources :species do
@@ -37,6 +44,8 @@ Translatingtime::Application.routes.draw do
     end
   end
 
-  root :to => "admin/dashboard#index"
+  match 'contact' => 'site#contact', :as => :contact
+  match ':permalink' => 'site#page', :as => :page
+  root :to => "site#page", :permalink => 'home'
 
 end

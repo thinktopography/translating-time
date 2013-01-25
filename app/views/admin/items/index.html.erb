@@ -1,0 +1,43 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Menu</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <div class="grid" id="menuitems">
+    <div class="grid-header">
+      <ul>
+        <li><%= link_to "Add New", new_admin_item_path, :class => 'button' %></li>
+      </ul>
+    </div>
+    <div class="grid-body">
+      <table>
+        <thead>
+          <tr>
+            <th width="45%" colspan="2">Title</th>
+            <th width="45%">Url</th>
+            <th width="10%">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% unless @items.empty? %>
+            <% @items.each do |item| -%>
+              <tr>
+                <td colspan="2" ><%= item.title %></td>
+                <td><%= link_to item.url, item.url, { :target => "_blank" } %></td>
+                <td align="center">
+                  <%= link_to 'edit', edit_admin_item_path(item) %> |
+                  <%= link_to 'delete', delete_admin_item_path(item) %>
+                </td>
+              </tr>
+            <% end -%>
+          <% else -%>
+            <tr>
+              <td colspan="4">There are no items</td>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end -%>
