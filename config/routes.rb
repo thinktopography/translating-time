@@ -44,7 +44,10 @@ Translatingtime::Application.routes.draw do
     end
   end
 
-  match 'contact' => 'site#contact', :as => :contact
+  match 'translate' => 'site#translate', :as => :translate
+  match 'predict' => 'site#predict', :as => :predict
+  match 'tables' => 'site#tables', :as => :tables
+  match 'feedback' => 'site#feedback', :as => :feedback
   match ':permalink' => 'site#page', :as => :page
   root :to => "site#page", :permalink => 'home'
 

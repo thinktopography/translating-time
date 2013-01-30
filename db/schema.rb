@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125170258) do
+ActiveRecord::Schema.define(:version => 20130128201102) do
 
   create_table "citations", :force => true do |t|
     t.text     "body"
@@ -42,9 +42,12 @@ ActiveRecord::Schema.define(:version => 20130125170258) do
   create_table "estimates", :force => true do |t|
     t.integer  "event_id"
     t.integer  "species_id"
-    t.decimal  "value",      :precision => 4, :scale => 3
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.decimal  "low",        :precision => 6, :scale => 1
+    t.decimal  "value",      :precision => 6, :scale => 1
+    t.decimal  "high",       :precision => 6, :scale => 1
+    t.integer  "warning",                                  :default => 0
   end
 
   create_table "events", :force => true do |t|

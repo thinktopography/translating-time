@@ -1,4 +1,6 @@
 class SiteController < ApplicationController
+  
+  before_filter :load_menu
 
   def page
     @items = MenuItem.all
@@ -6,7 +8,7 @@ class SiteController < ApplicationController
     render '404' if @page.nil?
   end
   
-  def contact
+  def feedback
     @inquiry = Inquiry.new
     if request.post?
       @inquiry.attributes = params[:inquiry]
@@ -18,5 +20,12 @@ class SiteController < ApplicationController
       end
     end
   end
+  
+  private
+  
+    def load_menu
+      @items = MenuItem.all
+    end
+    
 
 end

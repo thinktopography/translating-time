@@ -15,13 +15,17 @@ class Admin::EstimatesController < Admin::ApplicationController
   
   def import
     if params[:upload]
-      data = params[:upload][:file].read
-      matrix = Import.new(data, 5, 2).process
-      Estimate.delete_all
-      matrix.each do |event_id, values|
-        values.each do |species_id, value|
-          Estimate.create(:species_id => species_id, :event_id => event_id, :value => value)
-        end
+      if params[:upload][:values]
+        ValueImport.new(params[:upload][:values]).process
+      end
+      if params[:upload][:lows]
+        LowImport.new(params[:upload][:lows]).process
+      end
+      if params[:upload][:highs]
+        HighImport.new(params[:upload][:highs]).process
+      end
+      if params[:upload][:warnings]
+        WarningImport.new(params[:upload][:warnings]).process
       end
       flash[:success] = 'Your estimates were successfully imported'
       redirect_to admin_estimates_path

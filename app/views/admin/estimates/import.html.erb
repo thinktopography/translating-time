@@ -14,8 +14,14 @@
       <div class="form-body">
         <p>Processed observation data can be uploaded in a two space delimited text file. Upload the text file to import processed data into the system.</p>
         <dl>
-          <dt><label>Text File</label></dt>
-          <dd><%= file_field_tag 'upload[file]' %></dd>
+          <dt><label>Estimates</label></dt>
+          <dd><%= file_field_tag 'upload[values]' %></dd>
+          <dt><label>Low Confidence</label></dt>
+          <dd><%= file_field_tag 'upload[lows]' %></dd>
+          <dt><label>High Confidence</label></dt>
+          <dd><%= file_field_tag 'upload[highs]' %></dd>
+          <dt><label>Warnings</label></dt>
+          <dd><%= file_field_tag 'upload[warnings]' %></dd>
         </dl>        
       </div>
       <div class="form-footer">
