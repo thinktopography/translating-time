@@ -15,7 +15,15 @@ div.site {
     ul { width: 220px; }
     a { font-size: 16px; line-height: 36px; color: #444;background: url(/assets/divider.jpg) no-repeat 0 bottom; padding: 5px 10px 15px 20px; display:block; width: 220px; }
   }
-  div.content { float: right; width: 660px; }
+  div.content {
+    float: right; width: 660px;
+    h2 { margin: 0 0 20px; font-size: 26px; color: #252323; font-weight: normal; }
+    p { margin: 0 0 10px; }
+    li { font-size: 12px; line-height: 20px; padding: 0; margin: 0; }
+    ul, ol { padding: 0 0 0 15px; margin: 0 0 10px; }
+    ul li { list-style: disc; }
+    ol li { list-style: decimal; }
+  }
   div.inner { padding: 20px; }
   div.footer { clear: both; text-align: center; }
 }

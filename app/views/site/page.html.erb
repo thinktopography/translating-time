@@ -7,9 +7,7 @@
     <% end %>
     
     <div class="page">
-      <% unless @page.title.blank? %>
-        <h3><%= @page.title %></h3>
-      <% end %>
+
       <%= raw(@page.body) %>
 
       <% if user_signed_in? -%>

@@ -6,7 +6,11 @@
 
   <%= f.permalink_field_control @page, :permalink, { :class => 'required' }, {}, { :prefix => 'http://translatingtime.org'} %>
   
-  <%= f.text_area_control @page, :body, {}, { :class => "tinymce" } %>
+  <dt><%= f.label :body %></dt>
+  <dd>
+    <%= f.text_area :body, :class => "tinymce" %>
+    <span class="togglemce">Toggle rich-text</span>    
+  </dd>
   <%= tinymce %>
 
   <%= f.text_field_control @page, :meta_keywords, { :text => 'Keywords' } %>

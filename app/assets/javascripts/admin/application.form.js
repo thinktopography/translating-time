@@ -5,6 +5,15 @@ Application.Form.Init = function() {
   $('div#curation_grid div.grid-prefix select').live('change', Application.Form.ChangeSpecies);
   $('div#curation_grid label').live('click', Application.Form.Curate);
   $('div.form :input:first').focus();
+  $('span.togglemce').click(Application.Form.Toggle)
+}
+
+Application.Form.Toggle = function() {
+  if(!tinyMCE.get('page_body')) {
+   tinyMCE.execCommand('mceAddControl', false, 'page_body');
+  } else {
+    tinyMCE.execCommand('mceRemoveControl', false, 'page_body');
+  }
 }
 
 Application.Form.Curate = function() {
