@@ -2,8 +2,6 @@ class Import
   
   def initialize(file)
     @data = file.read
-    @width = 5
-    @padding = 2
     @parsed = []
     @sorted = {}
   end
@@ -11,7 +9,15 @@ class Import
   def self.attribute(attribute)
     @@attribute = attribute
   end
-  
+
+  def self.width(width)
+    @@width = width
+  end
+
+  def self.padding(padding)
+    @@padding = padding
+  end
+
   def process
     parse_data
     sort_data
@@ -28,9 +34,10 @@ class Import
 
   def parse_line(line)
     data = []
-    0.step(line.length, (@width + @padding)) do |x|
-      to = x + @width
-      data << line[x...to]
+    0.step((line.length - 1), (@@width + @@padding)) do |x|
+      from = x + 1
+      to = from + @@width
+      data << line[from...to]
     end
     data
   end
@@ -39,16 +46,20 @@ class Import
     specieses = []
     @parsed[0].shift
     @parsed[0].each do |item|
-      specieses << item.to_i
+      code = item.to_i
+      species = Species.find_by_code(code).first
+      specieses << species.id
     end
     @parsed.shift
     @parsed.each do |row|
-      event = row.shift.to_i
+      code = row.shift.to_i
+      event = Species.find_by_code(code).first
+      event_id = event.id
       i = 0
       @sorted[event] = {}
       row.each do |value|
-        species = specieses[i]
-        @sorted[event][species] = value.to_f
+        species_id = specieses[i]
+        @sorted[event_id][species_id] = value.to_f
         i = i + 1
       end
     end

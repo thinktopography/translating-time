@@ -1,0 +1,29 @@
+div.translate {
+  table {
+    th, td { padding: 5px; vertical-align: top; font-size: 10px;  }
+    width: 100%;
+    thead {
+      th { background: #000; color: #FFF; }
+      td { background: #666; color: #FFF; text-align: center; }
+    }
+    tbody {
+      tr:nth-child(2n+1) { background-color: #FFF; }
+      tr:nth-child(2n) { background-color: #DDD; }
+      th { text-align: left; width: 56%; }
+      td { text-align: right; width: 8%; }
+    }
+  }
+  form {
+    border: 1px solid #888; background-color: #CCC; padding: 10px; overflow: hidden; margin: 0 0 20px;
+    select { color: #000; border: 1px solid #CCC; background: #FFF; padding: 3px; }
+    dt { float: left; width: 80px; clear: both; margin: 0 0 10px; font-weight: bold; }
+    dd { float: left; width: 400px; margin: 0 0 10px; }
+    dd.days {
+      overflow: hidden;
+      div.min, div.max, input { width: 60px; border: 1px solid #CCC; background: #FFF; padding: 3px; display: block; float: left; margin: 0 5px 0 0; font-size: 11px; line-height: 18px; height: 18px; }
+      span { float: left; margin: 0 5px 0 0; color: #FFF; line-height: 24px; }
+      div { color: #999; }
+      input { color: #000; }
+    }
+  }
+}

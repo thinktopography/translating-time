@@ -1,0 +1,68 @@
+<% content_for :content do %>
+
+  <div class="translate">
+    
+    <p>Please select two species, input the PC day you want translated from Species One to Species Two, and click the translate button.</p>
+    
+    <form action="/translate" method="post">
+      
+      <dl>
+        <dt>Species 1</dt>
+        <dd><%= select_tag :species_1, options_from_collection_for_select(Species.all, :id, :name) %></dd>
+        <dt>Days</dt>
+        <dd class="days">
+          <div class="min">19.5</div>
+          <span>&lt;</span>
+          <%= text_field_tag :days %>
+          <span>&lt;</span>
+          <div class="max">40.6</div>
+        </dd>
+        <dt>Species 2</dt>
+        <dd><%= select_tag :species_2, options_from_collection_for_select(Species.all, :id, :name) %></dd>
+        <dt>&nbsp;</dt>
+        <dd><input type="submit" value="TRANSLATE" /></dd>
+      </dl>
+
+    </form>
+    
+    <% if request.post? %>
+    
+      <table cellspacing="1" cellpadding="0">
+        <thead>
+          <tr>
+            <th rowspan="3">Event Name</th>
+            <th colspan="6">Predictions</th>
+          </tr>
+          <tr>
+            <td colspan="3">Ferret</td>
+            <td colspan="3">Guinnea Pig</td>
+          </tr>
+          <tr>
+            <td>Lower CL</td>
+            <td>Prediction</td>
+            <td>Upper CL</td>
+            <td>Lower CL</td>
+            <td>Prediction</td>
+            <td>Upper CL</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @results.each do |result| %>
+            <tr>
+              <th><%= result.name %></th>
+              <td>42.5</td>
+              <td>48.9</td>
+              <td>56.5</td>
+              <td>33.9</td>
+              <td>39.3</td>
+              <td>45.7</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <% end %>
+
+  </div>
+
+<% end %>

@@ -8,6 +8,22 @@ class SiteController < ApplicationController
     render '404' if @page.nil?
   end
   
+  def translate
+    if request.post?
+      @results = Event.all
+    end
+  end
+  
+  def predict
+    if request.post?
+    end
+  end
+  
+  def tables
+    if request.post?
+    end
+  end
+  
   def feedback
     @inquiry = Inquiry.new
     if request.post?

@@ -1,4 +1,4 @@
-class Species < ActiveRecord::Base
+class code < ActiveRecord::Base
 
   attr_accessible :name, :code, :constant, :slope, :in_model, :taxonomy_ids
   
