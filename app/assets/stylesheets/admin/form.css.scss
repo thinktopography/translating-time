@@ -26,7 +26,7 @@ div.flash {
 }
 
 div.form {
-  background-color: #EEEEEE; width: 620px;
+  background-color: #EEEEEE; width: 960px;
   div.form-header {
     background-color: #333; padding: 5px 10px; overflow: hidden;
     h2 { float: left; color: #FFF; font-size: 12px; line-height: 22px; }
@@ -37,15 +37,15 @@ div.form {
     dl { overflow: hidden; padding: 10px; }
     p { padding: 10px; }
     dt { clear: both; width: 150px; font-weight: bold; }
-    dd { width: 450px; }
+    dd { width: 790px; }
     label { cursor: pointer; }
     label.required { background: url(/assets/required.png) no-repeat right 0; padding: 0 15px 0 0; }
     input[type="text"], input[type="password"], input[type="email"], textarea {
-      padding: 5px; border: 1px solid #CCC; width: 430px;
+      padding: 5px; border: 1px solid #CCC; width: 770px;
       &:focus { background-color: #FFD; }
     }
     select {
-      padding: 5px; border: 1px solid #CCC; width: 442px;
+      padding: 5px; border: 1px solid #CCC; width: 772px;
       &:focus { background-color: #FFD; }
     }
     div.error_description { color: #900; margin: 0 0 10px; }

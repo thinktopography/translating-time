@@ -30,7 +30,7 @@ class SiteController < ApplicationController
       @inquiry.attributes = params[:inquiry]
       if @inquiry.save
         flash[:success] = 'Your feedback was successfully reveived'
-        redirect_to contact_path
+        redirect_to feedback_path
       else
         flash[:error] = 'There were problems with your input'
       end

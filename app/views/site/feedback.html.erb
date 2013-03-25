@@ -9,18 +9,13 @@
       <div class="form-body">
         <dl>
           <%= f.text_field_control @inquiry, :name %>
-      
           <%= f.text_field_control @inquiry, :affiliation %>
-          
           <%= f.text_field_control @inquiry, :email %>
-          
-          <%= f.text_area_control @inquiry, :comments %>
+          <%= f.text_area_control @inquiry, :comments, {}, { :rows => 5 } %>
         </dl>
       </div>
       <div class="form-footer">
-        <ul>
-          <li><%= f.submit 'Send Feedback', :class => 'button' %></li>
-        </ul>
+        <%= f.submit 'Send Feedback', :class => 'button' %>
       </div>
     </div>
     

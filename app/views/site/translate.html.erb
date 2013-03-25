@@ -8,7 +8,7 @@
       
       <dl>
         <dt>Species 1</dt>
-        <dd><%= select_tag :species_1, options_from_collection_for_select(Species.all, :id, :name) %></dd>
+        <dd><%= select_tag :species_1, options_from_collection_for_select(Species.all, :id, :name), :include_blank => true %></dd>
         <dt>Days</dt>
         <dd class="days">
           <div class="min">19.5</div>
@@ -18,7 +18,7 @@
           <div class="max">40.6</div>
         </dd>
         <dt>Species 2</dt>
-        <dd><%= select_tag :species_2, options_from_collection_for_select(Species.all, :id, :name) %></dd>
+        <dd><%= select_tag :species_2, options_from_collection_for_select(Species.all, :id, :name), :include_blank => true %></dd>
         <dt>&nbsp;</dt>
         <dd><input type="submit" value="TRANSLATE" /></dd>
       </dl>

@@ -1,8 +1,8 @@
 /* GENERIC STYLES */
 * { margin: 0px; padding: 0px; list-style: none; outline: none; }
-body { font-family: lucida grande,tahoma,verdana,arial,sans-serif; font-size: 12px; line-height: 22px; cursor: auto; background: #DBDBDD url(/assets/background.png) repeat-x 0 top; }
+body { font-family: Tahoma,Geneva,sans-serif; font-size: 12px; line-height: 22px; cursor: auto; background: #DBDBDD url(/assets/background.png) repeat-x 0 top; }
 body.waiting { cursor: wait; }
-textarea {font-family: lucida grande,tahoma,verdana,arial,sans-serif;}
+textarea {font-family: Tahoma,Geneva,sans-serif; }
 img { border: none; }
 a { text-decoration: none; outline: none; color: #770; }
 p, input, textarea, select, dt, dd, li, td, th { font-size: 12px; line-height: 18px; color: #666; }

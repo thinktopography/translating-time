@@ -53,7 +53,7 @@ namespace :sync do
   def populate_database
     db = YAML.load_file("#{File.dirname(__FILE__)}/database.yml")['development']
     system("tar -xzf ./tmp/database.tgz -C ./tmp")
-    system("cat ./tmp/database.sql | mysql -u #{db['username']} -p#{db['password']} -h #{db['host']} #{db['database']}")
+    system("cat ./tmp/database.sql | mysql -u #{db['username']} -h #{db['host']} #{db['database']}")
     system("rm -rf ./tmp/*") 
   end
 

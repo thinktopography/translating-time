@@ -11,22 +11,25 @@
 
 <div class="site">
   <div class="header">
-    <h1>Translating Time</h1>
+    <h1><%= link_to 'Translating Time', root_path %></h1>
   </div>
-  <div class="body">
-    <%= render '/layouts/flash' %>
-    <div class="sidebar">
-      <div class="inner">
-        <ul>
-          <% @items.each do |item| %>
-            <li><%= link_to item.title, item.url %></li>
-          <% end  %>
-        </ul>
+  <div class="main">
+    <div class="body">
+      <div class="sidebar">
+        <div class="inner">
+          <ul>
+            <% @items.each do |item| %>
+              <li><%= link_to item.title, item.url %></li>
+            <% end  %>
+          </ul>
+          <img src="/assets/sidebar.jpg">
+        </div>
       </div>
-    </div>
-    <div class="content">
-      <div class="inner">
-        <%= yield(:content) %>
+      <div class="content">
+        <div class="inner">
+          <%= render '/layouts/flash' %>
+          <%= yield(:content) %>
+        </div>
       </div>
     </div>
   </div>
