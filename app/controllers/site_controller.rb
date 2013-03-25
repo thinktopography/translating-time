@@ -43,5 +43,4 @@ class SiteController < ApplicationController
       @items = MenuItem.all
     end
     
-
 end

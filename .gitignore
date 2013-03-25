@@ -16,4 +16,5 @@ rerun.txt
 pickle-email-*.html
 config/*.yml
 config/ssh.key
+config/ssh.pem
 chef/config/*.yml

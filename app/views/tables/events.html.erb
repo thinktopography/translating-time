@@ -1,0 +1,22 @@
+<% content_for :content do %>
+
+  <a href="/tables">&laquo Back to tables</a>
+  
+  <h2><%= @process.name.capitalize %> Events</h2>
+  
+  <table width="100%" class="referencetable">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <th><%= event.name %></th>
+        </tr>
+      <% end  %>
+    </tbody>
+  </table>
+
+<% end %>

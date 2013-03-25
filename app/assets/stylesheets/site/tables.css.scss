@@ -1,0 +1,8 @@
+table.referencetable {
+  th, td { padding: 5px; }
+  thead th { text-align: left; background: #000; color: #FFF; }
+  tbody {
+    th, td { background: #FFF; }
+    th { text-align: left; }
+  }
+}
