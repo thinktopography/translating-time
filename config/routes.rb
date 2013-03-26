@@ -47,7 +47,9 @@ Translatingtime::Application.routes.draw do
   match 'translate' => 'site#translate', :as => :translate
   match 'predict' => 'site#predict', :as => :predict
   match 'tables' => 'tables#index'
+  match 'tables/abbreviations' => 'tables#abbreviations'
   match 'tables/empirical/:id' => 'tables#empirical'
+  match 'tables/estimates/:id' => 'tables#estimates'
   match 'tables/events/:id' => 'tables#events'
   match 'feedback' => 'site#feedback', :as => :feedback
   match ':permalink' => 'site#page', :as => :page

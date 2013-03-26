@@ -1,23 +1,23 @@
 <% content_for :content do %>
 
-  <a href="/tables">&laquo Back to tables</a>
+  <a href="/tables">&laquo Back to related tables</a>
   
   <h2>Empirical References for <%= @species.name %></h2>
   
   <table width="100%" class="referencetable">
     <thead>
       <tr>
-        <th>Event</th>
-        <th>PC Day</th>
-        <th>Citation</th>
+        <th width="45%">Event</th>
+        <th width="10%">PC Day</th>
+        <th width="45%">Citation</th>
       </tr>
     </thead>
     <tbody>
       <% @observations.each do |observation| %>
         <tr>
-          <th valign="top" width="45%"><%= observation.event.name %></th>
-          <td valign="top" width="10%"><%= observation.value %></td>
-          <td valign="top" width="45%"><%= observation.citation.body %>></td>
+          <th valign="top"><%= observation.event.name %></th>
+          <td valign="top"><%= observation.value %></td>
+          <td valign="top"><%= observation.citation.body %></td>
         </tr>
       <% end  %>
     </tbody>

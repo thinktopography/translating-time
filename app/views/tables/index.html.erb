@@ -6,7 +6,7 @@
     <select>
       <option></option>
       <% Species.all.each do |species| %>
-        <option value="/tables/<%= species.id %>"><%= species.name %></option>
+        <option value="/tables/empirical/<%= species.id %>"><%= species.name %></option>
       <% end %>
     </select>
   </p>
@@ -17,7 +17,7 @@
     <select>
       <option></option>
       <% Species.all.each do |species| %>
-        <option value="/tables/events/<%= species.id %>"><%= species.name %></option>
+        <option value="/tables/estimates/<%= species.id %>"><%= species.name %></option>
       <% end %>
     </select>
   </p>
@@ -25,7 +25,15 @@
   <p>
     <a href="/tables/events/limbic">Click here</a> for Limbic Events.<br />
     <a href="/tables/events/cortical">Click here</a> for Cortical Events.<br />
-    <a href="/tables/abberviations">Click here</a> for Abbreviations.
+    <a href="/tables/abbreviations">Click here</a> for Abbreviations.
   </p>
+  
+  <script>
+    $(document).ready(function(){
+      $('select').change(function() {
+        window.location.href = $(this).val();
+      });
+    });
+  </script>
   
 <% end %>

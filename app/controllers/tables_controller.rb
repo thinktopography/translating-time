@@ -14,6 +14,15 @@ class TablesController < ApplicationController
     @process = Proces.new(:name => params[:id])
     @events = Event.order("events.name ASC").all
   end  
+  
+  def abbreviations
+    @abbreviations = Abbreviation.all
+  end
+  
+  def estimates
+    @species = Species.find(params[:id])
+    @estimates = @species.estimates.includes(:event).order("events.name ASC").all
+  end
 
   private
   
