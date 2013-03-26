@@ -11,8 +11,8 @@ class TablesController < ApplicationController
   end  
 
   def events
-    @process = Proces.new(:name => params[:id])
-    @events = Event.order("events.name ASC").all
+    @location = Location.find(params[:id])
+    @events = @location.events.order("events.name ASC").all
   end  
   
   def abbreviations
