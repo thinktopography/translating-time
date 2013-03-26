@@ -16,16 +16,16 @@ class Admin::EstimatesController < Admin::ApplicationController
   def import
     if params[:upload]
       if params[:upload][:values]
-        ValueImport.new(params[:upload][:values]).process
+        Import.new(params[:upload][:values], 'value', 3, 1).process
       end
       if params[:upload][:lows]
-        LowImport.new(params[:upload][:lows]).process
+        Import.new(params[:upload][:lows], 'low', 6, 1).process
       end
       if params[:upload][:highs]
-        HighImport.new(params[:upload][:highs]).process
+        Import.new(params[:upload][:highs], 'high', 6, 1).process
       end
       if params[:upload][:warnings]
-        WarningImport.new(params[:upload][:warnings]).process
+        Import.new(params[:upload][:warnings], 'warning', 6, 1).process
       end
       flash[:success] = 'Your estimates were successfully imported'
       redirect_to admin_estimates_path

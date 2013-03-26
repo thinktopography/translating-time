@@ -1,23 +1,14 @@
 class Import
   
-  def initialize(file)
+  def initialize(file, attribute, width, padding)
+    @attribute = attribute
+    @width = width
+    @padding = padding
     @data = file.read
     @parsed = []
     @sorted = {}
   end
   
-  def self.attribute(attribute)
-    @@attribute = attribute
-  end
-
-  def self.width(width)
-    @@width = width
-  end
-
-  def self.padding(padding)
-    @@padding = padding
-  end
-
   def process
     parse_data
     sort_data
@@ -34,9 +25,9 @@ class Import
 
   def parse_line(line)
     data = []
-    0.step((line.length - 1), (@@width + @@padding)) do |x|
+    0.step((line.length - 1), (@width + @padding)) do |x|
       from = x + 1
-      to = from + @@width
+      to = from + @width
       data << line[from...to]
     end
     data
@@ -79,8 +70,8 @@ class Import
     @sorted.each do |event_id, values|
       values.each do |species_id, value|
         estimate = estimate(species_id, event_id)
-        estimate.send("#{@@attribute}=", value)
-        estimate.save
+        estimate.send("#{@attribute}=", value)
+        estimate.save!
       end
     end
   end
