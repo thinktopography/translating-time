@@ -19,7 +19,7 @@
         <div class="inner">
           <ul>
             <% @items.each do |item| %>
-              <li><%= link_to item.title, item.url %></li>
+              <li><%= link_to item.title, '/'+item.url %></li>
             <% end  %>
           </ul>
           <img src="/assets/sidebar.jpg">
