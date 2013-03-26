@@ -47,20 +47,22 @@ class Import
     @parsed[0].shift
     @parsed[0].each do |item|
       code = item.to_i
-      species = Species.find_by_code(code).first
+      species = Species.find_by_code(code)
       specieses << species.id
     end
     @parsed.shift
     @parsed.each do |row|
       code = row.shift.to_i
-      event = Species.find_by_code(code).first
-      event_id = event.id
-      i = 0
-      @sorted[event] = {}
-      row.each do |value|
-        species_id = specieses[i]
-        @sorted[event_id][species_id] = value.to_f
-        i = i + 1
+      event = Event.find_by_code(code)
+      unless event.nil?
+        event_id = event.id
+        i = 0
+        @sorted[event_id] = {}
+        row.each do |value|
+          species_id = specieses[i]
+          @sorted[event_id][species_id] = value.to_f
+          i = i + 1
+        end
       end
     end
   end

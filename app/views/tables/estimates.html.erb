@@ -16,7 +16,8 @@
     <tbody>
       <% @estimates.each do |estimate| %>
         <tr>
-          <th valign="top"><%= estimate.low %></th>
+          <th valign="top"><%= estimate.event.name %></th>
+          <td valign="top"><%= estimate.low %></td>
           <td valign="top"><%= estimate.value %></td>
           <td valign="top"><%= estimate.high %></td>
         </tr>
