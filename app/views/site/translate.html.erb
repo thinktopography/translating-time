@@ -27,35 +27,37 @@
     
     <% if request.post? %>
     
-      <table cellspacing="1" cellpadding="0">
+      <h2>Species Predictions</h2>
+    
+      <table width="100%" class="referencetable">
         <thead>
           <tr>
-            <th rowspan="3">Event Name</th>
-            <th colspan="6">Predictions</th>
+            <td rowspan="3" width="52%">Event Name</td>
+            <td colspan="6">Predictions</td>
           </tr>
           <tr>
-            <td colspan="3">Ferret</td>
-            <td colspan="3">Guinnea Pig</td>
+            <td colspan="3"><%= @species1.name %></td>
+            <td colspan="3"><%= @species2.name %></td>
           </tr>
           <tr>
-            <td>Lower CL</td>
-            <td>Prediction</td>
-            <td>Upper CL</td>
-            <td>Lower CL</td>
-            <td>Prediction</td>
-            <td>Upper CL</td>
+            <td width="8%">Lower CL</td>
+            <td width="8%">Prediction</td>
+            <td width="8%">Upper CL</td>
+            <td width="8%">Lower CL</td>
+            <td width="8%">Prediction</td>
+            <td width="8%">Upper CL</td>
           </tr>
         </thead>
         <tbody>
-          <% @results.each do |result| %>
+          <% @results.each do |event, result| %>
             <tr>
-              <th><%= result.name %></th>
-              <td>42.5</td>
-              <td>48.9</td>
-              <td>56.5</td>
-              <td>33.9</td>
-              <td>39.3</td>
-              <td>45.7</td>
+              <th><%= event %></th>
+              <td align="center"><%= result[0] %></td>
+              <td align="center"><strong><%= result[1] %></strong></td>
+              <td align="center"><%= result[2] %></td>
+              <td align="center"><%= result[3] %></td>
+              <td align="center"><strong><%= result[4] %></strong></td>
+              <td align="center"><%= result[5] %></td>
             </tr>
           <% end %>
         </tbody>

@@ -10,7 +10,22 @@ class SiteController < ApplicationController
   
   def translate
     if request.post?
-      @results = Event.all
+      @species1 = Species.find(params[:species_1])
+      @species2 = Species.find(params[:species_2])
+      @results = {}
+      @species1.estimates.includes(:event).order('events.name').each do |estimate|
+        @results[estimate.event.name] = []
+        @results[estimate.event.name] << estimate.low
+        @results[estimate.event.name] << estimate.value
+        @results[estimate.event.name] << estimate.high
+      end
+      @species2.estimates.includes(:event).each do |estimate|
+        unless @results[estimate.event.name].nil?
+          @results[estimate.event.name] << estimate.low
+          @results[estimate.event.name] << estimate.value
+          @results[estimate.event.name] << estimate.high
+        end
+      end
     end
   end
   
