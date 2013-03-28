@@ -7,5 +7,7 @@ class Species < ActiveRecord::Base
   has_and_belongs_to_many :taxonomies, :join_table => :classifications
 
   validates_presence_of :name
+  
+  scope :in_model, where(:in_model => true)
 
 end

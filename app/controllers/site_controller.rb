@@ -9,6 +9,8 @@ class SiteController < ApplicationController
   end
   
   def translate
+    params[:species_1] ||= 0
+    params[:species_2] ||= 0
     if request.post?
       @species1 = Species.find(params[:species_1])
       @species2 = Species.find(params[:species_2])
@@ -30,7 +32,14 @@ class SiteController < ApplicationController
   end
   
   def predict
+    params[:species_id] ||= 0
+    params[:event_id] ||= 0
     if request.post?
+      @species = Species.find(params[:species_id])
+      @event = Event.find(params[:event_id])
+      @estimate = @species.estimates.where(:event_id => params[:event_id]).first
+      @gestation = @species.estimates.where(:event_id => 379).first
+      @eyes = @species.estimates.where(:event_id => 270).first
     end
   end
   
