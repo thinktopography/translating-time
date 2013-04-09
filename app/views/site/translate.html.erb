@@ -31,11 +31,13 @@
     </form>
     
     <% if @translation.valid? %>
-      
-      <h2>Results</h2>
-      
-      <p>An event in <strong><%= @species1.name %></strong> at PC Day <%= params[:translation][:days] %> translates into <strong>PC Day <%= number_with_precision(@result, :precision => 1) %></strong> in <strong><%= @species2.name %></strong>.</p>
 
+      <div class="results">
+
+        <p>An event in <strong><%= @species1.name %></strong> at PC Day <%= params[:translation][:days] %> translates into <strong>PC Day <%= number_with_precision(@result, :precision => 1) %></strong> in <strong><%= @species2.name %></strong>.</p>
+
+      </div>
+      
       <h2>Species Predictions</h2>
     
       <table width="100%" class="referencetable">
