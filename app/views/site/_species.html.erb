@@ -1,0 +1,7 @@
+<select id="<%= key %>" name="<%= key %>">
+  <option></option>
+  <% Species.all.each do |species| %>
+    <option value="<%= species.id %>" data-min="<%= species.minimum %>" data-max="<%= species.maximum %>" <%= (value == species.id.to_s) ? raw('selected="selected"') : '' %>><%= species.name %></option>
+  <% end %>
+</select> 
+[ Minimum: <span class="min">10</span> - Maximum: <span class="max">230</span> ]

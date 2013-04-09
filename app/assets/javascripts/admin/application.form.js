@@ -6,6 +6,26 @@ Application.Form.Init = function() {
   $('div#curation_grid label').live('click', Application.Form.Curate);
   $('div.form :input:first').focus();
   $('span.togglemce').click(Application.Form.Toggle)
+  $('input#min,input#max').focus(function() { $(this).blur(); });
+  $('#species_1').change(Application.Form.SetMinMax);
+  $('#species_1,#species_2').change(Application.Form.DisplayMinMax);
+}
+
+Application.Form.SetMinMax = function() {
+  var selected = $(this).find(':selected');
+  var min = selected.data('min');
+  var max = selected.data('max');
+  $('input#min').val(min);
+  $('input#max').val(max);
+}
+
+Application.Form.DisplayMinMax = function() {
+  var selected = $(this).find(':selected');
+  var min = selected.data('min');
+  var max = selected.data('max');
+  var container = $(this).closest('dd');
+  container.find('span.min').html(min);
+  container.find('span.max').html(max);
 }
 
 Application.Form.Toggle = function() {

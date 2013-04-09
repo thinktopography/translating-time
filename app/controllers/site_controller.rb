@@ -14,6 +14,9 @@ class SiteController < ApplicationController
     if request.post?
       @species1 = Species.find(params[:species_1])
       @species2 = Species.find(params[:species_2])
+      @location = Location.find(params[:location])
+      @process = Proces.find(params[:process])
+      @translation = @species1.translate(@species2, @location, @process, params[:days])
       @results = {}
       @species1.estimates.includes(:event).order('events.name').each do |estimate|
         @results[estimate.event.name] = []
