@@ -9,27 +9,34 @@ class SiteController < ApplicationController
   end
   
   def translate
-    params[:species_1] ||= 0
-    params[:species_2] ||= 0
+    @translation = Translation.new
+    params[:translation] ||= {}
+    params[:translation][:species_1] ||= 0
+    params[:translation][:species_2] ||= 0
     if request.post?
-      @species1 = Species.find(params[:species_1])
-      @species2 = Species.find(params[:species_2])
-      @location = Location.find(params[:location])
-      @process = Proces.find(params[:process])
-      @translation = @species1.translate(@species2, @location, @process, params[:days])
-      @results = {}
-      @species1.estimates.includes(:event).order('events.name').each do |estimate|
-        @results[estimate.event.name] = []
-        @results[estimate.event.name] << estimate.low
-        @results[estimate.event.name] << estimate.value
-        @results[estimate.event.name] << estimate.high
-      end
-      @species2.estimates.includes(:event).each do |estimate|
-        unless @results[estimate.event.name].nil?
+      @translation.attributes = params[:translation]
+      if @translation.valid?
+        @species1 = Species.find(params[:translation][:species_1])
+        @species2 = Species.find(params[:translation][:species_2])
+        @location = Location.find(params[:translation][:location])
+        @process = Proces.find(params[:translation][:process])
+        @result = @species1.translate(@species2, @location, @process, params[:translation][:days])
+        @results = {}
+        @species1.estimates.includes(:event).order('events.name').each do |estimate|
+          @results[estimate.event.name] = []
           @results[estimate.event.name] << estimate.low
           @results[estimate.event.name] << estimate.value
           @results[estimate.event.name] << estimate.high
         end
+        @species2.estimates.includes(:event).each do |estimate|
+          unless @results[estimate.event.name].nil?
+            @results[estimate.event.name] << estimate.low
+            @results[estimate.event.name] << estimate.value
+            @results[estimate.event.name] << estimate.high
+          end
+        end
+      else
+        flash[:error] = 'There were problems with your input'
       end
     end
   end

@@ -15,8 +15,8 @@ Application.Form.SetMinMax = function() {
   var selected = $(this).find(':selected');
   var min = selected.data('min');
   var max = selected.data('max');
-  $('input#min').val(min);
-  $('input#max').val(max);
+  $('input#translation_min').val(min);
+  $('input#translation_max').val(max);
 }
 
 Application.Form.DisplayMinMax = function() {

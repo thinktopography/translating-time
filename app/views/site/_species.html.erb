@@ -1,4 +1,4 @@
-<select id="<%= key %>" name="<%= key %>">
+<select id="<%= key %>" name="translation[<%= key %>]">
   <option></option>
   <% Species.all.each do |species| %>
     <option value="<%= species.id %>" data-min="<%= species.minimum %>" data-max="<%= species.maximum %>" <%= (value == species.id.to_s) ? raw('selected="selected"') : '' %>><%= species.name %></option>
