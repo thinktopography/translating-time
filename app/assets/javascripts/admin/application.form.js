@@ -24,8 +24,7 @@ Application.Form.DisplayMinMax = function() {
   var min = selected.data('min');
   var max = selected.data('max');
   var container = $(this).closest('dd');
-  container.find('span.min').html(min);
-  container.find('span.max').html(max);
+  container.find('span.range').html("[ Minimum: "+min+" - Maximum:"+max+" ]");
 }
 
 Application.Form.Toggle = function() {
