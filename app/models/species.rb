@@ -9,6 +9,7 @@ class Species < ActiveRecord::Base
   validates_presence_of :name
   
   scope :in_model, where(:in_model => true)
+  default_scope order('name ASC')
   
   def name_with_min_max
     "#{self.name} - #{self.minimum} - #{self.maximum}"

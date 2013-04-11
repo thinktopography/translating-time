@@ -2,7 +2,9 @@
 
   <div class="translate">
     
-    <p>Please select two species, input the PC day you want translated from Species One to Species Two, and click the translate button.</p>
+    <h2>Predict</h2>
+    
+    <p>Please a species and an event and click the predict button.</p>
     
     <form action="/predict" method="post">
       
@@ -11,8 +13,10 @@
         <dd><%= select_tag :species_id, options_from_collection_for_select(Species.in_model.order('name ASC').all, :id, :name, params[:species_id]), :include_blank => true %></dd>
         <dt>Neural Event</dt>
         <dd><%= select_tag :event_id, options_from_collection_for_select(Event.order('name ASC').all, :id, :name, params[:event_id]), :include_blank => true %></dd>
-        <dd><input type="submit" value="PREDICT" /></dd>
       </dl>
+      <div class="buttons">
+        <input type="submit" value="PREDICT" />
+      </div>
 
     </form>
     
@@ -21,7 +25,7 @@
       <table width="100%" class="referencetable">
         <tr>
           <th width="50%">Predicted Days</th>
-          <td width="50%"><%= @estimate.value %></td>
+          <td width="50%"><%= format_value(@estimate.value) %></td>
         </tr>
         <tr>
           <th>Species</th>
@@ -32,24 +36,24 @@
           <td><%= @event.name %></td>
         </tr>
         <tr>
-          <th>95% Confidence Range</th>
-          <td><%= @estimate.low %> - <%= @estimate.high %></td>
+          <th>95% Confidence Range <span class="asterix">*</span></th>
+          <td><%= format_value(@estimate.low) %> - <%= format_value(@estimate.high) %></td>
         </tr>
         <% unless @gestation.nil? %>
           <tr>
             <th>Gestation</th>
-            <td><%= @gestation.value %></td>
+            <td><%= format_value(@gestation.value) %></td>
           </tr>
         <% end %>
         <% unless @eyes.nil? %>
           <tr>
             <th>Eye opening</th>
-            <td><%= @eyes.value %></td>
+            <td><%= format_value(@eyes.value) %></td>
           </tr>
         <% end %>
       </table>
       
-      <p>* Confidence intervals are for species averages rather than for individuals.</p>
+      <p><span class="asterix">*</span> Confidence intervals are for species averages rather than for individuals.</p>
 
     <% end %>
 

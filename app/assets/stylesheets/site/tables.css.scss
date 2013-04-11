@@ -1,4 +1,5 @@
 table.referencetable {
+  margin: 0 0 10px;
   th, td { padding: 5px; }
   thead {
     th { text-align: left; background: #000; color: #FFF; }
@@ -9,3 +10,5 @@ table.referencetable {
     th { text-align: left; }
   }
 }
+
+span.asterix { color: #900; }

@@ -5,7 +5,7 @@
   <p>
     <select>
       <option></option>
-      <% Species.all.each do |species| %>
+      <% Species.in_model.all.each do |species| %>
         <option value="/tables/empirical/<%= species.id %>"><%= species.name %></option>
       <% end %>
     </select>
@@ -16,7 +16,7 @@
     * Confidence intervals are for species averages rather than for individuals.<br />
     <select>
       <option></option>
-      <% Species.all.each do |species| %>
+      <% Species.in_model.all.each do |species| %>
         <option value="/tables/estimates/<%= species.id %>"><%= species.name %></option>
       <% end %>
     </select>

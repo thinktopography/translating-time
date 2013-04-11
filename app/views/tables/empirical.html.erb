@@ -14,11 +14,13 @@
     </thead>
     <tbody>
       <% @observations.each do |observation| %>
-        <tr>
-          <th valign="top"><%= observation.event.name %></th>
-          <td valign="top"><%= observation.value %></td>
-          <td valign="top"><%= observation.citation.body %></td>
-        </tr>
+        <% unless observation.event.nil? %>
+          <tr>
+            <th valign="top"><%= observation.event.name %></th>
+            <td valign="top"><%= observation.value %></td>
+            <td valign="top"><%= observation.citation.body %></td>
+          </tr>
+        <% end  %>
       <% end  %>
     </tbody>
   </table>

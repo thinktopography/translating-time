@@ -2,17 +2,19 @@
 
   <div class="translate">
     
-    <p>Please select two species, input the PC day you want translated from Species One to Species Two, and click the translate button.</p>
+    <h2>Translate</h2>
+
+    <p>Please select two species, specify the location and process type of the event, input the PC day you want translated from Species One to Species Two, and click the translate button.</p>
     
     <form action="/translate" method="post" id="translate">
       
       <dl>
         <dt>Species 1</dt>
         <dd><%= render 'species', :key => 'species_1', :value => params[:translation][:species_1] %>
-        <dt>Location</dt>
-        <dd><%= select_tag 'translation[location]', options_from_collection_for_select(Location.all, :id, :name, params[:translation][:location]), :include_blank => true %></dd>
         <dt>Process</dt>
         <dd><%= select_tag 'translation[process]', options_from_collection_for_select(Proces.all, :id, :name, params[:translation][:process]), :include_blank => true %></dd>
+        <dt>Location</dt>
+        <dd><%= select_tag 'translation[location]', options_from_collection_for_select(Location.all, :id, :name, params[:translation][:location]), :include_blank => true %></dd>
         <dt>Days</dt>
         <dd class="days">
           <%= text_field_tag 'translation[min]', params[:translation][:min] %>
@@ -34,7 +36,7 @@
 
       <div class="results">
 
-        <p>An event in <strong><%= @species1.name %></strong> at PC Day <%= params[:translation][:days] %> translates into <strong>PC Day <%= number_with_precision(@result, :precision => 1) %></strong> in <strong><%= @species2.name %></strong>.</p>
+        <p>A <%= @process.name.downcase %> event in the <%= @location.name.downcase %> of the <strong><%= @species1.name %></strong> at PC Day <%= params[:translation][:days] %> translates to <strong>PC Day <%= format_value(@result) %></strong> in the <strong><%= @species2.name %></strong>.</p>
 
       </div>
       
@@ -63,12 +65,12 @@
           <% @results.each do |event, result| %>
             <tr>
               <th><%= event %></th>
-              <td align="center"><%= result[0] %></td>
-              <td align="center"><strong><%= result[1] %></strong></td>
-              <td align="center"><%= result[2] %></td>
-              <td align="center"><%= result[3] %></td>
-              <td align="center"><strong><%= result[4] %></strong></td>
-              <td align="center"><%= result[5] %></td>
+              <td align="center"><%= format_value(result[0]) %></td>
+              <td align="center"><strong><%= format_value(result[1]) %></strong></td>
+              <td align="center"><%= format_value(result[2]) %></td>
+              <td align="center"><%= format_value(result[3]) %></td>
+              <td align="center"><strong><%= format_value(result[4]) %></strong></td>
+              <td align="center"><%= format_value(result[5]) %></td>
             </tr>
           <% end %>
         </tbody>
