@@ -3,20 +3,17 @@
 <% end -%>
 
 <% content_for :main do %>
-
-  <% if current_user.is_admin? %>
-    <section>
-      <h2>Configuration</h2>
-      <ul>
-        <li><%= link_to 'Manage Events', admin_events_path %></li>
-        <li><%= link_to 'Manage Locations', admin_locations_path %></li>
-        <li><%= link_to 'Manage Methods', admin_methods_path %></li>
-        <li><%= link_to 'Manage Processes', admin_processes_path %></li>
-        <li><%= link_to 'Manage Species', admin_species_index_path %></li>
-        <li><%= link_to 'Manage Taxonomies', admin_taxonomies_path %></li>
-      </ul>
-    </section>
-  <% end %>
+  <section>
+    <h2>Configuration</h2>
+    <ul>
+      <li><%= link_to 'Manage Events', admin_events_path %></li>
+      <li><%= link_to 'Manage Locations', admin_locations_path %></li>
+      <li><%= link_to 'Manage Methods', admin_methods_path %></li>
+      <li><%= link_to 'Manage Processes', admin_processes_path %></li>
+      <li><%= link_to 'Manage Species', admin_species_index_path %></li>
+      <li><%= link_to 'Manage Taxonomies', admin_taxonomies_path %></li>
+    </ul>
+  </section>
   
   <section>
     <h2>Observations</h2>

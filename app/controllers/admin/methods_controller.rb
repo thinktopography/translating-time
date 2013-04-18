@@ -1,7 +1,5 @@
 class Admin::MethodsController < Admin::ApplicationController
 
-  before_filter :is_admin?
-
   def index
     @methods = Methodd.all
   end

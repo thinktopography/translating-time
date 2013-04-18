@@ -1,7 +1,5 @@
 class Admin::ProcessesController < Admin::ApplicationController
 
-  before_filter :is_admin?
-
   def index
     @processes = Proces.all
   end

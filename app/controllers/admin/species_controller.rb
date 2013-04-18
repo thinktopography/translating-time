@@ -1,7 +1,5 @@
 class Admin::SpeciesController < Admin::ApplicationController
 
-  before_filter :is_admin?
-
   def index
     @species = Species.all
   end

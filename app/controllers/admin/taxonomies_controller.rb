@@ -1,7 +1,5 @@
 class Admin::TaxonomiesController < Admin::ApplicationController
 
-  before_filter :is_admin?
-
   def index
     @taxonomies = Taxonomy.roots
   end

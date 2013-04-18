@@ -1,7 +1,5 @@
 class Admin::LocationsController < Admin::ApplicationController
 
-  before_filter :is_admin?
-
   def index
     @locations = Location.all
   end
