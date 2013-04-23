@@ -32,6 +32,7 @@ class Species < ActiveRecord::Base
   
   def minimum
     self.estimates.minimum(:value)
+    
   end
   
   def maximum

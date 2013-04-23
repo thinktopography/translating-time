@@ -13,7 +13,7 @@ div.flash {
   &.error span { color: #FFF;  }
   &.error span:hover { background-color: #900; color: #FFF; }
 }
-
+div.error { color: #900; clear: both; }
 div.results {
   border: 1px solid #E2C822; background: #FFF9D7; padding: 10px; margin: 20px 0;
   p { margin: 0 !important; color: #000; text-align: center; }

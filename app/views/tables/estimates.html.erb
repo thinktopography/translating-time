@@ -18,11 +18,13 @@
         <tr>
           <th valign="top"><%= estimate.event.name %></th>
           <td valign="top"><%= estimate.low %></td>
-          <td valign="top"><%= estimate.value %></td>
+          <td valign="top"><strong><%= estimate.value %></strong></td>
           <td valign="top"><%= estimate.high %></td>
         </tr>
       <% end  %>
     </tbody>
   </table>
+
+  <a href="/tables">&laquo Back to related tables</a>
 
 <% end %>

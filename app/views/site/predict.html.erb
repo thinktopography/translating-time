@@ -6,7 +6,7 @@
     
     <p>Please a species and an event and click the predict button.</p>
     
-    <form action="/predict" method="post">
+    <form action="/predict" method="post" class="predict">
       
       <dl>
         <dt>Species</dt>
@@ -14,9 +14,6 @@
         <dt>Neural Event</dt>
         <dd><%= select_tag :event_id, options_from_collection_for_select(Event.order('name ASC').all, :id, :name, params[:event_id]), :include_blank => true %></dd>
       </dl>
-      <div class="buttons">
-        <input type="submit" value="PREDICT" />
-      </div>
 
     </form>
     
@@ -24,6 +21,8 @@
     
       <% unless @estimate.nil? %>
     
+        <p class="warning"><strong>* NOTE:</strong> All values represent days post conception, not post natal</p>
+
         <table width="100%" class="referencetable">
           <tr>
             <th width="50%">Predicted Days</th>

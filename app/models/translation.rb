@@ -5,10 +5,17 @@ class Translation
   include ActiveModel::Validations
   
   validates_presence_of :species_1, :species_2, :location, :process, :days
+  validate :date_in_range
   
   def attributes=(attributes)
     attributes.each do |key, value|
       self.send("#{key}=", value) 
+    end
+  end
+  
+  def date_in_range
+    unless self.days > self.min && self.days < self.max
+      errors.add(:days, 'Date it out of range!')
     end
   end
   

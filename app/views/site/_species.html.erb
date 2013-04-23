@@ -1,7 +1,12 @@
 <select id="<%= key %>" name="translation[<%= key %>]">
   <option></option>
   <% Species.in_model.all.each do |species| %>
-    <option value="<%= species.id %>" data-min="<%= species.minimum %>" data-max="<%= species.maximum %>" <%= (value == species.id.to_s) ? raw('selected="selected"') : '' %>><%= species.name %></option>
+    <option value="<%= species.id %>" data-min="<%= format_value(species.minimum) %>" data-max="<%= format_value(species.maximum) %>" <%= (value == species.id.to_s) ? raw('selected="selected"') : '' %>><%= species.name %></option>
   <% end %>
 </select> 
 <span class="range"></span>
+<% unless @translation.errors[key].empty? %>
+  <div class="error">
+    <%= @translation.errors[key].first %>
+  </div>
+<% end %>

@@ -9,6 +9,16 @@ Application.Form.Init = function() {
   $('input#min,input#max').focus(function() { $(this).blur(); });
   $('#species_1').change(Application.Form.SetMinMax);
   $('#species_1,#species_2').change(Application.Form.DisplayMinMax);
+  $('form.predict select').change(Application.Form.Predict);
+}
+
+Application.Form.Predict = function() {
+  var form = $('form.predict');
+  var species = $('#species_id').val();
+  var event = $('#event_id').val();
+  if(species && event) {
+    form.submit();
+  }
 }
 
 Application.Form.SetMinMax = function() {
@@ -24,7 +34,7 @@ Application.Form.DisplayMinMax = function() {
   var min = selected.data('min');
   var max = selected.data('max');
   var container = $(this).closest('dd');
-  container.find('span.range').html("[ Date range: "+min+" - "+max+" ]");
+  container.find('span.range').html("[ Post Conception Day range: "+min+" - "+max+" ]");
 }
 
 Application.Form.Toggle = function() {
