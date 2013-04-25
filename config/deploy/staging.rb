@@ -8,3 +8,4 @@ ssh_options[:username] = "root"
 ssh_options[:keys] = [File.join(File.dirname(File.dirname(__FILE__)),"ssh.key")]
 
 role :app, "staging.#{domain}"
+role :db, "staging.#{domain}", :primary => true

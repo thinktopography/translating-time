@@ -12,5 +12,7 @@
 
 <%= f.text_area_control @event, :description, {}, { :rows => 5 } %>
 
+<%= f.text_area_control @event, :comment, {}, { :rows => 3 } %>
+
 <dt><%= f.label :in_model, "In Model?" %></dt>
 <dd><%= f.check_box :in_model %></dd>

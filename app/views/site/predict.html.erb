@@ -20,6 +20,12 @@
     <% if request.post? %>
     
       <% unless @estimate.nil? %>
+      
+        <% unless @event.comment.blank? %>
+
+          <p><%= @event.comment %></p>
+
+        <% end %>
     
         <p class="warning"><strong>* NOTE:</strong> All values represent days post conception, not post natal</p>
 
