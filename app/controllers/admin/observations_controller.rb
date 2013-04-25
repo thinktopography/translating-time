@@ -45,6 +45,12 @@ class Admin::ObservationsController < Admin::ApplicationController
     end
   end
   
+  def destroy
+    @observation = Observation.find(params[:id])
+    @observation.destroy
+    render :text => ''
+  end
+  
   def curate
     @species = (params.has_key?(:species_id)) ? Species.find(params[:species_id]) : Species.first
     @observations = @species.observations
