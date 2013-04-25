@@ -12,7 +12,7 @@
         <dt>Species</dt>
         <dd><%= select_tag :species_id, options_from_collection_for_select(Species.in_model.order('name ASC').all, :id, :name, params[:species_id]), :include_blank => true %></dd>
         <dt>Neural Event</dt>
-        <dd><%= select_tag :event_id, options_from_collection_for_select(Event.order('name ASC').all, :id, :name, params[:event_id]), :include_blank => true %></dd>
+        <dd><%= select_tag :event_id, options_from_collection_for_select(Event.in_model.order('name ASC').all, :id, :name, params[:event_id]), :include_blank => true %></dd>
       </dl>
 
     </form>

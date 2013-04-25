@@ -4,4 +4,12 @@ class Inquiry < ActiveRecord::Base
   
   validates_presence_of :name, :affiliation, :email, :comments
   
+  after_create :send_inquiry
+  
+  
+  private
+  
+    def send_inquiry
+      Notification.inquiry(self).deliver!
+    end
 end

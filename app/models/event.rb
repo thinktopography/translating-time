@@ -8,4 +8,6 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :name
 
+  scope :in_model, where(:in_model => true)
+
 end

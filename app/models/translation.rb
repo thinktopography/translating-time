@@ -15,7 +15,7 @@ class Translation
   
   def date_in_range
     unless self.days.to_i > self.min.to_i && self.days.to_i < self.max.to_i
-      errors.add(:days, 'Date it out of range!')
+      errors.add(:days, 'Date is out of range!')
     end
   end
   
