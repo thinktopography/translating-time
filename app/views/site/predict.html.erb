@@ -40,18 +40,10 @@
             <th>95% Confidence Range <span class="asterix">*</span></th>
             <td><%= format_value(@estimate.low) %> - <%= format_value(@estimate.high) %></td>
           </tr>
-          <% unless @gestation.nil? %>
-            <tr>
-              <th>Gestation</th>
-              <td><%= format_value(@gestation.value) %></td>
-            </tr>
-          <% end %>
-          <% unless @eyes.nil? %>
-            <tr>
-              <th>Eye opening</th>
-              <td><%= format_value(@eyes.value) %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <th>Gestation</th>
+            <td><%= format_value(@species.gestation) %></td>
+          </tr>
         </table>
         
         <p><span class="asterix">*</span> Confidence intervals are for species averages rather than for individuals.</p>

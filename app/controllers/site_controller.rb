@@ -48,8 +48,6 @@ class SiteController < ApplicationController
       @species = Species.find(params[:species_id])
       @event = Event.find(params[:event_id])
       @estimate = @species.estimates.where(:event_id => params[:event_id]).first
-      @gestation = @species.estimates.where(:event_id => 379).first
-      @eyes = @species.estimates.where(:event_id => 270).first
     end
   end
   
