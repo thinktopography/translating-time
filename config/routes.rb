@@ -28,6 +28,7 @@ Translatingtime::Application.routes.draw do
       get :export, :on => :collection
       get :curate, :on => :collection
       get :adjust, :on => :member
+      get :delete, :on => :member
     end
     resources :pages do
       get :batch, :on => :collection
