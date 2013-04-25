@@ -58,6 +58,10 @@ class SiteController < ApplicationController
     end
   end
   
+  def species
+    @species = Species.in_model.all
+  end
+  
   def feedback
     @inquiry = Inquiry.new
     if request.post?

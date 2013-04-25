@@ -46,6 +46,7 @@ Translatingtime::Application.routes.draw do
 
   match 'translate' => 'site#translate', :as => :translate
   match 'predict' => 'site#predict', :as => :predict
+  match 'species' => 'site#species'
   match 'tables' => 'tables#index'
   match 'tables/abbreviations' => 'tables#abbreviations'
   match 'tables/empirical/:id' => 'tables#empirical'

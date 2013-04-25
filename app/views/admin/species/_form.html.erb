@@ -1,10 +1,20 @@
 <%= f.text_field_control @species, :name, { :required => true } %>
 
+<%= f.text_field_control @species, :scientific_name %>
+
 <%= f.text_field_control @species, :code %>
 
 <%= f.text_field_control @species, :constant, {}, { :maxlength => 8 } %>
 
 <%= f.text_field_control @species, :slope, {}, { :maxlength => 8 } %>
+
+<%= f.text_field_control @species, :precocial_score %>
+
+<%= f.text_field_control @species, :brain %>
+
+<%= f.text_field_control @species, :weight %>
+
+<%= f.text_field_control @species, :gestation %>
 
 <dt><%= f.label :in_model, "In Model?" %></dt>
 <dd><%= f.check_box :in_model %></dd>

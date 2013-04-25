@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128201102) do
+ActiveRecord::Schema.define(:version => 20130425201039) do
+
+  create_table "abbreviations", :force => true do |t|
+    t.string "text"
+    t.string "description"
+  end
 
   create_table "citations", :force => true do |t|
     t.text     "body"
@@ -138,11 +143,16 @@ ActiveRecord::Schema.define(:version => 20130128201102) do
   create_table "species", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.decimal  "constant",   :precision => 8, :scale => 6
-    t.decimal  "slope",      :precision => 8, :scale => 6
+    t.decimal  "constant",        :precision => 8, :scale => 6
+    t.decimal  "slope",           :precision => 8, :scale => 6
     t.boolean  "in_model"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.string   "scientific_name"
+    t.string   "precocial_score"
+    t.string   "brain"
+    t.string   "weight"
+    t.string   "gestation"
   end
 
   create_table "taxonomies", :force => true do |t|
