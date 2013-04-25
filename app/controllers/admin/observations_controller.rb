@@ -76,7 +76,11 @@ class Admin::ObservationsController < Admin::ApplicationController
       @grid[observation.species_id] = {} if @grid[observation.species_id].blank?
       @grid[observation.species_id][observation.event_id] = observation.value
     end
-    send_data(render_to_string('export'), :filename => "export-#{Time.now.strftime("%y-%m-%d")}.txt", :type => "application/text", :disposition => "inline")
+    if params[:format] == 'txt'
+      send_data(render_to_string('export'), :filename => "export-#{Time.now.strftime("%y-%m-%d")}.txt", :type => "application/text", :disposition => "inline")
+    elsif params[:format] == 'csv'
+      send_data(render_to_string('export'), :filename => "export-#{Time.now.strftime("%y-%m-%d")}.csv", :type => "application/text", :disposition => "inline")
+    end
   end
     
 end
