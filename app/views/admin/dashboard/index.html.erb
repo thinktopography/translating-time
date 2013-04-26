@@ -21,6 +21,8 @@
       <% if current_user.is_editor? %>
         <li><%= link_to 'Manage Citations', admin_citations_path %></li>
         <li><%= link_to 'Manage Observations', admin_observations_path %></li>
+        <li><%= link_to 'View Curated Observations', curated_admin_observations_path %></li>
+        <li><%= link_to 'View Observations by User', user_admin_observations_path %></li>
       <% end %>
       <% if current_user.is_publisher? %>
         <li><%= link_to 'Curate Observations', curate_admin_observations_path %></li>

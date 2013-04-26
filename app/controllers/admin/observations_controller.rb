@@ -88,5 +88,51 @@ class Admin::ObservationsController < Admin::ApplicationController
       send_data(render_to_string('export'), :filename => "export-#{Time.now.strftime("%y-%m-%d")}.csv", :type => "application/text", :disposition => "inline")
     end
   end
+  
+  def user_form
+    @species = Species.all
+    @events = Event.all
+    @users = User.all
+  end
+  
+  def user
+    @observations = Observation
+    @observations = @observations.where(:species_id => params[:species_ids]) unless params[:species_ids].blank?
+    @observations = @observations.where(:event_id => params[:event_ids]) unless params[:event_ids].blank?
+    @observations = @observations.where(:user_id => params[:user_id]) unless params[:user_id].blank?
+    @species = Species
+    @species = @species.where(:id => params[:species_ids]) unless params[:species_ids].blank?
+    @species = @species.all
+    @events = Event
+    @events = @events.where(:id => params[:event_ids]) unless params[:event_ids].blank?
+    @events = @events.all
+    @grid = {}
+    @observations.each do |observation|
+      @grid[observation.species_id] = {} if @grid[observation.species_id].blank?
+      @grid[observation.species_id][observation.event_id] = observation
+    end    
+  end
+
+  def curated_form
+    @species = Species.all
+    @events = Event.all
+  end
+  
+  def curated
+    @observations = Observation.active
+    @observations = @observations.where(:species_id => params[:species_ids]) unless params[:species_ids].blank?
+    @observations = @observations.where(:event_id => params[:event_ids]) unless params[:event_ids].blank?
+    @species = Species
+    @species = @species.where(:id => params[:species_ids]) unless params[:species_ids].blank?
+    @species = @species.all
+    @events = Event
+    @events = @events.where(:id => params[:event_ids]) unless params[:event_ids].blank?
+    @events = @events.all
+    @grid = {}
+    @observations.each do |observation|
+      @grid[observation.species_id] = {} if @grid[observation.species_id].blank?
+      @grid[observation.species_id][observation.event_id] = observation
+    end
+  end
     
 end

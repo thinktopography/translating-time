@@ -27,6 +27,10 @@ Translatingtime::Application.routes.draw do
     resources :observations do
       get :export, :on => :collection
       get :curate, :on => :collection
+      get :curated, :on => :collection, :action => :curated_form
+      post :curated, :on => :collection
+      get :user, :on => :collection, :action => :user_form
+      post :user, :on => :collection
       get :adjust, :on => :member
       get :delete, :on => :member
     end

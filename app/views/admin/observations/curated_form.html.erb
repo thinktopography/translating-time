@@ -1,0 +1,51 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Curated Observations</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <%= form_tag curated_admin_observations_path, :method => :post %>
+    <div class="form" id="new_observation">
+      <div class="form-header">
+        <h2>Curation Search</h2>
+      </div>
+      <div class="form-body">
+        <dl>
+          <dt>Species</dt>
+          <dd>
+            <ul class="checkboxes">
+              <% @species.each do |species| %>
+                <li>
+                  <label>
+                    <%= check_box_tag 'species_ids[]', species.id %>
+                    <%= species.name %>
+                  </label>
+                </li>
+              <% end %>
+            </ul>
+            Leave unchecked for all species
+          </dd>
+          <dt>Events</dt>
+          <dd>
+            <ul class="checkboxes">
+              <% @events.each do |event| %>
+                <li>
+                  <label>
+                    <%= check_box_tag 'event_ids[]', event.id %>
+                    <%= event.name %>
+                  </label>
+                </li>
+              <% end %>
+            </ul>
+            Leave unchecked for all events
+          </dd>
+        </dl>
+      </div>
+      <div class="form-footer">
+        <ul>
+          <li><%= submit_tag 'Search', :class => 'button' %></li>
+        </ul>
+      </div>
+    </div>
+  </form>
+<% end -%>

@@ -38,6 +38,10 @@ div.form {
     p { padding: 10px; }
     dt { clear: both; width: 150px; font-weight: bold; }
     dd { width: 790px; }
+    ul.checkboxes {
+      overflow: hidden; border: 1px solid #CCC; padding: 10px; background-color: #FFF;
+      li { float: left; width: 50%; }
+    }
     label { cursor: pointer; }
     label.required { background: url(/assets/required.png) no-repeat right 0; padding: 0 15px 0 0; }
     input[type="text"], input[type="password"], input[type="email"], textarea {
