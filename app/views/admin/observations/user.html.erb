@@ -5,7 +5,7 @@
 
 <% content_for :main do %>
   <%= link_to raw('&laquo; Back to form'), user_admin_observations_path %>
-  <div class="grid">
+  <div class="grid" id="curation_grid">
     <div class="grid-header">
       <h2>Curated Observations</h2>
     </div>
@@ -27,7 +27,11 @@
               <% @species.each do |species| %>
                 <% if @grid.has_key?(species.id) && @grid[species.id].has_key?(event.id) %>
                   <% observation = @grid[species.id][event.id] %>
-                  <td><%= observation.value %></td>
+                  <td>
+                    <label class="<%= (observation.is_active) ? "active" : "" %>">
+                      <%= observation.value %>
+                    </label>
+                  </td>
                 <% else %>
                   <td>&nbsp;</td>
                 <% end %>
