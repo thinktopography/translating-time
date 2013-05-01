@@ -39,7 +39,7 @@ div.form {
     dt { clear: both; width: 150px; font-weight: bold; }
     dd { width: 790px; }
     ul.checkboxes {
-      overflow: hidden; border: 1px solid #CCC; padding: 10px; background-color: #FFF;
+      clear: both; overflow: hidden; border: 1px solid #CCC; padding: 10px; background-color: #FFF;
       li { float: left; width: 50%; }
     }
     label { cursor: pointer; }
@@ -69,3 +69,6 @@ div.form {
 
 input#page_permalink { width: 272px; }
 input#menu_item_url { width: 272px; }
+
+span.toggle { color: #009; display: block; float: right; cursor: pointer; }
+

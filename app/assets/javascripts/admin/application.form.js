@@ -10,6 +10,29 @@ Application.Form.Init = function() {
   $('#species_1').change(Application.Form.SetMinMax);
   $('#species_1,#species_2').change(Application.Form.DisplayMinMax);
   $('form.predict select').change(Application.Form.Predict);
+  $('div#observations select').change(Application.Form.Observations);
+  $('span.toggle').click(Application.Form.CheckAll);
+}
+
+Application.Form.CheckAll = function() {
+  $(this).next('ul').find('li:visible input').attr('checked', 'checked');
+}
+
+Application.Form.Observations = function() {
+  var location = $('div#observations select#location').val();
+  var process = $('div#observations select#process').val();
+  $('dd.events li').show();
+  if(location || process) {
+    $('dd.events li').hide();
+    $('dd.events input').removeAttr('checked');
+    if(location && process) {
+      $('li.location_'+location+'.process_'+process).show();
+    } else if(location) {
+      $('li.location_'+location).show();
+    } else if(process) {
+      $('li.process_'+process).show();
+    }
+  }
 }
 
 Application.Form.Predict = function() {

@@ -100,12 +100,8 @@ class Admin::ObservationsController < Admin::ApplicationController
     @observations = @observations.where(:species_id => params[:species_ids]) unless params[:species_ids].blank?
     @observations = @observations.where(:event_id => params[:event_ids]) unless params[:event_ids].blank?
     @observations = @observations.where(:user_id => params[:user_id]) unless params[:user_id].blank?
-    @species = Species
-    @species = @species.where(:id => params[:species_ids]) unless params[:species_ids].blank?
-    @species = @species.all
-    @events = Event
-    @events = @events.where(:id => params[:event_ids]) unless params[:event_ids].blank?
-    @events = @events.all
+    @species = (params[:species_ids].blank?) ? Species.where(:id => 0).all : Species.where(:id => params[:species_ids]).all
+    @events = (params[:event_ids].blank?) ? Event.where(:id => 0).all : Event.where(:id => params[:event_ids]).all
     @grid = {}
     @observations.each do |observation|
       @grid[observation.species_id] = {} if @grid[observation.species_id].blank?
@@ -122,12 +118,8 @@ class Admin::ObservationsController < Admin::ApplicationController
     @observations = Observation.active
     @observations = @observations.where(:species_id => params[:species_ids]) unless params[:species_ids].blank?
     @observations = @observations.where(:event_id => params[:event_ids]) unless params[:event_ids].blank?
-    @species = Species
-    @species = @species.where(:id => params[:species_ids]) unless params[:species_ids].blank?
-    @species = @species.all
-    @events = Event
-    @events = @events.where(:id => params[:event_ids]) unless params[:event_ids].blank?
-    @events = @events.all
+    @species = (params[:species_ids].blank?) ? Species.where(:id => 0).all : Species.where(:id => params[:species_ids]).all
+    @events = (params[:event_ids].blank?) ? Event.where(:id => 0).all : Event.where(:id => params[:event_ids]).all
     @grid = {}
     @observations.each do |observation|
       @grid[observation.species_id] = {} if @grid[observation.species_id].blank?

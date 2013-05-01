@@ -5,7 +5,7 @@
 
 <% content_for :main do %>
   <%= form_tag curated_admin_observations_path, :method => :post %>
-    <div class="form" id="new_observation">
+    <div class="form" id="observations">
       <div class="form-header">
         <h2>Curation Search</h2>
       </div>
@@ -13,6 +13,7 @@
         <dl>
           <dt>Species</dt>
           <dd>
+            <span class="toggle">Select All</span>
             <ul class="checkboxes">
               <% @species.each do |species| %>
                 <li>
@@ -23,13 +24,17 @@
                 </li>
               <% end %>
             </ul>
-            Leave unchecked for all species
           </dd>
+          <dt>Location</dt>
+          <dd><%= select_tag 'location', options_from_collection_for_select(Location.all, :id, :name), :include_blank => true %></dd>
+          <dt>Process</dt>
+          <dd><%= select_tag 'process', options_from_collection_for_select(Proces.all, :id, :name), :include_blank => true %></dd>
           <dt>Events</dt>
-          <dd>
+          <dd class="events">
+            <span class="toggle">Select All</span>
             <ul class="checkboxes">
               <% @events.each do |event| %>
-                <li>
+                <li class="process_<%= event.process_id %> location_<%= event.location_id %>">
                   <label>
                     <%= check_box_tag 'event_ids[]', event.id %>
                     <%= event.name %>
@@ -37,7 +42,6 @@
                 </li>
               <% end %>
             </ul>
-            Leave unchecked for all events
           </dd>
         </dl>
       </div>
