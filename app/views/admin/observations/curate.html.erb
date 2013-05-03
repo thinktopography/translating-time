@@ -33,7 +33,7 @@
                 <% if @grid.has_key?(event.id) && @grid[event.id].has_key?(user.id) %>
                   <% observation = @grid[event.id][user.id] %>
                   <td>
-                    <label class="<%= (observation.is_active) ? "active" : "" %>">
+                    <label class="<%= (observation.is_active) ? "active" : "" %>" title="<%= observation.citation.description %>">
                       <%= radio_button_tag "observations[#{observation.event_id}][#{observation.species_id}]", observation.id, observation.is_active %>
                       <%= observation.value %></td>
                     </label>
