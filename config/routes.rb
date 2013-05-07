@@ -10,6 +10,7 @@ Translatingtime::Application.routes.draw do
     resources :citations
     resources :events do
       post :batch, :on => :collection
+      get :delete, :on => :member
     end
     resources :errors do
       get :import, :on => :collection
@@ -41,6 +42,7 @@ Translatingtime::Application.routes.draw do
     resources :processes
     resources :species do
       post :batch, :on => :collection
+      get :delete, :on => :member
     end
     resources :taxonomies
     resource :password

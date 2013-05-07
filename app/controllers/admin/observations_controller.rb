@@ -80,7 +80,7 @@ class Admin::ObservationsController < Admin::ApplicationController
     @grid = {}
     Observation.active.each do |observation|
       @grid[observation.species_id] = {} if @grid[observation.species_id].blank?
-      @grid[observation.species_id][observation.event_id] = observation.value
+      @grid[observation.species_id][observation.event_id] = observation
     end
     if params[:format] == 'txt'
       send_data(render_to_string('export'), :filename => "export-#{Time.now.strftime("%y-%m-%d")}.txt", :type => "application/text", :disposition => "inline")

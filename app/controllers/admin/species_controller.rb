@@ -47,5 +47,26 @@ class Admin::SpeciesController < Admin::ApplicationController
       render :action => 'edit'
     end
   end
+
+  def delete
+    @species = Species.find(params[:id])
+    params[:strategy] = 'delete'
+  end
+  
+  def destroy
+    @species = Species.find(params[:id])
+    if params[:strategy] == 'delete'
+      Observation.where(:species_id => @species.id).delete_all
+      flash[:success] = 'The species was successfully deleted and all observations were deleted'
+    elsif params[:strategy] == 'move'
+      @species.observations.update_all(:species_id => params[:species_id])
+      new_species = Species.find(params[:species_id])
+      flash[:success] = "The species was successfully deleted and all observations were moved to <strong>#{new_species.name}</strong>"
+    else
+      flash[:success] = "The species was successfully deleted"
+    end
+    @species.destroy
+    redirect_to admin_species_index_path
+  end
   
 end
