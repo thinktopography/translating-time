@@ -3,7 +3,8 @@ Application.Form = { }
 Application.Form.Init = function() {
   $('div.flash span').live('click', Application.Form.CloseFlash);
   $('div#curation_grid div.grid-prefix select').live('change', Application.Form.ChangeSpecies);
-  $('div#curation_grid label').live('click', Application.Form.Curate);
+  $('div#curation_grid label.curate').live('click', Application.Form.Curate);
+  $('div#curation_grid label.uncurate').live('click', Application.Form.Uncurate);
   $('div.form :input:first').focus();
   $('span.togglemce').click(Application.Form.Toggle)
   $('input#min,input#max').focus(function() { $(this).blur(); });
@@ -69,12 +70,32 @@ Application.Form.Toggle = function() {
 }
 
 Application.Form.Curate = function() {
+  if(!confirm('Are you sure you want to curate this observation?')) return false;
   var label = $(this);
   var id = label.find('input').val();
   var row = label.closest('tr');
   if(!label.hasClass('active')) {
     $.ajax({
       url: '/admin/observations/'+id+'/adjust',
+      success: function() {
+        row.find('label.active').removeClass('active');
+        label.addClass('active');
+      }
+    })
+  }
+  return false;
+}
+
+Application.Form.Uncurate = function() {
+  if(!confirm('Are you sure you want to uncurate this observation?')) return false;
+  var label = $(this);
+  var event_id = label.data('event_id');
+  var species_id = label.data('species_id');
+  var row = label.closest('tr');
+  if(!label.hasClass('active')) {
+    $.ajax({
+      url: '/admin/observations/clear',
+      data: 'event_id='+event_id+'&species_id='+species_id,
       success: function() {
         row.find('label.active').removeClass('active');
         label.addClass('active');

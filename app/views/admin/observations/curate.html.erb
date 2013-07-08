@@ -19,9 +19,11 @@
         <thead>
           <tr>
             <th>Event</th>
+            <th>In Model</th>
             <% @users.each do |user| %>
               <th width="50"><%= user.full_name %></th>
             <% end %>
+            <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
@@ -29,18 +31,29 @@
             <% curated = event.observations.where(:species_id => params[:species_id]).active.first %>
             <tr>
               <th><%= event.name %></th>
+              <td>
+                <% if event.in_model %>
+                  <span class="yes">YES</span>
+                <% else %>
+                  <span class="no">NO</span>
+                <% end %>
+              </td>
               <% @users.each do |user| %>
                 <% if @grid.has_key?(event.id) && @grid[event.id].has_key?(user.id) %>
                   <% observation = @grid[event.id][user.id] %>
                   <td>
-                    <label class="<%= (observation.is_active) ? "active" : "" %>" title="<%= observation.citation.description %>">
+                    <label class="curate <%= (observation.is_active) ? "active" : "" %>" title="<%= observation.citation.description %>">
                       <%= radio_button_tag "observations[#{observation.event_id}][#{observation.species_id}]", observation.id, observation.is_active %>
-                      <%= observation.value %></td>
+                      <%= observation.value %>
                     </label>
+                  </td>
                 <% else %>
                   <td>&nbsp;</td>
                 <% end %>
               <% end %>
+              <td>
+                <label class="uncurate <%= (curated.blank?) ? "active" : "" %>" data-species_id="<%= params[:species_id] %>" data-event_id="<%= event.id %>">X</label>
+              </td>
             </tr>
           <% end %>
         </tbody>          

@@ -16,6 +16,7 @@
         <thead>
           <tr>
             <th>Citation</th>
+            <th>Author(s)</th>
           </tr>
         </thead>
         <tbody>
@@ -23,11 +24,12 @@
             <% @citations.each do |citation| -%>
               <tr class="<%= cycle('odd', 'even') %>">
                 <td><%= link_to citation.description, edit_admin_citation_path(citation) %></td>
+                <td><%= citation.authors %></td>
               </tr>
             <% end -%>
           <% else -%>
             <tr>
-              <td>There are no citations</td>
+              <td colspan="2">There are no citations</td>
             </tr>
           <% end -%>
         </tbody>

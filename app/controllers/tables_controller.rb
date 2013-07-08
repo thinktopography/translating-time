@@ -12,7 +12,7 @@ class TablesController < ApplicationController
 
   def events
     @location = Location.find(params[:id])
-    @events = @location.events.order("events.name ASC").all
+    @events = @location.events.in_model.order("events.name ASC").all
   end  
   
   def abbreviations

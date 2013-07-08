@@ -52,7 +52,8 @@ class Admin::ObservationsController < Admin::ApplicationController
   end
   
   def curate
-    @species = (params.has_key?(:species_id)) ? Species.find(params[:species_id]) : Species.first
+    params[:species_id] ||= Species.first.id
+    @species = Species.find(params[:species_id])
     @observations = @species.observations
     @specieses = Species.all
     @events = Event.all
@@ -69,6 +70,11 @@ class Admin::ObservationsController < Admin::ApplicationController
     Observation.update_all({ :is_active => 0 }, { :event_id => @observation.event_id, :species_id => @observation.species_id })
     @observation.is_active = 1
     @observation.save
+    render :text => ''
+  end
+  
+  def clear
+    Observation.update_all({ :is_active => 0 }, { :event_id => params[:event_id], :species_id =>  params[:species_id] })
     render :text => ''
   end
   

@@ -39,15 +39,17 @@
       </ul>
     </section>
 
-    <section>
-      <h2>Data Processing</h2>
-      <ul>
-        <li><%= link_to 'Export Observations', export_admin_observations_path(:format => 'txt') %> (with codes)</li>
-        <li><%= link_to 'Export Observations', export_admin_observations_path(:format => 'csv') %> (with labels)</li>
-        <li><%= link_to 'Manage Estimates', admin_estimates_path %></li>
-      </ul>
-    </section>
   <% end %>
+
+  <section>
+    <h2>Data Processing</h2>
+    <ul>
+      <li><%= link_to 'Export Observations', export_admin_observations_path(:format => 'txt') %> (with codes)</li>
+      <li><%= link_to 'Export Observations', export_admin_observations_path(:citations => 1, :format => 'csv') %> (with labels)</li>
+      <li><%= link_to 'Export Observations', export_admin_observations_path(:citations => 0, :format => 'csv') %> (with labels, without citations)</li>
+      <li><%= link_to 'Manage Estimates', admin_estimates_path %></li>
+    </ul>
+  </section>
 
   <% if current_user.is_admin? %>
     <section>

@@ -12,17 +12,6 @@ class Observation < ActiveRecord::Base
   validates_uniqueness_of :species_id, :scope => [:event_id, :user_id], :message => 'You have already created an observation for this species and event'
   validates_uniqueness_of :event_id, :scope => [:species_id, :user_id], :message => 'You have already created an observation for this species and event'
   
-  before_create :set_activity
-  
   scope :active, where(:is_active => 1)
-  
-  private
-  
-    def set_activity
-      if Observation.where(:species_id => species_id, :event_id => event_id).empty?
-        self.is_active = true
-      end
-    end
-    
 
 end
