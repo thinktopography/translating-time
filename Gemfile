@@ -9,6 +9,7 @@ gem 'exception_notification'
 gem 'aws-s3'
 gem 'will_paginate'
 gem 'tinymce-rails'
+gem 'exception_notification'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

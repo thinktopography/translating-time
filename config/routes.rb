@@ -52,6 +52,7 @@ Translatingtime::Application.routes.draw do
     end
   end
 
+  match 'rebuild' => 'site#rebuild'
   match 'translate' => 'site#translate', :as => :translate
   match 'predict' => 'site#predict', :as => :predict
   match 'species' => 'site#species'

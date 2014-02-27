@@ -1,6 +1,7 @@
 set :stages, %w(demo production staging)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
+require 'bundler/capistrano' 
 
 set :application, "translatingtime"
 set :domain, "translatingtime.net"
@@ -20,7 +21,7 @@ namespace :deploy do
       command += "ln -s #{shared_path}/#{config}.yml #{latest_release}/config/#{config}.yml;"
     end
     command += "cd #{latest_release};"
-    command += "rake assets:precompile;"
+    command += "bundle exec rake assets:precompile;"
     run(command)
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
