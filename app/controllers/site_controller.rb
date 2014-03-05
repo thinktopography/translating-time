@@ -15,6 +15,7 @@ class SiteController < ApplicationController
     end
     lines.shift
     code = 272
+    citation = Citation.create(:body => 'placeholder')
     lines.each do |line|
       cols = line.split("\t")
       name = cols.shift
@@ -28,7 +29,7 @@ class SiteController < ApplicationController
       species.each do |species|
         value = cols.shift
         if value.present?
-          observation = event.observations.build(:value => value, :species_id => species.id, :user_id => 12, :is_active => true)
+          observation = event.observations.build(:value => value, :species_id => species.id, :citation_id => citation.id, :user_id => 12, :is_active => false)
           observation.save(:validate => false)
         end
       end
@@ -56,10 +57,14 @@ class SiteController < ApplicationController
         @result = @species1.translate(@species2, @location, @process, params[:translation][:days])
         @results = {}
         @species1.estimates.includes(:event).order('events.name').each do |estimate|
-          @results[estimate.event.name] = []
-          @results[estimate.event.name] << estimate.low
-          @results[estimate.event.name] << estimate.value
-          @results[estimate.event.name] << estimate.high
+          begin
+            @results[estimate.event.name] = []
+            @results[estimate.event.name] << estimate.low
+            @results[estimate.event.name] << estimate.value
+            @results[estimate.event.name] << estimate.high
+          rescue
+            raise estimate.inspect
+          end
         end
         @species2.estimates.includes(:event).each do |estimate|
           unless @results[estimate.event.name].nil?

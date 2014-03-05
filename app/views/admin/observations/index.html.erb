@@ -61,7 +61,7 @@
               <% @observations.each do |observation| %>
                 <tr class="<%= cycle('odd', 'even') %>">
                   <td><%= observation.species.name %></td>
-                  <td><%= observation.event.name %></td>
+                  <td><%= (observation.event.present?) ? observation.event.name : 'N/A' %></td>
                   <td><%= link_to observation.value, edit_admin_observation_path(observation) %></td>
                   <td align="center">
                     <% if observation.is_active -%>

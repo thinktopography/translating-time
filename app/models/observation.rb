@@ -1,6 +1,6 @@
 class Observation < ActiveRecord::Base
 
-  attr_accessible :citation_id, :event_id, :species_id, :method_id, :user_id, :value
+  attr_accessible :citation_id, :event_id, :species_id, :method_id, :user_id, :value, :is_active
 
   belongs_to :citation
   belongs_to :event

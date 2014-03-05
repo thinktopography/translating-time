@@ -42,6 +42,7 @@ class Import
       specieses << species.id
     end
     @parsed.shift
+    missing = []
     @parsed.each do |row|
       code = row.shift.to_i
       event = Event.find_by_code(code)
@@ -54,8 +55,11 @@ class Import
           @sorted[event_id][species_id] = value.to_f
           i = i + 1
         end
+      else
+        missing << code
       end
     end
+    raise missing.inspect
   end
   
   def estimate(species_id, event_id)
