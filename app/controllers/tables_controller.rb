@@ -7,8 +7,8 @@ class TablesController < ApplicationController
 
   def empirical
     @species = Species.find(params[:id])
-    @observations = @species.observations.includes(:event,:citation).active.order("events.name ASC").all
-  end  
+    @observations = @species.observations.includes(:event,:citation).active.where('events.in_model=1').order("events.name ASC").all
+  end
 
   def events
     @location = Location.find(params[:id])
