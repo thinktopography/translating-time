@@ -3,7 +3,7 @@ class Admin::CitationsController < Admin::ApplicationController
   before_filter :is_editor?
 
   def index
-    @citations = Citation.order(:id => :desc).all
+    @citations = Citation.unscoped.order('id DESC').all
   end
   
   def new
