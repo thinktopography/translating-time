@@ -1,39 +1,19 @@
+# encoding: UTF-8
+
 class SiteController < ApplicationController
   
   before_filter :load_menu
   
   def rebuild
-    file = File.open("#{Rails.root}/test/data.txt", "r")
+    file = File.open("#{Rails.root}/test/citations-adjusted2.txt", "r")
     data = file.read
     file.close
     lines = data.gsub(/\r\n/, "\r").gsub(/\n/, "\r").split("\r")
-    lines.shift
-    species = []    
-    line = lines.shift.split("\t")
-    line[3,line.length].each do |code|
-      species << Species.find_by_code(code)
-    end
-    lines.shift
-    code = 272
-    citation = Citation.create(:body => 'placeholder')
     lines.each do |line|
-      cols = line.split("\t")
-      name = cols.shift
-      location = Location.find_by_code(cols.shift)
-      process = Proces.find_by_code(cols.shift)
-      event = Event.find_by_name(name)
-      if event.blank?
-        event = Event.create(:location_id => location.id, :process_id => process.id, :name => name, :code => code)
-        code += 1
-      end
-      species.each do |species|
-        value = cols.shift
-        if value.present?
-          observation = event.observations.build(:value => value, :species_id => species.id, :citation_id => citation.id, :user_id => 12, :is_active => false)
-          observation.save(:validate => false)
-        end
-      end
+      citation = Citation.new(:title => line)
+      citation.save(:validate => false)
     end
+    render :text => 'done'
   end
 
   def page
