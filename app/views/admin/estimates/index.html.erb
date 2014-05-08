@@ -29,7 +29,11 @@
               <% @species.each do |species| %>
                 <% if @grid.has_key?(species.id) && @grid[species.id].has_key?(event.id) %>
                   <% estimate = @grid[species.id][event.id] %>
-                  <td><%= number_with_precision(estimate.value, :precision => 3) %></td>
+                  <td>
+                    <%= number_with_precision(estimate.low, :precision => 3) %><br />
+                    <strong><%= number_with_precision(estimate.value, :precision => 3) %></strong><br />
+                    <%= number_with_precision(estimate.high, :precision => 3) %>
+                  </td>
                 <% else %>
                   <td>&nbsp;</td>
                 <% end %>

@@ -15,7 +15,8 @@
         <table>
           <thead>
             <tr>
-              <th width="60%">Event</th>
+              <th width="5%">ID</th>
+              <th width="55%">Event</th>
               <th width="20%">Code</th>
               <th width="10%">In Model</th>
               <th width="10%">Action</th>
@@ -25,6 +26,7 @@
             <% unless @events.empty? %>
               <% @events.each do |event| -%>
                 <tr class="<%= cycle('odd', 'even') %>">
+                  <td><%= event.ID %></td>
                   <td><%= link_to event.name, edit_admin_event_path(event) %></td>
                   <td><%= event.code %></td>
                   <td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425202051) do
+ActiveRecord::Schema.define(:version => 20140508144411) do
 
   create_table "abbreviations", :force => true do |t|
     t.string "text"
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(:version => 20130425202051) do
     t.string   "code"
     t.text     "description"
     t.decimal  "scale",       :precision => 8, :scale => 6
-    t.boolean  "in_model"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.boolean  "in_model",                                  :default => false, :null => false
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
     t.text     "comment"
   end
 
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(:version => 20130425202051) do
     t.integer  "species_id"
     t.integer  "method_id"
     t.integer  "user_id"
-    t.decimal  "value",       :precision => 4, :scale => 1
+    t.decimal  "value",       :precision => 6, :scale => 1
     t.boolean  "is_active",                                 :default => false, :null => false
     t.datetime "created_at",                                                   :null => false
     t.datetime "updated_at",                                                   :null => false
@@ -146,9 +146,9 @@ ActiveRecord::Schema.define(:version => 20130425202051) do
     t.string   "code"
     t.decimal  "constant",        :precision => 8, :scale => 6
     t.decimal  "slope",           :precision => 8, :scale => 6
-    t.boolean  "in_model"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.boolean  "in_model",                                      :default => false, :null => false
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
     t.string   "scientific_name"
     t.string   "precocial_score"
     t.string   "brain"

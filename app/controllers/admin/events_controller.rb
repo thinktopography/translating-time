@@ -1,7 +1,7 @@
 class Admin::EventsController < Admin::ApplicationController
 
   def index
-    @events = Event.order('name ASC').all
+    @events = Event.unscoped.order('id DESC').all
   end
   
   def batch
