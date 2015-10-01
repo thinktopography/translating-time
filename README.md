@@ -1,4 +1,0 @@
-Translating-Time
-================
-
-Translating Time

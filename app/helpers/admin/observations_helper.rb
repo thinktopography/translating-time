@@ -1,2 +1,0 @@
-module Admin::ObservationsHelper
-end

@@ -1,2 +1,0 @@
-module Admin::EstimatesHelper
-end

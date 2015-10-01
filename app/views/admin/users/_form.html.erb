@@ -1,8 +1,0 @@
-<%= f.text_field_control @user, :first_name, { :required => true, :text => "First Name" } %>
-
-<%= f.text_field_control @user, :last_name, { :required => true, :text => "Last Name" } %>
-
-<%= f.text_field_control @user, :email, { :required => true } %>
-
-<% options = options_from_collection_for_select(Role.order("id ASC").all, :id, :name, @user.role_id) %>
-<%= f.select_control @user, :role_id, { :required => true }, { :include_blank => '', :options => options } %>
