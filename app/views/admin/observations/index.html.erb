@@ -1,0 +1,92 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Observations</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <div class="grid" id="locations_<%= params[:type] %>">
+    <div class="grid-prefix">
+      <ul class="types">
+        <li><%= link_to_type 'List', admin_observations_path, 'list' %></li>
+        <li><%= link_to_type 'Grid', admin_observations_path, 'grid' %></li>
+      </ul>    
+    </div>
+    <div class="grid-header">
+      <h2>Observations</h2>
+      <ul>
+        <li><%= link_to "+ Add New", new_admin_observation_path %></li>
+      </ul>
+    </div>
+    <div class="grid-body">
+      <% if params[:type] == 'grid' %>
+        <table>
+          <thead>
+            <tr>
+              <th width="30%">Event</th>
+              <% width = 70 / @species.count %>
+              <% @species.each do |species| %>
+                <th width="<%= width %>%"><%= species.name %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% @events.each do |event| %>
+              <tr>
+                <th><%= event.name %></th>
+                <% @species.each do |species| %>
+                  <% if @grid.has_key?(species.id) && @grid[species.id].has_key?(event.id) %>
+                    <% observation = @grid[species.id][event.id] %>
+                    <td><%= link_to observation.value, edit_admin_observation_path(observation) %></td>
+                  <% else %>
+                    <td>&nbsp;</td>
+                  <% end %>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>          
+        </table>
+      <% else %>
+        <table>
+          <thead>
+            <tr>
+              <th width="35%">Species</th>
+              <th width="35%">Event</th>
+              <th width="10%">Value</th>
+              <th width="10%">Curated</th>
+              <th width="10%">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% unless @observations.empty? %>
+              <% @observations.each do |observation| %>
+                <tr class="<%= cycle('odd', 'even') %>">
+                  <td><%= observation.species.name %></td>
+                  <td><%= (observation.event.present?) ? observation.event.name : 'N/A' %></td>
+                  <td><%= link_to observation.value, edit_admin_observation_path(observation) %></td>
+                  <td align="center">
+                    <% if observation.is_active -%>
+                      <span class="yes">YES</span>
+                    <% else -%>
+                      <span class="no">NO</span>
+                    <% end -%>
+                  </td>
+                  <td align="center">
+                    <% unless observation.is_active %>
+                      <%= link_to 'delete', admin_observation_path(observation), :class => 'delete' %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end -%>
+            <% else -%>
+              <tr>
+                <td colspan="5">There are no observations</td>
+              </tr>
+            <% end -%>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+    <div class="grid-footer">
+    </div>
+  </div>
+<% end -%>

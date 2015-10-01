@@ -1,0 +1,6 @@
+<%= f.text_field_control @item, :title , { :class => 'required' } %>
+
+<%= f.text_field_control @item, :url , { :class => 'required'}, {}, { :before => 'http://translatingtime.org/' } %>
+
+<dt><%= f.label :target, 'Open In' %></dt>
+<dd><%= f.select(:target, { 'Same Window' => '', 'New Window' => '_blank' }) %></dd>

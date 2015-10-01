@@ -1,0 +1,26 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <%= link_to 'Citations', admin_citations_path %> &raquo;
+  <strong>New Citation</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <%= form_for @citation, { :url => admin_citations_path } do |f| -%>
+    <div class="form" id="new_citation">
+      <div class="form-header">
+        <h2>Citation Details</h2>
+      </div>
+      <div class="form-body">
+        <dl>
+          <%= render 'form', :f => f %>
+        </dl>
+      </div>
+      <div class="form-footer">
+        <ul>
+          <li><%= link_to 'Cancel', admin_citations_path, :class => 'cancel' %></li>
+          <li><%= f.submit 'Save', :class => 'button' %></li>
+        </ul>
+      </div>
+    </div>
+  <% end -%>
+<% end -%>

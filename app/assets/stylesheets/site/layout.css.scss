@@ -1,0 +1,39 @@
+@mixin rounded($tl, $tr, $br, $bl) {
+  -moz-border-radius: $tl $tr $br $bl;
+  -webkit-border-radius: $tl $tr $br $bl;
+  border-radius: $tl $tr $br $bl;
+}
+
+div.site {
+  width: 960px; margin: 0 auto;
+  div.header {
+    h1 a { background: url(/assets/header.png) no-repeat 0 0; display: block; width: 960px; height: 72px; text-indent: -999px; }
+  }
+  div.main { background: url(/assets/content.gif) repeat-x; }
+  div.body { background: #EDECEC url(/assets/body.gif) repeat-y; @include rounded(10px,10px,10px,10px); overflow: hidden; min-height: 300px; }
+  div.sidebar {
+    float: left; width: 290px;
+    div.inner { padding: 30px; }
+    ul { margin: 0 0 20px; }
+    li {
+      background: url(/assets/divider.jpg) no-repeat 0 bottom;
+      a { display:  block; font-size: 16px; font-weight: normal; height: 36px; color: #444444; padding: 5px 10px 5px 30px; }
+      a:hover { color: #770; }
+    }
+    
+  }
+  div.content {
+    float: left; width: 670px;
+    div.inner { padding: 30px; }
+    h2 { font-size: 26px; margin: 0 0 30px; padding: 0; font-weight: normal; color: #000; }
+    h3 { color: #606711; font-size: 14px; padding: 0; }
+    p { margin: 0 0 20px; }
+    ul { margin: 0 0 0 20px; }
+    li { list-style: disc; }
+    table.small td { font-size: 11px; }
+  }
+  div.footer {
+    padding: 20px;
+    p { text-align: center; }
+  }
+}

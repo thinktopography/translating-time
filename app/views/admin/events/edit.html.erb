@@ -1,0 +1,26 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <%= link_to 'Events', admin_events_path %> &raquo;
+  <strong>Edit Event</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <%= form_for @event, { :url => admin_event_path(@event) } do |f| -%>
+    <div class="form" id="new_event">
+      <div class="form-header">
+        <h2>Event Details</h2>
+      </div>
+      <div class="form-body">
+        <dl>
+          <%= render 'form', :f => f %>
+        </dl>
+      </div>
+      <div class="form-footer">
+        <ul>
+          <li><%= link_to 'Cancel', admin_events_path, :class => 'cancel' %></li>
+          <li><%= f.submit 'Save', :class => 'button' %></li>
+        </ul>
+      </div>
+    </div>
+  <% end -%>
+<% end -%>

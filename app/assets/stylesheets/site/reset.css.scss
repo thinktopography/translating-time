@@ -1,0 +1,12 @@
+/* GENERIC STYLES */
+* { margin: 0px; padding: 0px; list-style: none; outline: none; }
+body { font-family: Tahoma,Geneva,sans-serif; font-size: 12px; line-height: 22px; cursor: auto; background: #DBDBDD url(/assets/background.png) repeat-x 0 top; }
+body.waiting { cursor: wait; }
+textarea {font-family: Tahoma,Geneva,sans-serif; }
+img { border: none; }
+a { text-decoration: none; outline: none; color: #770; }
+a:hover { text-decoration: underline; color: #06F; }
+p, input, textarea, select, dt, dd, li, td, th { font-size: 12px; line-height: 18px; color: #666; }
+textarea { font-size: 12px; line-height: 22px; }
+li { font-size: 12px; line-height: 22px; }
+ol li { list-style-type: decimal; margin: 0 0 0 20px; }

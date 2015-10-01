@@ -1,0 +1,41 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Locations</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <div class="grid" id="locations">
+    <div class="grid-header">
+      <h2>Locations</h2>
+      <ul>
+        <li><%= link_to "+ Add New", new_admin_location_path %></li>
+      </ul>
+    </div>
+    <div class="grid-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% unless @locations.empty? %>
+            <% @locations.each do |location| %>
+              <tr class="<%= cycle('odd', 'even') %>">
+                <th><%= link_to location.name, edit_admin_location_path(location) %></th>
+                <td><%= location.code %></td>
+              </tr>
+            <% end -%>
+          <% else -%>
+            <tr>
+              <td colspan="2">There are no locations</td>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-footer">
+    </div>
+  </div>
+<% end -%>

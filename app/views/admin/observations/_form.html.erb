@@ -1,0 +1,13 @@
+<% options = options_from_collection_for_select(Species.order("name ASC").all, :id, :name, @observation.species_id) %>
+<%= f.select_control @observation, :species_id, { :required => true }, { :include_blank => '', :options => options } %>
+
+<% options = options_from_collection_for_select(Event.order("name ASC").all, :id, :name, @observation.event_id) %>
+<%= f.select_control @observation, :event_id, { :required => true }, { :include_blank => '', :options => options } %>
+
+<% options = options_from_collection_for_select(Methodd.order("name ASC").all, :id, :name, @observation.method_id) %>
+<%= f.select_control @observation, :method_id, { :required => true }, { :include_blank => '', :options => options } %>
+
+<% options = options_from_collection_for_select(Citation.order("title ASC").all, :id, :description, @observation.citation_id) %>
+<%= f.select_control @observation, :citation_id, { :required => true }, { :include_blank => '', :options => options } %>
+
+<%= f.text_field_control @observation, :value, { :required => true } %>

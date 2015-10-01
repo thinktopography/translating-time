@@ -1,0 +1,3 @@
+<% @species.each do |species| %><%= "\u0009" %><%= species.name %><% if params[:citations] == 1 %><%= "\u0009" %>Citation<% end %><% end %>
+<% @events.each do |event| %><%= event.name %><% @species.each do |species| %><% if @grid.has_key?(species.id) %><% if @grid[species.id].has_key?(event.id) %><%= "\u0009" %><%= number_with_precision(@grid[species.id][event.id].value, :precision => 1) %><% if params[:citations] == "1" %><%= "\u0009" %><%= @grid[species.id][event.id].citation.body %><% end %><% else %><%= (params[:citations] == 1) ? "\u0009\u0009" : "\u0009" %><% end %><% end %><% end %>
+<% end %>

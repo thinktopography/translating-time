@@ -1,0 +1,2 @@
+module Admin::MethodsHelper
+end

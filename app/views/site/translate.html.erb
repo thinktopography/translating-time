@@ -1,0 +1,106 @@
+<% content_for :content do %>
+
+  <div class="translate">
+    
+    <h2>Translate</h2>
+
+    <p>Please select two species, specify the location and process type of the event, input the PC day you want translated from Species One to Species Two, and click the translate button.</p>
+    
+    <form action="/translate" method="post" id="translate">
+      
+      <dl>
+        <dt>Species 1</dt>
+        <dd><%= render 'species', :key => 'species_1', :value => params[:translation][:species_1] %>
+        <dt>Process</dt>
+        <dd>
+          <%= select_tag 'translation[process]', options_from_collection_for_select(Proces.all, :id, :name, params[:translation][:process]), :include_blank => true %>
+          <% unless @translation.errors[:process].empty? %>
+            <div class="error">
+              <%= @translation.errors[:process].first %>
+            </div>
+          <% end %>
+        </dd>
+        <dt>Location</dt>
+        <dd>
+          <%= select_tag 'translation[location]', options_from_collection_for_select(Location.all, :id, :name, params[:translation][:location]), :include_blank => true %>
+          <% unless @translation.errors[:location].empty? %>
+            <div class="error">
+              <%= @translation.errors[:location].first %>
+            </div>
+          <% end %>
+        </dd>
+        <dt>Days</dt>
+        <dd class="days">
+          <%= text_field_tag 'translation[min]', params[:translation][:min] %>
+          <span>&lt;</span>
+          <%= text_field_tag 'translation[days]', params[:translation][:days] %>
+          <span>&lt;</span>
+          <%= text_field_tag 'translation[max]', params[:translation][:max] %>
+          <% unless @translation.errors[:days].empty? %>
+            <div class="error">
+              <%= @translation.errors[:days].first %>
+            </div>
+          <% end %>
+        </dd>
+        <dt>Species 2</dt>
+        <dd>
+          <%= render 'species', :key => 'species_2', :value => params[:translation][:species_2] %>
+        </dd>
+      </dl>
+      <div class="buttons">
+        <input type="submit" value="TRANSLATE" />
+      </div>
+
+    </form>
+    
+    <% if request.post? && @translation.valid? %>
+
+      <p class="warning"><strong>* NOTE:</strong> All values represent days post conception, not post natal</p>
+
+      <div class="results">
+
+        <p>A <%= @process.name.downcase %> event in the <%= @location.name.downcase %> of the <strong><%= @species1.name %></strong> at PC Day <%= params[:translation][:days] %> translates to <strong>PC Day <%= format_value(@result) %></strong> in the <strong><%= @species2.name %></strong>.</p>
+
+      </div>
+      
+      <h2>Species Predictions</h2>
+    
+      <table width="100%" class="referencetable">
+        <thead>
+          <tr>
+            <td rowspan="3" width="52%">Event Name</td>
+            <td colspan="6">Predictions</td>
+          </tr>
+          <tr>
+            <td colspan="3"><%= @species1.name %></td>
+            <td colspan="3"><%= @species2.name %></td>
+          </tr>
+          <tr>
+            <td width="8%">Lower CL</td>
+            <td width="8%">Prediction</td>
+            <td width="8%">Upper CL</td>
+            <td width="8%">Lower CL</td>
+            <td width="8%">Prediction</td>
+            <td width="8%">Upper CL</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @results.each do |event, result| %>
+            <tr>
+              <th><%= event %></th>
+              <td align="center"><%= format_value(result[0]) %></td>
+              <td align="center"><strong><%= format_value(result[1]) %></strong></td>
+              <td align="center"><%= format_value(result[2]) %></td>
+              <td align="center"><%= format_value(result[3]) %></td>
+              <td align="center"><strong><%= format_value(result[4]) %></strong></td>
+              <td align="center"><%= format_value(result[5]) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <% end %>
+
+  </div>
+
+<% end %>

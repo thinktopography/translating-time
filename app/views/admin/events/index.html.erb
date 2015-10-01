@@ -1,0 +1,54 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Events</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <% form_tag batch_admin_events_path do |f| %>
+    <div class="grid">
+      <div class="grid-header">
+        <ul>
+          <li><%= link_to "+ Add New", new_admin_event_path %></li>
+        </ul>
+      </div>
+      <div class="grid-body">
+        <table>
+          <thead>
+            <tr>
+              <th width="5%">ID</th>
+              <th width="55%">Event</th>
+              <th width="20%">Code</th>
+              <th width="10%">In Model</th>
+              <th width="10%">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% unless @events.empty? %>
+              <% @events.each do |event| -%>
+                <tr class="<%= cycle('odd', 'even') %>">
+                  <td><%= event.id %></td>
+                  <td><%= link_to event.name, edit_admin_event_path(event) %></td>
+                  <td><%= event.code %></td>
+                  <td>
+                    <% if event.in_model %>
+                      <span class="yes">YES</span>
+                    <% else %>
+                      <span class="no">NO</span>
+                    <% end %>
+                  </td>
+                  <td align="center"><%= link_to 'delete', delete_admin_event_path(event) %></td>
+                </tr>
+              <% end -%>
+            <% else -%>
+              <tr>
+                <td colspan="4">There are no events</td>
+              </tr>
+            <% end -%>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid-footer">
+      </div>
+    </div>
+  <% end -%>
+<% end -%>

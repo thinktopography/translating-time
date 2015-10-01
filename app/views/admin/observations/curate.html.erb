@@ -1,0 +1,65 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Curate Observations</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <div class="grid" id="curation_grid">
+    <div class="grid-prefix">
+      <label>Species:</label>
+      <select>
+        <%= options_from_collection_for_select(@specieses, :id, :name, params[:species_id]) %>
+      </select>
+    </div>
+    <div class="grid-header">
+      <h2>Observation Curation</h2>
+    </div>
+    <div class="grid-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>In Model</th>
+            <% @users.each do |user| %>
+              <th width="50"><%= user.full_name %></th>
+            <% end %>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.each do |event| %>
+            <% curated = event.observations.where(:species_id => params[:species_id]).active.first %>
+            <tr>
+              <th><%= event.name %></th>
+              <td>
+                <% if event.in_model %>
+                  <span class="yes">YES</span>
+                <% else %>
+                  <span class="no">NO</span>
+                <% end %>
+              </td>
+              <% @users.each do |user| %>
+                <% if @grid.has_key?(event.id) && @grid[event.id].has_key?(user.id) %>
+                  <% observation = @grid[event.id][user.id] %>
+                  <td>
+                    <label class="curate <%= (observation.is_active) ? "active" : "" %>" title="<%= observation.citation.description %>">
+                      <%= radio_button_tag "observations[#{observation.event_id}][#{observation.species_id}]", observation.id, observation.is_active %>
+                      <%= observation.value %>
+                    </label>
+                  </td>
+                <% else %>
+                  <td>&nbsp;</td>
+                <% end %>
+              <% end %>
+              <td>
+                <label class="uncurate <%= (curated.blank?) ? "active" : "" %>" data-species_id="<%= params[:species_id] %>" data-event_id="<%= event.id %>">X</label>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>          
+      </table>
+    </div>
+    <div class="grid-footer">
+    </div>
+  </div>
+<% end -%>

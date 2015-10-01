@@ -1,0 +1,39 @@
+div.flash {
+  overflow: hidden; min-height: 10px; color: #666; margin: 0 0 10px; padding: 5px 25px 5px 30px;position: relative;
+  span { position: absolute; top: 5px; right: 5px; padding: 4px; cursor: pointer; font-size: 12px; line-height: 12px; }
+  strong { color: #000; }
+  &.success { border: 1px solid #B3DC6C; background: #EAF5DC url(/assets/tick.png) no-repeat 7px 7px; }
+  &.success span { color: #AD7;  }
+  &.success span:hover { background-color: #AD7; color: #FFF; }
+  &.warning { border: 1px solid #E2C822; background: #FFF9D7 url(/assets/warning.png) no-repeat 7px 7px; }
+  &.warning span { color: #E2C822;  }
+  &.warning span:hover { background-color: #E2C822; color: #FFF; }
+  &.error { border: 1px solid #900; background: #900 url(/assets/error.png) no-repeat 7px 7px; color: #FFF; }
+  &.error strong { color: #FFC; }
+  &.error span { color: #FFF;  }
+  &.error span:hover { background-color: #900; color: #FFF; }
+}
+div.error { color: #900; clear: both; }
+div.results {
+  border: 1px solid #E2C822; background: #FFF9D7; padding: 10px; margin: 20px 0;
+  p { margin: 0 !important; color: #000; text-align: center; }
+}
+
+form {
+  margin: 0 0 10px; background: #CCC; overflow: hidden;
+  dl { margin: 10px 20px; }
+  dt { color: #000; font-weight: bold; }
+  dd { margin: 0 0 10px; }
+  div.buttons { background: #AAA; text-align: right; padding: 10px 20px; }
+}
+
+div.translate {
+  h2 { margin: 0 0 20px !important; }
+  form#translate {
+    dd.days {
+      overflow: hidden;
+      input, span { float: left; margin: 0 5px 0 0; }
+      input { width: 40px; }
+    }
+  }
+}

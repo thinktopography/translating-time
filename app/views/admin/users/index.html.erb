@@ -1,0 +1,43 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Users</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <div class="grid">
+    <div class="grid-header">
+      <h2>Users</h2>
+      <ul>
+        <li><%= link_to "+ Add New", new_admin_user_path %></li>
+      </ul>
+    </div>
+    <div class="grid-body">
+      <table>
+        <thead>
+          <tr>
+            <th width="65%">User</th>
+            <th width="20%">Role</th>
+            <th width="15%">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% unless @users.empty? %>
+            <% @users.each do |user| -%>
+              <tr class="<%= cycle('odd', 'even') %>">
+                <td><%= link_to user.full_name, edit_admin_user_path(user) %> (<%= user.email %>)</td>
+                <td><%= user.role.name %></td>
+                <td><%= link_to "reset password", reset_admin_user_path(user) %></td>
+              </tr>
+            <% end -%>
+          <% else -%>
+            <tr>
+              <td>There are no users</td>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-footer">
+    </div>
+  </div>
+<% end -%>

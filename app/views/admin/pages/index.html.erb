@@ -1,0 +1,81 @@
+<% content_for :breadcrumbs do %>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Pages</strong>
+<% end %>
+
+<% content_for :main do %>
+  
+  <div class="grid">
+    
+    <%= form_tag batch_admin_pages_path do |f| %>
+    
+      <div class="grid-header">
+    
+        <div class="actions">
+          <select>
+            <option>Choose an Action</option>
+            <option value="publish">Publish</option>
+            <option value="unpublish">Unpublish</option>
+            <option value="destroy">Delete</option>
+          </select>
+        </div>
+        
+        <ul class="next">
+          <li><%= link_to 'New', new_admin_page_path, :class => 'button' %></li>
+        </ul>
+    
+      </div>
+      
+      <div class="grid-body">
+        
+        <%= hidden_field_tag 'type' %>
+  
+        <table>
+          <thead>
+            <tr>
+              <th width="3%"><%= check_box_tag 'checkall' %></th>
+              <th width="70%"><%= pagerlink 'Name', { :page => 1, :sort => 'title'} %></th>
+              <th width="12%"><%= pagerlink 'Published', { :page => 1, :sort => 'is_published'} %></th>
+              <th width="15%">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% unless @pages.empty? -%>
+              <% @pages.each do |page| -%>
+                <tr class="<%= cycle('odd', 'even') %>">
+                  <td><%= check_box_tag 'item[]', page.id %></td>
+                  <td><%= link_to page.title, page_path(page), :target => '_blank' %></td>
+                  <td align="center">
+                    <% if page.is_published -%>
+                      <span class="yes">YES</span>
+                    <% else -%>
+                      <span class="no">NO</span>
+                    <% end -%>
+                  </td>
+                  <td align="center">
+                    <%= link_to 'edit', edit_admin_page_path(page.id) %> |
+                    <%= link_to 'delete', delete_admin_page_path(page.id) %>
+                  </td>
+                </tr>
+              <% end -%>
+            <% else -%>
+              <tr>
+                <td colspan="4">There are no results</td>
+              </tr>
+            <% end -%>
+          </tbody>
+        </table>
+      
+      </div>
+    
+      <div class="grid-footer">
+    
+        <%= render 'shared/pager', :collection => @pages %>
+        
+      </div>
+        
+    <% end -%>
+  
+  </div>
+
+<% end %>

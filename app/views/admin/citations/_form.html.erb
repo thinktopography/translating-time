@@ -1,0 +1,15 @@
+<%= f.text_area_control @citation, :body, { :required => true, :text => "Full citation" }, { :rows => 5 } %>
+
+<%= f.text_field_control @citation, :title, { :required => true } %>
+
+<%= f.text_field_control @citation, :authors, { :required => true } %>
+
+<%= f.text_field_control @citation, :pubmed_id %>
+
+<%= f.text_field_control @citation, :journal %>
+
+<%= f.text_field_control @citation, :pagination %>
+
+<%= f.text_field_control @citation, :volume %>
+
+<%= f.date_field_control @citation, :date %>
