@@ -9,4 +9,4 @@ set :ssh_options, {
   auth_methods: %w(publickey)
 }
 
-server '54.166.115.42', :user => 'ec2-user', :roles => ['app','web','db']
+server '54.157.21.169', :user => 'ec2-user', :roles => ['app','web','db']

@@ -7,16 +7,16 @@
 div.site {
   width: 960px; margin: 0 auto;
   div.header {
-    h1 a { background: url(/assets/header.png) no-repeat 0 0; display: block; width: 960px; height: 72px; text-indent: -999px; }
+    h1 a { background: url(/images/header.png) no-repeat 0 0; display: block; width: 960px; height: 72px; text-indent: -999px; }
   }
-  div.main { background: url(/assets/content.gif) repeat-x; }
-  div.body { background: #EDECEC url(/assets/body.gif) repeat-y; @include rounded(10px,10px,10px,10px); overflow: hidden; min-height: 300px; }
+  div.main { background: url(/images/content.gif) repeat-x; }
+  div.body { background: #EDECEC url(/images/body.gif) repeat-y; @include rounded(10px,10px,10px,10px); overflow: hidden; min-height: 300px; }
   div.sidebar {
     float: left; width: 290px;
     div.inner { padding: 30px; }
     ul { margin: 0 0 20px; }
     li {
-      background: url(/assets/divider.jpg) no-repeat 0 bottom;
+      background: url(/images/divider.jpg) no-repeat 0 bottom;
       a { display:  block; font-size: 16px; font-weight: normal; height: 36px; color: #444444; padding: 5px 10px 5px 30px; }
       a:hover { color: #770; }
     }

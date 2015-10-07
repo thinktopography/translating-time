@@ -21,7 +21,7 @@ div.grid {
     background-color: #333; padding: 5px 10px; overflow: hidden;
     h2 { float: left; color: #FFF; font-size: 12px; line-height: 22px; }
     div.actions {
-      padding: 0 0 0 20px; background: url(/assets/arrow.gif) no-repeat 2px 8px; float: left;
+      padding: 0 0 0 20px; background: url(/images/arrow.gif) no-repeat 2px 8px; float: left;
       optgroup option { padding: 0 0 0 10px; }
     }
     ul { float: right; overflow: hidden; }
@@ -39,7 +39,7 @@ div.grid {
       td, th { background-color: #FFFFFF; }
     }
     thead th { background-color: #DDDDDD;  }
-    td span.yes { background: url(/assets/check.png) no-repeat center; display: block; text-indent: -9999px; }
+    td span.yes { background: url(/images/check.png) no-repeat center; display: block; text-indent: -9999px; }
     td span.no { display: block; text-indent: -9999px; }
     th.curated {
       background-color: #FFC;
