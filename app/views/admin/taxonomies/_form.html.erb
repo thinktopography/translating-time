@@ -2,3 +2,5 @@
 <%= f.select_control @taxonomy, :parent_id, {}, { :include_blank => '', :options => options } %>
 
 <%= f.text_field_control @taxonomy, :name %>
+
+<%= f.text_field_control @taxonomy, :code %>

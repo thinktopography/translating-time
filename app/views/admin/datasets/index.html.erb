@@ -1,0 +1,50 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Species</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <div class="grid">
+    <div class="grid-header">
+      <ul>
+        <li><%= link_to "+ Add New", new_admin_species_path %></li>
+      </ul>
+    </div>
+    <div class="grid-body">
+      <table>
+        <thead>
+          <tr>
+            <th width="60%">Species</th>
+            <th width="20%">Code</th>
+            <th width="10%">In Model</th>
+            <th width="10%">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% unless @species.empty? %>
+            <% @species.each do |species| -%>
+              <tr class="<%= cycle('odd', 'even') %>">
+                <td><%= link_to species.name, edit_admin_species_path(species) %></td>
+                <td><%= species.code %></td>
+                <td>
+                  <% if species.in_model %>
+                    <span class="yes">YES</span>
+                  <% else %>
+                    <span class="no">NO</span>
+                  <% end %>
+                </td>
+                <td align="center"><%= link_to 'delete', delete_admin_species_path(species) %></td>
+              </tr>
+            <% end -%>
+          <% else -%>
+            <tr>
+              <td colspan="3">There are no species</td>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-footer">
+    </div>
+  </div>
+<% end -%>

@@ -1,0 +1,3 @@
+,<% @species.each do |species| %><%= species.code %>,<% end %>
+<% @events.each do |event| %><%= event.code %>,<% @species.each do |species| %><% if @grid.has_key?(species.id) %><% if @grid[species.id].has_key?(event.id) %><%= number_with_precision(@grid[species.id][event.id].value, :precision => 1) %><% else %><% end %>,<% end %><% end %>
+<% end %>

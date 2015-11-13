@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do 
     resource :account
     resources :citations
+    resources :datasets
     resources :events do
       post :batch, :on => :collection
       get :delete, :on => :member
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
       get :import, :on => :collection
       post :import, :on => :collection
     end
+    get "export/observations" => "exports#observations"
+    get "export/species" => "exports#species"
+    get "export/events" => "exports#events"
     resources :estimates do
       get :import, :on => :collection
       post :import, :on => :collection
@@ -22,9 +26,9 @@ Rails.application.routes.draw do
       get :delete, :on => :member
     end
     resources :locations
+    resources :models
     resources :methods
     resources :observations do
-      get :export, :on => :collection
       get :curate, :on => :collection
       get :clear, :on => :collection
       get :curated, :on => :collection, :action => :curated_form

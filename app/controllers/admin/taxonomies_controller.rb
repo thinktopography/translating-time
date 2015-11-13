@@ -38,7 +38,7 @@ class Admin::TaxonomiesController < Admin::ApplicationController
   private 
   
     def allowed_params
-      params.require(:taxonomy).permit([:parent_id, :name])
+      params.require(:taxonomy).permit([:parent_id, :name, :code])
     end  
   
 end

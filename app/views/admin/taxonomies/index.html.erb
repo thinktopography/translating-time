@@ -16,6 +16,7 @@
         <thead>
           <tr>
             <th>Taxonomy</th>
+            <th width="20%">Code</th>
           </tr>
         </thead>
         <tbody>
@@ -23,11 +24,13 @@
             <% @taxonomies.each do |taxonomy| -%>
               <tr class="<%= cycle('odd', 'even') %>">
                 <td><%= link_to taxonomy.name, edit_admin_taxonomy_path(taxonomy) %></td>
+                <td><%= taxonomy.code %></td>
               </tr>
               <% if taxonomy.children.size > 0 -%>
                 <% taxonomy.children.each do |subtaxonomy| -%>
                   <tr class="<%= cycle('odd', 'even') %>">
                     <td class="subitem"><%= link_to subtaxonomy.name, edit_admin_taxonomy_path(taxonomy) %></td>
+                    <td><%= subtaxonomy.code %></td>
                   </tr>
                 <% end -%>
               <% end -%>

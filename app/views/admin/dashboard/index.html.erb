@@ -42,11 +42,13 @@
   <% end %>
 
   <section>
-    <h2>Data Processing</h2>
+    <h2>Estimates</h2>
     <ul>
-      <li><%= link_to 'Export Observations', export_admin_observations_path(:format => 'txt') %> (with codes)</li>
-      <li><%= link_to 'Export Observations', export_admin_observations_path(:citations => 1, :format => 'csv') %> (with labels)</li>
-      <li><%= link_to 'Export Observations', export_admin_observations_path(:citations => 0, :format => 'csv') %> (with labels, without citations)</li>
+      <li><%= link_to 'Export Observations', admin_export_observations_path(:format => 'txt') %></li>
+      <li><%= link_to 'Export Species', admin_export_species_path(:format => 'txt') %></li>
+      <li><%= link_to 'Export Events', admin_export_events_path(:format => 'txt') %></li>
+      <li><%= link_to 'Manage Models', admin_models_path %></li>
+      <li><%= link_to 'Manage Datasets', admin_datasets_path %></li>
       <li><%= link_to 'Manage Estimates', admin_estimates_path %></li>
     </ul>
   </section>

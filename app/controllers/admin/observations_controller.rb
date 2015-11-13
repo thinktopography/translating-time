@@ -81,8 +81,8 @@ class Admin::ObservationsController < Admin::ApplicationController
   def export
     params[:type] ||= 'list'
     @observations = current_user.observations
-    @species = Species.order("name ASC").all
-    @events = Event.order("name ASC").all
+    @species = Species.unscoped.in_model.order("id ASC").all
+    @events = Event.unscoped.in_model.order("id ASC").all
     @grid = {}
     Observation.active.each do |observation|
       @grid[observation.species_id] = {} if @grid[observation.species_id].blank?

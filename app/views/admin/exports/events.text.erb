@@ -1,0 +1,2 @@
+<% @events.each do |event| %><%= event.code %>,<%= (event.process.present?) ?event.process.code : '' %>,<%= (event.location.present?) ?event.location.code : '' %>
+<% end %>
