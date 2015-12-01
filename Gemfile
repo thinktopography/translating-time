@@ -16,6 +16,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'execjs'
 gem 'therubyracer'
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 group :development do
   gem 'capistrano', '~> 3.0', :require => false

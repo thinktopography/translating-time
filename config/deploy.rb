@@ -16,3 +16,5 @@ end
 
 set :linked_files, linked
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
+after "deploy:restart", "delayed_job:restart"

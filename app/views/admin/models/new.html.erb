@@ -1,14 +1,14 @@
 <% content_for :breadcrumbs do -%>
   <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
-  <%= link_to 'Datasets', admin_datasets_path %> &raquo;
-  <strong>New Dataset</strong>
+  <%= link_to 'Models', admin_models_path %> &raquo;
+  <strong>New Model</strong>
 <% end -%>
 
 <% content_for :main do %>
-  <%= form_for @dataset, { :url => admin_datasets_path } do |f| -%>
-    <div class="form">
+  <%= form_for @model, { :url => admin_models_path } do |f| -%>
+    <div class="form" id="new_model">
       <div class="form-header">
-        <h2>Dataset Details</h2>
+        <h2>Model Details</h2>
       </div>
       <div class="form-body">
         <dl>
@@ -17,8 +17,8 @@
       </div>
       <div class="form-footer">
         <ul>
-          <li><%= link_to 'Cancel', admin_datasets_path, :class => 'cancel' %></li>
-          <li><%= f.submit 'Process', :class => 'button' %></li>
+          <li><%= link_to 'Cancel', admin_models_path, :class => 'cancel' %></li>
+          <li><%= f.submit 'Save', :class => 'button' %></li>
         </ul>
       </div>
     </div>
