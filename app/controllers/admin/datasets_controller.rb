@@ -3,11 +3,41 @@ class Admin::DatasetsController < Admin::ApplicationController
   def index
     @datasets = Dataset.order(:created_at => :desc).all
   end
+
+  def show
+    @dataset = Dataset.find(params[:id])
+    @estimates = @dataset.estimates
+    @species = Species.order("name ASC").all
+    @events = Event.order("name ASC").all
+    @grid = {}
+    @estimates.each do |estimate|
+      @grid[estimate.species_id] = {} if @grid[estimate.species_id].blank?
+      @grid[estimate.species_id][estimate.event_id] = estimate
+    end
+  end
   
   def new
     @dataset = Dataset.new
   end
-  
+
+  def compare
+    params[:compare] ||= { :threshold => 0}
+    if request.post?
+      @estimates1 = {}
+      @estimates2 = {}
+      @dataset1 = Dataset.find(params[:compare][:dataset1_id])
+      @dataset1.estimates.each do |estimate|
+        @estimates1[estimate.species_id] = {} if !@estimates1.key?(estimate.species_id)
+        @estimates1[estimate.species_id][estimate.event_id] = estimate.value
+      end
+      @dataset2 = Dataset.find(params[:compare][:dataset2_id])
+      @dataset2.estimates.each do |estimate|
+        @estimates2[estimate.species_id] = {} if !@estimates2.key?(estimate.species_id)
+        @estimates2[estimate.species_id][estimate.event_id] = estimate.value
+      end
+    end
+  end
+
   def create
     @dataset = Dataset.new(allowed_params)
     @dataset.user_id = current_user.id

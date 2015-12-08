@@ -18,6 +18,7 @@
             <th width="20%">Model</th>
             <th width="10%">Status</th>
             <th width="10%">Created_at</th>
+            <th width="10%">Active</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +29,13 @@
                 <td><%= dataset.model_id %></td>
                 <td><%= dataset.status.upcase %></td>
                 <td><%= dataset.created_at.strftime("%m/%d/%Y") %></td>
+                <td>
+                  <% if dataset.is_active %>
+                    <span class="yes">YES</span>
+                  <% else %>
+                    <span class="no">NO</span>
+                  <% end %>
+                </td>
               </tr>
             <% end -%>
           <% else -%>

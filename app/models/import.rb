@@ -1,10 +1,9 @@
 class Import
   
-  def initialize(file, attribute, width, padding)
+  def initialize(dataset, data, attribute)
     @attribute = attribute
-    @width = width
-    @padding = padding
-    @data = file.read
+    @data = data
+    @dataset = dataset
     @parsed = []
     @sorted = {}
   end
@@ -16,7 +15,7 @@ class Import
   end
   
   def parse_data
-    lines = @data.gsub(/\r\n/, "\r").gsub(/\n/, "\r").split("\r")      
+    lines = @data.gsub(/\r\n/, "\r").gsub(/\n/, "\r").split("\r")
     @parsed = []
     lines.each do |line|
       @parsed << parse_line(line)
@@ -24,13 +23,7 @@ class Import
   end
 
   def parse_line(line)
-    data = []
-    0.step((line.length - 1), (@width + @padding)) do |x|
-      from = x + 1
-      to = from + @width
-      data << line[from...to]
-    end
-    data
+    line.split(",")
   end
 
   def sort_data
@@ -59,17 +52,13 @@ class Import
   end
   
   def estimate(species_id, event_id)
-    estimate = Estimate.where(:species_id => species_id).where(:event_id => event_id).first
-    if estimate.nil?
-      estimate = Estimate.create(:species_id => species_id, :event_id => event_id)
-    end
     estimate
   end
   
   def insert_data
     @sorted.each do |event_id, values|
       values.each do |species_id, value|
-        estimate = estimate(species_id, event_id)
+        estimate = Estimate.new(:dataset_id => @dataset.id, :species_id => species_id, :event_id => event_id)
         estimate.send("#{@attribute}=", value)
         estimate.save!
       end

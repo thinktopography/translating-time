@@ -24,7 +24,7 @@ class SiteController < ApplicationController
         @process = Proces.find(params[:translation][:process])
         @result = @species1.translate(@species2, @location, @process, params[:translation][:days])
         @results = {}
-        @species1.estimates.includes(:event).order('events.name').each do |estimate|
+        @species1.estimates.active.includes(:event).order('events.name').each do |estimate|
           begin
             @results[estimate.event.name] = []
             @results[estimate.event.name] << estimate.low
@@ -53,7 +53,7 @@ class SiteController < ApplicationController
     if request.post?
       @species = Species.find(params[:species_id])
       @event = Event.find(params[:event_id])
-      @estimate = @species.estimates.where(:event_id => params[:event_id]).first
+      @estimate = @species.estimates.active.where(:event_id => params[:event_id]).first
     end
   end
   

@@ -68,32 +68,20 @@
       <table width="100%" class="referencetable">
         <thead>
           <tr>
-            <td rowspan="3" width="52%">Event Name</td>
-            <td colspan="6">Predictions</td>
+            <td rowspan="2" width="52%">Event Name</td>
+            <td colspan="2">Predictions</td>
           </tr>
           <tr>
-            <td colspan="3"><%= @species1.name %></td>
-            <td colspan="3"><%= @species2.name %></td>
-          </tr>
-          <tr>
-            <td width="8%">Lower CL</td>
-            <td width="8%">Prediction</td>
-            <td width="8%">Upper CL</td>
-            <td width="8%">Lower CL</td>
-            <td width="8%">Prediction</td>
-            <td width="8%">Upper CL</td>
+            <td><%= @species1.name %></td>
+            <td><%= @species2.name %></td>
           </tr>
         </thead>
         <tbody>
           <% @results.each do |event, result| %>
             <tr>
               <th><%= event %></th>
-              <td align="center"><%= format_value(result[0]) %></td>
-              <td align="center"><strong><%= format_value(result[1]) %></strong></td>
-              <td align="center"><%= format_value(result[2]) %></td>
-              <td align="center"><%= format_value(result[3]) %></td>
-              <td align="center"><strong><%= format_value(result[4]) %></strong></td>
-              <td align="center"><%= format_value(result[5]) %></td>
+              <td align="center"><%= format_value(result[1]) %></td>
+              <td align="center"><%= format_value(result[4]) %></td>
             </tr>
           <% end %>
         </tbody>

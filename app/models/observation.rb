@@ -14,4 +14,18 @@ class Observation < ActiveRecord::Base
   
   scope :active, -> { where(:is_active => 1) }
 
+  def self.export
+    species = Species.unscoped.in_model.order("id ASC").all
+    events = Event.unscoped.in_model.order("id ASC").all
+    grid = {}
+    Observation.active.each do |observation|
+      grid[observation.species_id] = {} if grid[observation.species_id].blank?
+      grid[observation.species_id][observation.event_id] = observation
+    end
+    assigns = { :species => species, :events => events, :grid => grid}
+    view = ActionView::Base.new(ActionController::Base.view_paths, assigns)
+    view.extend ApplicationHelper
+    view.render(:template => 'admin/exports/observations')
+  end
+
 end

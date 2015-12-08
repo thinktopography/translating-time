@@ -23,7 +23,7 @@
           <% unless @models.empty? %>
             <% @models.each do |model| -%>
               <tr class="<%= cycle('odd', 'even') %>">
-                <td><%= link_to model.id, edit_admin_model_path(model) %></td>
+                <td><%= link_to "Version #{model.id}", edit_admin_model_path(model) %></td>
                 <td><%= model.created_at.strftime("%m/%d/%y") %></td>
               </tr>
             <% end -%>

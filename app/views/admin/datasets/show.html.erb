@@ -1,0 +1,48 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <%= link_to 'Datasets', admin_datasets_path %> &raquo;
+  <strong>Dataset <%= @dataset.id %></strong>
+<% end -%>
+
+<% content_for :main do %>
+  <div class="grid" id="locations_<%= params[:type] %>">
+    <div class="grid-header">
+      <h2>Estimates</h2>
+      <ul>
+        <li><%= link_to '+ Import', import_admin_estimates_path %></li>
+      </ul>
+    </div>
+    <div class="grid-body">
+      <table>
+        <thead>
+          <tr>
+            <th width="30%">Event</th>
+            <% width = 70 / @species.count %>
+            <% @species.each do |species| %>
+              <th width="<%= width %>%"><%= species.name %></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <th><%= event.name %></th>
+              <% @species.each do |species| %>
+                <% if @grid.has_key?(species.id) && @grid[species.id].has_key?(event.id) %>
+                  <% estimate = @grid[species.id][event.id] %>
+                  <td>
+                    <%= number_with_precision(estimate.value, :precision => 3) %>
+                  </td>
+                <% else %>
+                  <td>&nbsp;</td>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>          
+      </table>
+    </div>
+    <div class="grid-footer">
+    </div>
+  </div>
+<% end -%>

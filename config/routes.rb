@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   namespace :admin do 
     resource :account
     resources :citations
-    resources :datasets
+    resources :datasets do
+      match :compare, :on => :collection, :via => [:get,:post]
+    end
     resources :events do
       post :batch, :on => :collection
       get :delete, :on => :member

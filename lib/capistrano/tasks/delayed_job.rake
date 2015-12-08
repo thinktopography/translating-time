@@ -1,8 +1,8 @@
 namespace :delayed_job do
 
-  task :restart, :roles => :app do
+  task :restart do
     command  = "cd #{current_path};"
-    command += "RAILS_ENV=production script/delayed_job restart"
+    command += "RAILS_ENV=production bin/delayed_job restart"
     run(command)
   end
 

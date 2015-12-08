@@ -1,0 +1,75 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <%= link_to 'Datasets', admin_datasets_path %> &raquo;
+  <strong>Compare Datasets</strong>
+<% end -%>
+
+<% content_for :main do %>
+
+  <%= form_tag('/admin/datasets/compare') %>
+
+    <dl>
+
+      <dt>Dataset 1</dt>
+      <dd><%= select_tag 'compare[dataset1_id]', options_from_collection_for_select(Dataset.all, :id, :id, params[:compare][:dataset1_id]), :include_blank => true %></dd>
+
+      <dt>Dataset 2</dt>
+      <dd><%= select_tag 'compare[dataset2_id]', options_from_collection_for_select(Dataset.all, :id, :id, params[:compare][:dataset2_id]), :include_blank => true %></dd>
+
+      <dt>Threshold</dt>
+      <dd><%= text_field_tag 'compare[threshold]', params[:compare][:threshold] %></dd>
+
+    </dl>
+    <div class="buttons">
+      <input type="submit" value="COMPARE" />
+    </div>
+
+  </form>
+
+  <% if @estimates1.present? && @estimates2.present? %>
+    <div class="grid">
+      <div class="grid-body">
+        <table>
+          <thead>
+            <tr>
+              <th width="30%">Species</th>
+              <th width="40%">Event</th>
+              <th width="10%">Dataset <%= @dataset1.id %></th>
+              <th width="10%">Dataset <%= @dataset2.id %></th>
+              <th width="10%">Delta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% Species.in_model.unscoped.order('CAST(code AS UNSIGNED) ASC').all.each do |species|%>
+              <% Event.in_model.unscoped.order('CAST(code AS UNSIGNED) ASC').all.each do |event| %>
+                <% if (@estimates1.key?(species.id) && @estimates1[species.id].key?(event.id)) || (@estimates2.key?(species.id) && @estimates2[species.id].key?(event.id)) %>
+                  <% delta = 0 %>
+                  <% if (@estimates1.key?(species.id) && @estimates1[species.id].key?(event.id)) && (@estimates2.key?(species.id) && @estimates2[species.id].key?(event.id)) %>
+                    <% delta = (((@estimates2[species.id][event.id] / @estimates1[species.id][event.id]) - 1) * 100).round(2) %>
+                  <% end %>
+                  <% if delta.abs >= params[:compare][:threshold].to_i %>
+                    <tr>
+                      <td><%= species.code %>: <%= species.name %></td>
+                      <td><%= event.code %>: <%= event.name %></td>
+                      <td><%= (@estimates1.key?(species.id) && @estimates1[species.id].key?(event.id)) ? @estimates1[species.id][event.id] : '' %></td>
+                      <td><%= (@estimates2.key?(species.id) && @estimates2[species.id].key?(event.id)) ? @estimates2[species.id][event.id] : '' %></td>
+                      <td>
+                        <% if delta == 0 %>
+                          N/A
+                        <% elsif delta > 1 %>
+                            <span style="color:green"><i class="fa fa-arrow-up"></i> <%= delta.abs %>%</span>
+                        <% else %>
+                          <span style="color:purple"><i class="fa fa-arrow-down"></i> <%= delta.abs %>%</span>
+                        <% end %>
+                     </td>
+                    </tr>
+                  <% end %>
+                <% end %>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+  <% end %>
+
+<% end -%>
