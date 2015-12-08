@@ -54,9 +54,9 @@ class Dataset < ActiveRecord::Base
     end
 
     def enforce_active
-      if self.is_active
-        Dataset.where('id != ?', self.id).update_all(:is_active, false)
-      end
+      # if self.is_active
+      #   Dataset.where('id != ?', self.id).update_all(:is_active, false)
+      # end
     end
 
 end
