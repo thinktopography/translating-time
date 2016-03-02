@@ -36,7 +36,7 @@ class Observation < ActiveRecord::Base
     assigns = { :species => species, :events => events, :grid => grid}
     view = ActionView::Base.new(ActionController::Base.view_paths, assigns)
     view.extend ApplicationHelper
-    view.render(:template => 'admin/exports/observations')
+    view.render(:template => '/admin/exports/observations')
   end
 
 end

@@ -19,7 +19,7 @@ class Dataset < ActiveRecord::Base
       observations = Observation.export
       File.open("#{Rails.root}/tmp/process.r", 'w') { |file| file.write(self.model.source) }
       File.open("#{Rails.root}/tmp/observations.txt", 'w') { |file| file.write(observations) }
-      system("cd #{Rails.root}/tmp;RScript ./process.r")
+      system("cd #{Rails.root}/tmp;Rscript ./process.r")
       output = File.read("#{Rails.root}/tmp/estimates.txt")
       Import.new(self, input, output, 'value').process
       File.unlink("#{Rails.root}/tmp/process.r")
