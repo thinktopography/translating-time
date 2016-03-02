@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5cf59ac-adea-4cf1-b481-c66b26717cca" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/admin/datasets_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admin/datasets_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/dataset.rb" afterPath="$PROJECT_DIR$/app/models/dataset.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/datasets/index.html.erb" afterPath="$PROJECT_DIR$/app/views/admin/datasets/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/capistrano/tasks/delayed_job.rake" afterPath="$PROJECT_DIR$/lib/capistrano/tasks/delayed_job.rake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/datasets/show.csv.erb" afterPath="$PROJECT_DIR$/app/views/admin/datasets/show.csv.erb" />
     </list>
     <ignored path="translatingtime.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,11 +79,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="delayed_job.rake" pinned="false" current-in-tab="true">
+      <file leaf-file-name="delayed_job.rake" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/delayed_job.rake">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1317716">
+            <state vertical-scroll-proportion="0.0">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.csv.erb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/admin/datasets/show.csv.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.02276176">
+              <caret line="1" column="258" selection-start-line="1" selection-start-column="258" selection-end-line="1" selection-end-column="258" />
               <folding />
             </state>
           </provider>
@@ -170,7 +177,6 @@
         <option value="$PROJECT_DIR$/app/models/import.rb" />
         <option value="$PROJECT_DIR$/app/controllers/admin/exports_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/admin/exports/observations.text.erb" />
-        <option value="$PROJECT_DIR$/app/views/admin/datasets/show.csv.erb" />
         <option value="$PROJECT_DIR$/app/views/admin/dashboard/index.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/admin/confidence_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/admin/confidence/edit.html.erb" />
@@ -181,6 +187,7 @@
         <option value="$PROJECT_DIR$/app/models/dataset.rb" />
         <option value="$PROJECT_DIR$/app/views/admin/datasets/index.html.erb" />
         <option value="$PROJECT_DIR$/lib/capistrano/tasks/delayed_job.rake" />
+        <option value="$PROJECT_DIR$/app/views/admin/datasets/show.csv.erb" />
       </list>
     </option>
   </component>
@@ -264,15 +271,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="capistrano" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="translatingtime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="translatingtime" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tasks" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="translatingtime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="translatingtime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="datasets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -855,14 +906,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admin/datasets/show.csv.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/exports/observations.text.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03314917">
@@ -987,8 +1030,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/delayed_job.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1317716">
+        <state vertical-scroll-proportion="0.0">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin/datasets/show.csv.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02276176">
+          <caret line="1" column="258" selection-start-line="1" selection-start-column="258" selection-end-line="1" selection-end-column="258" />
           <folding />
         </state>
       </provider>
