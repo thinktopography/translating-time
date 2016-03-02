@@ -1,14 +1,14 @@
 <% content_for :breadcrumbs do -%>
   <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
-  <%= link_to 'Models', admin_models_path %> &raquo;
-  <strong>Edit Model</strong>
+  <%= link_to 'Algorithms', admin_models_path %> &raquo;
+  <strong>Edit Algorithm</strong>
 <% end -%>
 
 <% content_for :main do %>
   <%= form_for @model, { :url => admin_model_path(@model) } do |f| -%>
     <div class="form" id="new_model">
       <div class="form-header">
-        <h2>Model Details</h2>
+        <h2>Algorithm Details</h2>
       </div>
       <div class="form-body">
         <dl>

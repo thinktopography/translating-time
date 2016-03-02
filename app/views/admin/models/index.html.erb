@@ -1,12 +1,12 @@
 <% content_for :breadcrumbs do -%>
   <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
-  <strong>Model</strong>
+  <strong>Algorithms</strong>
 <% end -%>
 
 <% content_for :main do %>
   <div class="grid">
     <div class="grid-header">
-      <h2>Models</h2>
+      <h2>Algorithms</h2>
       <ul>
         <li><%= link_to "+ Add New", new_admin_model_path %></li>
       </ul>
@@ -29,7 +29,7 @@
             <% end -%>
           <% else -%>
             <tr>
-              <td colspan="2">There are no models</td>
+              <td colspan="2">There are no algorithms</td>
             </tr>
           <% end -%>
         </tbody>
