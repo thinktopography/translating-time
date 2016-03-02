@@ -12,7 +12,9 @@
       </div>
       <div class="form-body">
         <dl>
-          <%= render 'form', :f => f %>
+          <% options = options_from_collection_for_select(Model.order("created_at DESC").all, :id, :id, @dataset.model_id) %>
+          <%= f.select_control @dataset, :model_id, { :text => 'Algorithm', :required => true }, { :include_blank => '', :options => options } %>
+          <%= f.text_area_control @dataset, :description %>
         </dl>
       </div>
       <div class="form-footer">

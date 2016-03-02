@@ -50,6 +50,21 @@ class Admin::DatasetsController < Admin::ApplicationController
     end
   end
 
+  def edit
+    @dataset = Dataset.find(params[:id])
+  end
+
+  def update
+    @dataset = Dataset.find(params[:id])
+    if @dataset.update_attributes(allowed_params)
+      flash[:notice] = "This dataset has been successfully updated"
+      redirect_to admin_datasets_path
+    else
+      flash[:warning] = "There was a problem with your input"
+      render "edit"
+    end
+  end
+
   def delete
     @dataset = Dataset.find(params[:id])
     params[:strategy] = 'delete'
@@ -58,13 +73,13 @@ class Admin::DatasetsController < Admin::ApplicationController
   def destroy
     @dataset = Dataset.find(params[:id])
     @dataset.destroy
-    redirect_to admin_datasets_index_path
+    redirect_to admin_datasets_path
   end
   
   private 
   
     def allowed_params
-      params.require(:dataset).permit([:model_id])
+      params.require(:dataset).permit([:model_id,:description])
     end
 
 end

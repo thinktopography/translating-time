@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :citations
     resources :datasets do
       match :compare, :on => :collection, :via => [:get,:post]
+      get :delete, :on => :member
     end
     resources :events do
       post :batch, :on => :collection

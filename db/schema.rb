@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208155401) do
+ActiveRecord::Schema.define(version: 20160302180934) do
 
   create_table "abbreviations", force: :cascade do |t|
     t.string "text",        limit: 255
@@ -37,12 +37,13 @@ ActiveRecord::Schema.define(version: 20151208155401) do
   end
 
   create_table "datasets", force: :cascade do |t|
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.integer  "model_id",   limit: 4
-    t.string   "status",     limit: 255
-    t.integer  "user_id",    limit: 4
-    t.boolean  "is_active",              default: false, null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "model_id",    limit: 4
+    t.string   "status",      limit: 255
+    t.integer  "user_id",     limit: 4
+    t.boolean  "is_active",                 default: false, null: false
+    t.text     "description", limit: 65535
   end
 
   create_table "delayed_jobs", force: :cascade do |t|

@@ -2,7 +2,7 @@ class Dataset < ActiveRecord::Base
 
   belongs_to :model
   belongs_to :user
-  has_many :estimates
+  has_many :estimates, :dependent => :destroy
 
   validates_presence_of :model_id, :user_id
   validates_inclusion_of :status, :in => %w{ pending processing processed failed }
