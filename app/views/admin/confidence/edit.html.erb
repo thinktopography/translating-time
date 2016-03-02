@@ -1,0 +1,29 @@
+<% content_for :breadcrumbs do -%>
+  <%= link_to 'Dashboard', admin_dashboard_path %> &raquo;
+  <strong>Upload Confidence</strong>
+<% end -%>
+
+<% content_for :main do %>
+  <%= form_tag admin_confidence_path, :method => 'post', :multipart => true -%>
+    <div class="form" id="new_species">
+      <div class="form-header">
+        <h2>Upload Confidence</h2>
+      </div>
+      <div class="form-body">
+        <dl>
+          <dt>Image</dt>
+          <dd>
+            <%= file_field_tag :image %>
+            <p>Image should be 600 pixels wide</p>
+          </dd>
+        </dl>
+      </div>
+      <div class="form-footer">
+        <ul>
+          <li><%= link_to 'Cancel', admin_datasets_path, :class => 'cancel' %></li>
+          <li><%= submit_tag'Save', :class => 'button' %></li>
+        </ul>
+      </div>
+    </div>
+  </form>
+<% end -%>

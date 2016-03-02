@@ -43,6 +43,7 @@
                 </td>
                 <td align="center">
                   <%= link_to 'edit', edit_admin_dataset_path(dataset) %> |
+                  <%= link_to 'export', admin_dataset_path(dataset, :format => 'csv') %> |
                   <%= link_to 'delete', delete_admin_dataset_path(dataset) %>
                 </td>
               </tr>

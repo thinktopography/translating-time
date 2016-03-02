@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   
   get 'admin' => "admin/dashboard#index", :as => :admin_dashboard
-  namespace :admin do 
+  namespace :admin do
+    match :confidence, :via => [:get,:post], :controller => 'confidence', :action => 'edit'
     resource :account
     resources :citations
     resources :datasets do

@@ -14,6 +14,12 @@ class Admin::DatasetsController < Admin::ApplicationController
       @grid[estimate.species_id] = {} if @grid[estimate.species_id].blank?
       @grid[estimate.species_id][estimate.event_id] = estimate
     end
+    respond_to do |format|
+      format.csv {
+        send_data(render_to_string('show'), :filename => "dataset-#{@dataset.id}-export.csv", :type => "text/csv", :disposition => "inline") and return
+      }
+      format.html { render 'show' }
+    end
   end
   
   def new
