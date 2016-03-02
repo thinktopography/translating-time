@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302180934) do
+ActiveRecord::Schema.define(version: 20160302182721) do
 
   create_table "abbreviations", force: :cascade do |t|
     t.string "text",        limit: 255
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160302180934) do
     t.decimal  "high",                 precision: 6, scale: 1
     t.integer  "warning",    limit: 4,                         default: 0
     t.integer  "dataset_id", limit: 4
+    t.decimal  "input",                precision: 4, scale: 1
   end
 
   create_table "events", force: :cascade do |t|

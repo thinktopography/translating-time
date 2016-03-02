@@ -14,6 +14,17 @@ class Observation < ActiveRecord::Base
   
   scope :active, -> { where(:is_active => 1) }
 
+  def self.collect
+    species = Species.unscoped.in_model.order("id ASC").all
+    events = Event.unscoped.in_model.order("id ASC").all
+    grid = {}
+    Observation.active.each do |observation|
+      grid[observation.species_id] = {} if grid[observation.species_id].blank?
+      grid[observation.species_id][observation.event_id] = observation
+    end
+    grid
+  end
+
   def self.export
     species = Species.unscoped.in_model.order("id ASC").all
     events = Event.unscoped.in_model.order("id ASC").all

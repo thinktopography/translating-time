@@ -1,8 +1,9 @@
 class Import
   
-  def initialize(dataset, data, attribute)
+  def initialize(dataset, input, output, attribute)
     @attribute = attribute
-    @data = data
+    @input = input
+    @data = output
     @dataset = dataset
     @parsed = []
     @sorted = {}
@@ -56,9 +57,11 @@ class Import
   end
   
   def insert_data
+    @dataset.estimates.delete_all
     @sorted.each do |event_id, values|
       values.each do |species_id, value|
-        estimate = Estimate.new(:dataset_id => @dataset.id, :species_id => species_id, :event_id => event_id)
+        input = (@input[species_id][event_id].present?) ? @input[species_id][event_id].value : nil
+        estimate = Estimate.new(:dataset_id => @dataset.id, :species_id => species_id, :event_id => event_id, :input => input)
         estimate.send("#{@attribute}=", value)
         estimate.save!
       end

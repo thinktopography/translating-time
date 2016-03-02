@@ -8,9 +8,6 @@
   <div class="grid" id="locations_<%= params[:type] %>">
     <div class="grid-header">
       <h2>Estimates</h2>
-      <ul>
-        <li><%= link_to '+ Import', import_admin_estimates_path %></li>
-      </ul>
     </div>
     <div class="grid-body">
       <table>
@@ -31,6 +28,7 @@
                 <% if @grid.has_key?(species.id) && @grid[species.id].has_key?(event.id) %>
                   <% estimate = @grid[species.id][event.id] %>
                   <td>
+                    <strong style="color:#090"><%= number_with_precision(estimate.input, :precision => 3) %></strong><br />
                     <%= number_with_precision(estimate.value, :precision => 3) %>
                   </td>
                 <% else %>

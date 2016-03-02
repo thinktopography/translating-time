@@ -15,17 +15,19 @@ class Dataset < ActiveRecord::Base
     self.status = 'processing'
     self.save
     begin
+      input = Observation.collect
       observations = Observation.export
       File.open("#{Rails.root}/tmp/process.r", 'w') { |file| file.write(self.model.source) }
       File.open("#{Rails.root}/tmp/observations.txt", 'w') { |file| file.write(observations) }
       system("cd #{Rails.root}/tmp;RScript ./process.r")
-      data = File.read("#{Rails.root}/tmp/estimates.txt")
-      Import.new(self, data, 'value').process
+      output = File.read("#{Rails.root}/tmp/estimates.txt")
+      Import.new(self, input, output, 'value').process
       File.unlink("#{Rails.root}/tmp/process.r")
       File.unlink("#{Rails.root}/tmp/observations.txt")
       File.unlink("#{Rails.root}/tmp/estimates.txt")
       succeed
-    rescue
+    rescue Exception => e
+      raise e.inspect
       fail
     end
     return true
