@@ -60,6 +60,13 @@ class Admin::DatasetsController < Admin::ApplicationController
     @dataset = Dataset.find(params[:id])
   end
 
+  def activate
+    @dataset = Dataset.find(params[:id])
+    @dataset.activate
+    flash[:notice] = "Dataset #{@dataset.id} has been activated"
+    redirect_to admin_datasets_path
+  end
+
   def update
     @dataset = Dataset.find(params[:id])
     if @dataset.update_attributes(allowed_params)

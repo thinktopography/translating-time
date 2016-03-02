@@ -45,6 +45,12 @@ class Dataset < ActiveRecord::Base
     self.save
   end
 
+  def activate
+    self.is_active = true
+    self.save
+    Dataset.where('id != ?', self.id).update_all(:is_active => false)
+  end
+
   private
 
     def queue_job
