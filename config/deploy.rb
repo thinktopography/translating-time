@@ -8,6 +8,7 @@ set :scm, "git"
 set :keep_releases, 2
 set :normalize_asset_timestamps, false
 set :workers, { :worker => { "email" => 2 } }
+set :passenger_restart_with_touch, true
 
 linked = []
 ["smtp","aws","database","secrets"].each do |config|
